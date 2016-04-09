@@ -1,7 +1,0 @@
-INDEX VERSION 1.3+C:\Users\Lozik\Desktop\Domitary\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-186695855.index
-1764543353.index
-44977964.index
-3868778638.index
-2880686824.index
-2995569843.index
