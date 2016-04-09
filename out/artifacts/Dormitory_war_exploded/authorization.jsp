@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3><a href="http://localhost:8080/Dormitory/indexSettler.jsp">Settler</a></h3>
-<h3><a href="http://localhost:8080/Dormitory/indexDeaneryWorker.jsp">Deanery Worker</a></h3>
-<h3><a href="http://localhost:8080/Dormitory/indexGorverner.jsp">Gorverner</a></h3>
-<h3><a href="http://localhost:8080/Dormitory/indexDoctor.jsp">Doctor</a></h3>
+<h3><a href="http://localhost:8080/indexSettler.jsp">Settler</a></h3>
+<h3><a href="http://localhost:8080/indexDeaneryWorker.jsp">Deanery Worker</a></h3>
+<h3><a href="http://localhost:8080/indexGorverner.jsp">Gorverner</a></h3>
+<h3><a href="http://localhost:8080/indexDoctor.jsp">Doctor</a></h3>
 
 <form action="Authorization" method="post">
 	<input type="submit" value="test"/>	

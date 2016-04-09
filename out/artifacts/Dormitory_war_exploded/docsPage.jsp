@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3><a href="http://localhost:8080/Dormitory/statementPage.jsp">Statement page</a></h3>
-<h3><a href="http://localhost:8080/Dormitory/orderPage.jsp">Order page</a></h3>
-<h3><a href="http://localhost:8080/Dormitory/contractPage.jsp">Contract page</a></h3>
+<h3><a href="http://localhost:8080/statementPage.jsp">Statement page</a></h3>
+<h3><a href="http://localhost:8080/orderPage.jsp">Order page</a></h3>
+<h3><a href="http://localhost:8080/contractPage.jsp">Contract page</a></h3>
 </body>
 </html>

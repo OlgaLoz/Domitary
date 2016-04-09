@@ -7,6 +7,6 @@
 <title>Deanery Worker</title>
 </head>
 <body>
-<h3><a href="http://localhost:8080/Dormitory/addToSettlerListPage.jsp">Add to settlers list page</a></h3>
+<h3><a href="http://localhost:8080/addToSettlerListPage.jsp">Add to settlers list page</a></h3>
 </body>
 </html>
