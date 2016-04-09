@@ -3,7 +3,7 @@ package Model;
 
 /**
  * @version 1.0
- * @created 04-фев-2016 14:59:56
+ * @created 10-Apr-2016 00:12:00
  */
 public class User {
 
@@ -11,7 +11,6 @@ public class User {
 	private int password;
 	private Role role;
 	private int userId;
-	public Role m_Role;
 
 	public User(){
 
@@ -20,7 +19,6 @@ public class User {
 	public void finalize() throws Throwable {
 
 	}
-
 	public String getLogin(){
 		return "";
 	}
@@ -31,6 +29,10 @@ public class User {
 
 	public Role getRole(){
 		return null;
+	}
+
+	public int getUserId(){
+		return 0;
 	}
 
 	/**
@@ -49,4 +51,11 @@ public class User {
 
 	}
 
-}
+	/**
+	 * 
+	 * @param userId
+	 */
+	public void setUserId(int userId){
+
+	}
+}//end User

@@ -3,11 +3,11 @@ package Model;
 
 /**
  * @version 1.0
- * @created 04-фев-2016 14:59:56
+ * @created 10-Apr-2016 00:12:00
  */
 public enum Role {
 	Guest,
-	Settler,
+	Student,
 	Doctor,
 	Governer,
 	DeaneryWorker

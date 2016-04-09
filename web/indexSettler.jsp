@@ -7,7 +7,7 @@
 <title>Settler</title>
 </head>
 <body>
-<h3><a href="http://localhost:8080/Dormitory/settlerListPage.jsp">Settlers list page</a></h3>
-<h3><a href="http://localhost:8080/Dormitory/docsPage.jsp">Docs page</a></h3>
+<h3><a href="http://localhost:8080/settlerListPage.jsp">Settlers list page</a></h3>
+<h3><a href="http://localhost:8080/docsPage.jsp">Docs page</a></h3>
 </body>
 </html>

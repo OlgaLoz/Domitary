@@ -3,14 +3,13 @@ package Model;
 
 /**
  * @version 1.0
- * @created 04-фев-2016 14:59:56
+ * @created 10-Apr-2016 00:12:00
  */
 public class Place {
 
-	private int blockNumber;
-	private int dormitoryNumber;
+	private boolean isFree;
 	private int placeId;
-	private int roomNumber;
+	private int roomId;
 
 	public Place(){
 
@@ -19,13 +18,8 @@ public class Place {
 	public void finalize() throws Throwable {
 
 	}
-
-	public int getBlockNumber(){
-		return 0;
-	}
-
-	public int getDormitoryNumber(){
-		return 0;
+	public boolean getIsFree(){
+		return false;
 	}
 
 	public int getPlaceId(){
@@ -38,17 +32,9 @@ public class Place {
 
 	/**
 	 * 
-	 * @param blockNumber
+	 * @param isFree
 	 */
-	public void setBlockNumber(int blockNumber){
-
-	}
-
-	/**
-	 * 
-	 * @param dormitoryNumber
-	 */
-	public void setDormitoryNumber(int dormitoryNumber){
+	public void setIsFree(boolean isFree){
 
 	}
 
@@ -62,10 +48,9 @@ public class Place {
 
 	/**
 	 * 
-	 * @param roomNumer
+	 * @param roomNumber
 	 */
-	public void setRoomNumber(int roomNumer){
+	public void setRoomNumber(int roomNumber){
 
 	}
-
-}
+}//end Place
