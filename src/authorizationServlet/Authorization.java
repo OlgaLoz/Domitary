@@ -8,12 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.DatabaseUtils;
-
-import javax.naming.NamingException;
-import java.sql.*;
-
-
 /**
  * Servlet implementation class Authorization
  */
@@ -34,31 +28,6 @@ public class Authorization extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	//	response.getWriter().append("Served at: ").append(request.getContextPath());
-		Connection cc = null; 
-		Statement s = null;
-		
-		try {
-			cc = DatabaseUtils.getConnection();
-		s = cc.createStatement();
-	      // SQL ���:
-		s.executeQuery("SET CHARACTER SET UTF8");
-		s.executeQuery("SET CHARSET UTF8");
-		s.executeQuery("SET NAMES UTF8");
-	      ResultSet r = s.executeQuery("SELECT * FROM Role");
-	      while (r.next()) {
-	         // ������� �� ����� ��������:
-	    	  response.getWriter().println(r.getString("ID_Role") + ": "
-	               + r.getString("RoleName"));
-	      }
-	      
-		}
-		catch (NamingException ex) {  }
-		catch (SQLException ex) {  }
-		finally {
-	      DatabaseUtils.closeStatement(s);
-	      DatabaseUtils.closeConnection(cc);
-		}
 
 	}
 
