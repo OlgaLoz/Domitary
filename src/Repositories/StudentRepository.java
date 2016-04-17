@@ -1,9 +1,8 @@
 package Repositories;
 
-import Interfaces.IRepository;
 import Model.Student;
 import Model.StudentStatus;
-import main.DatabaseUtils;
+import Utils.DatabaseUtils;
 
 import javax.naming.NamingException;
 import java.sql.*;

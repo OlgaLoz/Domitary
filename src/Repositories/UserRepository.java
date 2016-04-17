@@ -3,7 +3,7 @@ package Repositories;
 import Interfaces.IRepository;
 import Model.Role;
 import Model.User;
-import main.DatabaseUtils;
+import Utils.DatabaseUtils;
 
 import javax.naming.NamingException;
 import java.sql.Connection;
