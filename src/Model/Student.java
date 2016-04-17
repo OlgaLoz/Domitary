@@ -1,6 +1,5 @@
 package Model;
 
-
 import java.sql.Date;
 
 /**
@@ -9,176 +8,104 @@ import java.sql.Date;
  */
 public class Student {
 
-	private boolean bodyCheck;
-	private String contract;
-	private Date dateOfBirth;
-	private Date dateOfSettlement;
-	private String firstName;
-	private String groupNumber;
-	private String lastName;
-	private String midName;
-	private String order;
-	private int placeId;
 	private int studentId;
-	private Boolean isSettled;
+	private String firstName;
+	private String midName;
+	private String lastName;
+	private Date dateOfBirth;
+	private String groupNumber;
 	private String statement;
+	private Date dateOfSettlement;
+	private String order;
+	private String contract;
+	private int roomId;
+	private StudentStatus studentStatus;
 
-	public Student(){
+	public Student(){  }
 
-	}
+	public int getStudentId() { return studentId; }
 
-	public void finalize() throws Throwable {
+	public String getFirstName() { return firstName; }
 
-	}
-	public String getContract(){
-		return "";
-	}
-
-	public Date getDateOfBirth(){
-		return null;
-	}
-
-	public Date getDateOfSettlement(){
-		return null;
-	}
-
-	public String getFirstName(){
-		return "";
-	}
-
-	public String getGroupNumber(){
-		return "";
+	public String getMidName(){
+		return midName;
 	}
 
 	public String getLastName(){
-		return "";
+		return lastName;
 	}
 
-	public String getMidName(){
-		return "";
+	public Date getDateOfBirth(){
+		return dateOfBirth;
 	}
+
+	public String getGroupNumber(){
+		return groupNumber;
+	}
+
+	public String getStatement() { return statement; }
+
+	public Date getDateOfSettlement() { return dateOfSettlement; }
 
 	public String getOrder(){
-		return "";
+		return order;
 	}
 
-	public int getPlaceId(){
-		return 0;
+	public String getContract() { return contract; }
+
+	public int getRoomId(){
+		return roomId;
 	}
 
-	public int getStudentId(){
-		return 0;
-	}
+	public StudentStatus getStudentStatus() { return studentStatus; }
 
-	public Boolean getIsSettled() { return null; }
 
-	public String getStatement() { return ""; }
-
-	public boolean isBodyCheck(){
-		return false;
-	}
-
-	/**
-	 * 
-	 * @param bodyCheck
-	 */
-	public void setBodyCheck(boolean bodyCheck){
-
-	}
-
-	/**
-	 * 
-	 * @param contract
-	 */
-	public void setContract(String contract){
-
-	}
-
-	/**
-	 * 
-	 * @param dateOfBirth
-	 */
-	public void setDateOfBirth(Date dateOfBirth){
-
-	}
-
-	/**
-	 * 
-	 * @param dateOfSettlement
-	 */
-	public void setDateOfSettlement(Date dateOfSettlement){
-
-	}
-
-	/**
-	 * 
-	 * @param firstName
-	 */
-	public void setFirstName(String firstName){
-
-	}
-
-	/**
-	 * 
-	 * @param groupNumber
-	 */
-	public void setGroupNumber(String groupNumber){
-
-	}
-
-	/**
-	 * 
-	 * @param lastName
-	 */
-	public void setLastName(String lastName){
-
-	}
-
-	/**
-	 * 
-	 * @param midName
-	 */
-	public void setMidName(String midName){
-
-	}
-
-	/**
-	 * 
-	 * @param order
-	 */
-	public void setOrder(String order){
-
-	}
-
-	/**
-	 * 
-	 * @param placeId
-	 */
-	public void setPlaceId(int placeId){
-
-	}
-
-	/**
-	 * 
-	 * @param studentId
-	 */
 	public void setStudentId(int studentId){
-
+		this.studentId = studentId;
 	}
 
-	/**
-	 *
-	 * @param isSettled
-	 */
-	public void setIsSettled(Boolean isSettled){
-
+	public void setFirstName(String firstName){
+		this.firstName = firstName;
 	}
 
-	/**
-	 *
-	 * @param statement
-	 */
+	public void setMidName(String midName){
+		this.midName = midName;
+	}
+
+	public void setLastName(String lastName){
+		this.lastName = lastName;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth){
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public void setGroupNumber(String groupNumber){
+		this.groupNumber = groupNumber;
+	}
+
 	public void setStatement(String statement){
-
+		this.statement = statement;
 	}
-}//end Student
+
+	public void setDateOfSettlement(Date dateOfSettlement){
+		this.dateOfSettlement = dateOfSettlement;
+	}
+
+	public void setOrder(String order){
+		this.order = order;
+	}
+
+	public void setContract(String contract){
+		this.contract = contract;
+	}
+
+	public void setRoomId(int roomId){
+		this.roomId = roomId;
+	}
+
+	public void setStudentStatus(StudentStatus studentStatus){
+		this.studentStatus = studentStatus;
+	}
+
+}

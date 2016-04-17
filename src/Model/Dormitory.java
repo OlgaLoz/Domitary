@@ -2,14 +2,14 @@ package Model;
 
 public class Dormitory {
 
-	private String adress;
+	private String address;
 	private int dormitoryId;
 	private int dormitoryNumber;
 
 	public Dormitory(){	}
 
-	public String getAdress(){
-		return adress;
+	public String getAddress(){
+		return address;
 	}
 
 	public int getDormitoryId(){
@@ -20,8 +20,8 @@ public class Dormitory {
 		return  dormitoryNumber;
 	}
 
-	public void setAdress(String adress){
-		this.adress = adress;
+	public void setAddress(String address){
+		this.address = address;
 	}
 
 	public void setDormitoryId(int dormitoryId){
