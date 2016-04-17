@@ -1,4 +1,4 @@
 # IntelliJ
-.idea/
-out/
-*.iml
+.idea/*
+out/*
+/*.iml
