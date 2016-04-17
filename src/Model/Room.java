@@ -1,56 +1,38 @@
 package Model;
 
-
-/**
- * @version 1.0
- * @created 10-Apr-2016 00:12:00
- */
 public class Room {
 
 	private int blockId;
 	private int roomId;
 	private int roomNumber;
+	private int maxPlacesCount;
+	private int freePlacesCount;
 
-	public Room(){
+	public Room(){  }
 
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-	public int getBlockId(){
-		return 0;
-	}
+	public int getBlockId(){ return blockId; }
 
 	public int getRoomId(){
-		return 0;
+		return roomId;
 	}
 
 	public int getRoomNumber(){
-		return 0;
+		return roomNumber;
 	}
 
-	/**
-	 * 
-	 * @param blockId
-	 */
-	public void setBlockId(int blockId){
+	public int getMaxPlacesCount(){ return maxPlacesCount; }
 
+	public int getFreePlacesCount(){
+		return freePlacesCount;
 	}
 
-	/**
-	 * 
-	 * @param roomId
-	 */
-	public void setRoomId(int roomId){
+	public void setBlockId(int blockId){ this.blockId = blockId; }
 
-	}
+	public void setRoomId(int roomId){ this.roomId = roomId; }
 
-	/**
-	 * 
-	 * @param roomNumer
-	 */
-	public void setRoomNumber(int roomNumer){
+	public void setRoomNumber(int roomNumber){ this.roomNumber = roomNumber; }
 
-	}
-}//end Room
+	public void setMaxPlacesCount(int maxPlacesCount){ this.maxPlacesCount = maxPlacesCount; }
+
+	public void setFreePlacesCount(int freePlacesCount){ this.freePlacesCount = freePlacesCount; }
+}
