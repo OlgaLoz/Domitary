@@ -2,10 +2,6 @@ package Model;
 
 import java.sql.Date;
 
-/**
- * @version 1.0
- * @created 10-Apr-2016 00:12:00
- */
 public class Student {
 
 	private int studentId;

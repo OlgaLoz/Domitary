@@ -4,6 +4,6 @@ public enum Role {
 	Guest,
 	Student,
 	Doctor,
-	Governer,
+	Governor,
 	DeaneryWorker
 }
