@@ -20,7 +20,7 @@ public class UserRepository implements IRepository<User> {
         int result = -1;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.execute(String.format("INSERT INTO dormitorydb.user (Login, Password, ID_Role) VALUES ('%s','%s', '2');",
@@ -45,7 +45,7 @@ public class UserRepository implements IRepository<User> {
         User result = new User();
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE User.ID_User = '%d'", id));
@@ -72,7 +72,7 @@ public class UserRepository implements IRepository<User> {
         Statement statement = null;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
             statement.executeUpdate(String.format("UPDATE dormitorydb.user SET Login = '%s', Password = '%s' WHERE ID_User = '%s';",
                 item.getLogin(), item.getPassword(), item.getUserId()));
@@ -91,7 +91,7 @@ public class UserRepository implements IRepository<User> {
         Statement statement = null;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.execute(String.format("DELETE FROM User WHERE ID_User = '%d'", id));

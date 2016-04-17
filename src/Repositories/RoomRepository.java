@@ -1,7 +1,7 @@
 package Repositories;
 
 import Interfaces.IRepository;
-import main.DatabaseUtils;
+import Utils.DatabaseUtils;
 import Model.Room;
 
 import javax.naming.NamingException;
@@ -17,21 +17,21 @@ public class RoomRepository implements IRepository<Room> {
 
         Connection connection = null;
         Statement statement = null;
-        ResultSet r = null;
+        ResultSet resultSet = null;
         int res = 0;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute(String.format("INSERT INTO `Room` (`ID_Block`, `RoomNumber`, `MaxPlacesCount`, `FreePlacesCount`) " +
+            statement.execute(String.format("INSERT INTO Room (ID_Block, RoomNumber, MaxPlacesCount, FreePlacesCount) " +
                     "VALUES ('%s','%s','%s','%s')", item.getBlockId(), item.getRoomNumber(), item.getMaxPlacesCount(), item.getFreePlacesCount()));
-            r = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
-            r.next();
-            res = r.getInt("id");
+            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
+            resultSet.next();
+            res = resultSet.getInt("id");
         }
-        catch (NamingException ex) { result = ex.getMessage(); }
-        catch (SQLException ex) { result = ex.getMessage(); }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
         finally {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
@@ -47,28 +47,21 @@ public class RoomRepository implements IRepository<Room> {
         Room room = new Room();
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
-            // SQL ���:
+
             statement.executeQuery("SET CHARACTER SET UTF8");
             statement.executeQuery("SET CHARSET UTF8");
             statement.executeQuery("SET NAMES UTF8");
-            ResultSet r = statement.executeQuery(String.format("SELECT * FROM `Room` WHERE %d = `ID_Room`", id));
-
-            while(r.next())
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Room WHERE ID_Room = %d", id));
+            while(resultSet.next())
             {
-                room.setBlockId(r.getInt("ID_Block"));
-                room.setRoomNumber(r.getInt("RoomNumber"));
-                room.setRoomId(r.getInt("ID_Room"));
-                room.setMaxPlacesCount(r.getInt("MaxPlacesCount"));
-                room.setFreePlacesCount(r.getInt("FreePlacesCount"));
+                room.setBlockId(resultSet.getInt("ID_Block"));
+                room.setRoomNumber(resultSet.getInt("RoomNumber"));
+                room.setRoomId(resultSet.getInt("ID_Room"));
+                room.setMaxPlacesCount(resultSet.getInt("MaxPlacesCount"));
+                room.setFreePlacesCount(resultSet.getInt("FreePlacesCount"));
             }
-
-            room.setBlockId(r.getInt("ID_Block"));
-            room.setRoomNumber(r.getInt("RoomNumber"));
-            room.setRoomId(r.getInt("ID_Room"));
-            room.setMaxPlacesCount(r.getInt("MaxPlacesCount"));
-            room.setFreePlacesCount(r.getInt("FreePlacesCount"));
         }
         catch (NamingException ex) {  }
         catch (SQLException ex) {  }
@@ -86,15 +79,15 @@ public class RoomRepository implements IRepository<Room> {
         Statement statement = null;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.executeUpdate(String.format("UPDATE Room SET ID_Block = '%d', RoomNumber = '%s', MaxPlacesCount = '%s', " +
                     "FreePlacesCount = '%s' WHERE ID_Room = '%d'", item.getBlockId(), item.getRoomNumber(), item.getMaxPlacesCount(),
                             item.getFreePlacesCount(), item.getRoomId()));
         }
-        catch (NamingException ex) { result = ex.getMessage(); }
-        catch (SQLException ex) { result = ex.getMessage(); }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
         finally {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
@@ -107,18 +100,17 @@ public class RoomRepository implements IRepository<Room> {
         Statement statement = null;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.execute(String.format("DELETE FROM Room WHERE ID_Room = '%d'", id));
         }
-        catch (NamingException ex) { result = ex.getMessage(); }
-        catch (SQLException ex) { result = ex.getMessage(); }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
         finally {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
     }
 
-    public String result = "0";
 }

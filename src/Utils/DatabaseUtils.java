@@ -10,7 +10,20 @@ import java.sql.SQLException;
 
 public class DatabaseUtils {
 
-	public static Connection getConnection() throws SQLException, NamingException {
+	private static DatabaseUtils instance;
+
+	public static DatabaseUtils getInstance() {
+		if (instance == null) {
+			instance = new DatabaseUtils();
+		}
+		return DatabaseUtils.instance;
+	}
+
+	public static void setInstance(DatabaseUtils instance) {
+		DatabaseUtils.instance = instance;
+	}
+
+	public Connection getConnection() throws SQLException, NamingException {
 		InitialContext initialContext = new InitialContext();
 		Context context = (Context) initialContext.lookup("java:comp/env");
 

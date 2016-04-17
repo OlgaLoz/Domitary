@@ -10,8 +10,6 @@ import java.util.IllegalFormatException;
 
 public class StudentRepository {
 
-    public String result = "0";
-
     public int create(Student item, int userId) {
 
         Connection connection = null;
@@ -19,7 +17,7 @@ public class StudentRepository {
         int resultId = -1;
 
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.execute("SET CHARACTER SET UTF8");
@@ -54,7 +52,7 @@ public class StudentRepository {
         Statement statement = null;
         Student student = null;
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
             student = new Student();
 
@@ -97,7 +95,7 @@ public class StudentRepository {
         Connection connection = null;
         Statement statement = null;
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.execute("SET CHARACTER SET UTF8");
@@ -116,7 +114,6 @@ public class StudentRepository {
                     item.getGroupNumber(), item.getStatement(), item.getDateOfSettlement(), item.getOrder(),
                     item.getContract(), item.getRoomId(), statusId, item.getStudentId()));
         }
-        catch (IllegalFormatException ex) { result += ", " + ex.getMessage(); }
         catch (NamingException ex) { }
         catch (SQLException ex) { }
         finally {
@@ -130,7 +127,7 @@ public class StudentRepository {
         Connection connection = null;
         Statement statement = null;
         try {
-            connection = DatabaseUtils.getConnection();
+            connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
             statement.execute(String.format("DELETE FROM Student WHERE ID_Student = '%s'", id));
         }
