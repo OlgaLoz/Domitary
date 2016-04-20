@@ -174,7 +174,7 @@
 			<div class="col-xs-12 footer">
 			<hr class="colorgraph">
 			<div class="col-xs-4 col-xs-offset-5 ">
-				<p class="lead">&copy;By MON </p>
+				<p class="lead">&copy; By MON </p>
 			</div>
 		</div>
 
@@ -182,7 +182,7 @@
 	</div>
 </div>
 
-
+<form action="/Action/Authorization" method="post">
 	<div class="modal fade" id="autorizModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -217,7 +217,9 @@
 			</div>
 		</div>
 	</div>
+</form>
 
+<form action="/Action/Registration" method="post">
 	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -290,6 +292,7 @@
 			</div>
 		</div>
 	</div>
+</form>
 
 	<h3><a href="http://localhost:8080/indexSettler.jsp">Student</a></h3>
 	<h3><a href="http://localhost:8080/indexDeaneryWorker.jsp">Deanery Worker</a></h3>
