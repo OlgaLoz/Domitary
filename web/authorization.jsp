@@ -294,7 +294,7 @@
 	</div>
 </form>
 
-	<h3><a href="http://localhost:8080/indexSettler.jsp">Student</a></h3>
+	<h3><a href="http://localhost:8080/indexStudent.jsp">Student</a></h3>
 	<h3><a href="http://localhost:8080/indexDeaneryWorker.jsp">Deanery Worker</a></h3>
 	<h3><a href="http://localhost:8080/indexGorverner.jsp">Gorverner</a></h3>
 	<h3><a href="http://localhost:8080/indexDoctor.jsp">Doctor</a></h3>
