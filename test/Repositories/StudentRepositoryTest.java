@@ -31,9 +31,10 @@ public class StudentRepositoryTest {
         expectedStudent.setDateOfBirth(expectedDateOfBirth);
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setStatement(expectedStatement);
+        expectedStudent.setUserId(1);
 
         StudentRepository sr = new StudentRepository();
-        int last_inserted_id = sr.create(expectedStudent, 1);
+        int last_inserted_id = sr.create(expectedStudent);
         Student actualStudent = sr.read(last_inserted_id);
 
         sr.delete(last_inserted_id);
