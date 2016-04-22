@@ -6,6 +6,7 @@ import Model.Student;
 import Model.User;
 import Repositories.StudentRepository;
 import Repositories.UserRepository;
+import Utils.Pages;
 import Utils.PasswordEncryptionService;
 import Utils.RoleControl;
 
@@ -36,7 +37,7 @@ public class AuthorizationController implements IController {
 
 		//wrong login or password!
 		if (user == null){
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		String password = request.getParameter("password");
@@ -46,12 +47,12 @@ public class AuthorizationController implements IController {
 			isValidCredentials = encryptionService.authenticate(password, user.getPassword(), user.getSalt());
 		}//something wrong
 		catch (Exception ex){
-			return  "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		//wrong login or password!
 		if (!isValidCredentials){
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 
@@ -67,7 +68,7 @@ public class AuthorizationController implements IController {
 		//something wrong
 		if (student == null){
 			session.invalidate();
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		session.setAttribute(LOGIN_ATTRIBUTE, login);

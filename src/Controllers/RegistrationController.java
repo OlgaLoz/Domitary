@@ -38,14 +38,14 @@ public class RegistrationController implements IController {
 
 		//such user exists!
 		if (user != null){
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		String password = request.getParameter("password");
 		String password_confirmation = request.getParameter("password_confirmation");
 
 		if (!password.equals(password_confirmation)){
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		byte[] salt;
@@ -53,7 +53,7 @@ public class RegistrationController implements IController {
 			salt = encryptionService.generateSalt();
 		}
 		catch (NoSuchAlgorithmException ex){
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		byte[] encryptedPassword;
@@ -61,7 +61,7 @@ public class RegistrationController implements IController {
 			encryptedPassword = encryptionService.getEncryptedPassword(password, salt);
 		}
 		catch (Exception ex) {
-			return "/authorization.jsp";
+			return Pages.HOME_GUEST.getPagePath();
 		}
 
 		user = new User(login, encryptedPassword, Role.Student);
