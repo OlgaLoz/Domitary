@@ -47,14 +47,19 @@ public class UserRepository implements IRepository<User> {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE Login = %s", login));
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE Login = '%s'", login));
             while (resultSet.next()) {
                 result = new User();
                 result.setLogin(resultSet.getString("Login"));
                 result.setPassword(resultSet.getBytes("Password"));
                 result.setSalt(resultSet.getBytes("Salt"));
                 result.setUserId(resultSet.getInt("ID_User"));
-                result.setRole(Role.values()[resultSet.getInt("ID_Role")]);
+
+                int roleId = resultSet.getInt("ID_Role");
+                ResultSet tempRS = statement.executeQuery(String.format("SELECT RoleName FROM Role WHERE ID_Role=%d", roleId));
+                tempRS.next();
+                String roleName = tempRS.getString("RoleName");
+                result.setRole(Role.valueOf(roleName));
             }
 
         }
@@ -83,7 +88,12 @@ public class UserRepository implements IRepository<User> {
                 result.setPassword(resultSet.getBytes("Password"));
                 result.setSalt(resultSet.getBytes("Salt"));
                 result.setUserId(resultSet.getInt("ID_User"));
-                result.setRole(Role.values()[resultSet.getInt("ID_Role")]);
+
+                int roleId = resultSet.getInt("ID_Role");
+                ResultSet tempRS = statement.executeQuery(String.format("SELECT RoleName FROM Role WHERE ID_Role=%d", roleId));
+                tempRS.next();
+                String roleName = tempRS.getString("RoleName");
+                result.setRole(Role.valueOf(roleName));
             }
 
         }
