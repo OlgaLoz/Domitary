@@ -1,11 +1,23 @@
 package Controllers;
 
 import Interfaces.IController;
-import Utils.Pages;
+import Model.Role;
+import Model.Student;
+import Model.User;
+import Repositories.StudentRepository;
+import Repositories.UserRepository;
+import Utils.PasswordEncryptionService;
+import Utils.RoleControl;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class AuthorizationController implements IController {
+
+	private RoleControl roleControl = new RoleControl();
+	private UserRepository userRepository = new UserRepository();
+	private StudentRepository studentRepository = new StudentRepository();
+	private PasswordEncryptionService encryptionService = new PasswordEncryptionService();
 
 	private static final String LOGIN_ATTRIBUTE = "login";
 	private static final String FIRSTNAME_ATTRIBUTE = "first_name";
@@ -17,14 +29,55 @@ public class AuthorizationController implements IController {
 	@Override
 	public String run(HttpServletRequest request) {
 
+
 		String login = request.getParameter("login");
+
+		User user = userRepository.getUserByLogin(login);
+
+		//wrong login or password!
+		if (user == null){
+			return "/authorization.jsp";
+		}
+
+		String password = request.getParameter("password");
+
+		boolean isValidCredentials;
+		try {
+			isValidCredentials = encryptionService.authenticate(password, user.getPassword(), user.getSalt());
+		}//something wrong
+		catch (Exception ex){
+			return  "/authorization.jsp";
+		}
+
+		//wrong login or password!
+		if (!isValidCredentials){
+			return "/authorization.jsp";
+		}
+
+
+		HttpSession session = request.getSession();
+		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
+
+		if (!Role.Student.equals(user.getRole())){
+			return roleControl.getPagePathByRole(user.getRole());
+		}
+
+		Student student = studentRepository.getStudentByUserId(user.getUserId());
+
+		//something wrong
+		if (student == null){
+			session.invalidate();
+			return "/authorization.jsp";
+		}
+
 		request.setAttribute(LOGIN_ATTRIBUTE, login);
+		session.setAttribute(FIRSTNAME_ATTRIBUTE, student.getFirstName());
+		request.setAttribute(MIDNAME_ATTRIBUTE, student.getMidName());
+		request.setAttribute(LASTNAME_ATTRIBUTE, student.getLastName());
+		request.setAttribute(BIRTHDAY_ATTRIBUTE, student.getDateOfBirth().toString());
+		request.setAttribute(GROUP_ATTRIBUTE, student.getGroupNumber());
 
-		return Pages.HOME_STUDENT.getPagePath();
-	}
-
-	public boolean signIn(String login, String password){
-		return false;
+		return roleControl.getPagePathByRole(user.getRole());
 	}
 
 }

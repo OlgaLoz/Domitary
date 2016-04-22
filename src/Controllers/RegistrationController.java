@@ -94,6 +94,7 @@ public class RegistrationController implements IController {
 		student.setGroupNumber(group);
 		student.setStatement("");
 		student.setUserId(user.getUserId());
+		studentRepository.create(student);
 
 		request.setAttribute(LOGIN_ATTRIBUTE, login);
 		request.setAttribute(FIRSTNAME_ATTRIBUTE, firstName);
@@ -103,10 +104,6 @@ public class RegistrationController implements IController {
 		request.setAttribute(GROUP_ATTRIBUTE, group);
 
 		return Pages.HOME_STUDENT.getPagePath();
-	}
-
-	public boolean register(char userInfo){
-		return false;
 	}
 
 }
