@@ -14,6 +14,7 @@ public class DispatcherControl {
         controllers = new HashMap<String, IController>();
         controllers.put("AUTHORIZATION", new AuthorizationController());
         controllers.put("REGISTRATION", new RegistrationController());
+        controllers.put("LOGOUT", new LogoutController());
         controllers.put("GETSETTLERS", new GetSettlersController());
     }
 

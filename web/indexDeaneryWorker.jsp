@@ -36,7 +36,9 @@
                         <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
                         Работник деканата
                         <ul class="dropdown-menu ">
-                            <li><a href="#">Выход</a></li>
+                            <li><form action="/Action/Logout" method="post">
+                                <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
+                            </form></li>
                         </ul>
                     </span>
                 </li>
