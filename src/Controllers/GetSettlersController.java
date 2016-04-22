@@ -2,7 +2,9 @@ package Controllers;
 
 import Interfaces.IController;
 import Model.Room;
+import Model.Student;
 import Repositories.RoomRepository;
+import Repositories.StudentRepository;
 import Utils.Pages;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +15,13 @@ import java.util.ArrayList;
  */
 public class GetSettlersController implements IController {
 
-    private static final String ROOMS_ATTRIBUTE = "rooms";
+    private static final String STUDENTS_ATTRIBUTE = "students";
 
     @Override
     public String run(HttpServletRequest request) {
-        RoomRepository repository = new RoomRepository();
-        ArrayList<Room> rooms = repository.readAll();
-        request.setAttribute(ROOMS_ATTRIBUTE, rooms);
+        StudentRepository repository = new StudentRepository();
+        ArrayList<Student> students = repository.readAll();
+        request.setAttribute(STUDENTS_ATTRIBUTE, students);
         return Pages.HOME_SETTLERS.getPagePath();
     }
 }
