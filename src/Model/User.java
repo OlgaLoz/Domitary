@@ -3,13 +3,14 @@ package Model;
 public class User {
 
 	private String login;
-	private int password;
+	private byte[] password;
+	private byte[] salt;
 	private Role role;
 	private int userId;
 
 	public User(){}
 
-	public User(String login, int password, Role role){
+	public User(String login, byte[] password, Role role){
 		this.login = login;
 		this.password = password;
 		this.role = role;
@@ -19,8 +20,12 @@ public class User {
 		return login;
 	}
 
-	public int getPassword(){
+	public byte[] getPassword(){
 		return password;
+	}
+
+	public byte[] getSalt(){
+		return salt;
 	}
 
 	public Role getRole(){
@@ -35,7 +40,7 @@ public class User {
 		this.login = login;
 	}
 
-	public void setPassword(int password){
+	public void setPassword(byte[] password){
 		this.password = password;
 	}
 
@@ -45,5 +50,9 @@ public class User {
 
 	public void setRole(Role role){
 		this.role = role;
+	}
+
+	public void setSalt(byte[] salt){
+		this.salt = salt;
 	}
 }

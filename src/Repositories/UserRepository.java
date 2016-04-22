@@ -6,31 +6,60 @@ import Model.User;
 import Utils.DatabaseUtils;
 
 import javax.naming.NamingException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UserRepository implements IRepository<User> {
 
     @Override
     public int create(User item) {
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         int result = -1;
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.prepareStatement("INSERT INTO User (Login, Password, Salt, ID_Role) VALUES (?, ?, ?, 2);");
+            statement.setString(1, item.getLogin());
+            statement.setBytes(2, item.getPassword());
+            statement.setBytes(3, item.getSalt());
+            statement.executeUpdate();
+
+            ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
+            resultSet.next();
+            result = resultSet.getInt("LAST_INSERT_ID()");
+            item.setUserId(result);
+        }
+        catch (NamingException ex) {  }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return result;
+    }
+
+    public User getUserByLogin(String login) {
+        Connection connection = null;
+        Statement statement = null;
+        User result = null;
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute(String.format("INSERT INTO dormitorydb.user (Login, Password, ID_Role) VALUES ('%s','%s', '2');",
-                    item.getLogin(), item.getPassword()));
-            ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
-            resultSet.next();
-            result = resultSet.getInt("LAST_INSERT_ID()");
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE Login = %s", login));
+            while (resultSet.next()) {
+                result = new User();
+                result.setLogin(resultSet.getString("Login"));
+                result.setPassword(resultSet.getBytes("Password"));
+                result.setSalt(resultSet.getBytes("Salt"));
+                result.setUserId(resultSet.getInt("ID_User"));
+                result.setRole(Role.values()[resultSet.getInt("ID_Role")]);
+            }
+
         }
-        catch (NamingException ex) {  }
-        catch (SQLException ex) { }
+        catch (NamingException ex) { }
+        catch (SQLException ex) {  }
         finally {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
@@ -48,10 +77,11 @@ public class UserRepository implements IRepository<User> {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE User.ID_User = '%d'", id));
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE ID_User = '%d'", id));
             while (resultSet.next()) {
                 result.setLogin(resultSet.getString("Login"));
-                result.setPassword(resultSet.getInt("Password"));
+                result.setPassword(resultSet.getBytes("Password"));
+                result.setSalt(resultSet.getBytes("Salt"));
                 result.setUserId(resultSet.getInt("ID_User"));
                 result.setRole(Role.values()[resultSet.getInt("ID_Role")]);
             }

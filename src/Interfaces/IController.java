@@ -4,6 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface IController {
 
-    String USER_ID_ATTRIBUTE = "userId";
+    String CURRENT_USER_ATTRIBUTE = "currentUser";
     String run(HttpServletRequest request);
 }
