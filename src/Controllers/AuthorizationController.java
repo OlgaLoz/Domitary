@@ -70,12 +70,12 @@ public class AuthorizationController implements IController {
 			return "/authorization.jsp";
 		}
 
-		request.setAttribute(LOGIN_ATTRIBUTE, login);
+		session.setAttribute(LOGIN_ATTRIBUTE, login);
 		session.setAttribute(FIRSTNAME_ATTRIBUTE, student.getFirstName());
-		request.setAttribute(MIDNAME_ATTRIBUTE, student.getMidName());
-		request.setAttribute(LASTNAME_ATTRIBUTE, student.getLastName());
-		request.setAttribute(BIRTHDAY_ATTRIBUTE, student.getDateOfBirth().toString());
-		request.setAttribute(GROUP_ATTRIBUTE, student.getGroupNumber());
+		session.setAttribute(MIDNAME_ATTRIBUTE, student.getMidName());
+		session.setAttribute(LASTNAME_ATTRIBUTE, student.getLastName());
+		session.setAttribute(BIRTHDAY_ATTRIBUTE, student.getDateOfBirth().toString());
+		session.setAttribute(GROUP_ATTRIBUTE, student.getGroupNumber());
 
 		return roleControl.getPagePathByRole(user.getRole());
 	}

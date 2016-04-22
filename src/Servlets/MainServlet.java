@@ -44,7 +44,7 @@ public class MainServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		IController controller = dispatcher.getController(request.getRequestURI());
 		if (controller != null) {
-			request.getRequestDispatcher(controller.run(request)).forward(request, response);
+			response.sendRedirect(controller.run(request));
 		}
 	}
 

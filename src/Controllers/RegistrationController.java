@@ -96,12 +96,12 @@ public class RegistrationController implements IController {
 		student.setUserId(user.getUserId());
 		studentRepository.create(student);
 
-		request.setAttribute(LOGIN_ATTRIBUTE, login);
-		request.setAttribute(FIRSTNAME_ATTRIBUTE, firstName);
-		request.setAttribute(MIDNAME_ATTRIBUTE, midName);
-		request.setAttribute(LASTNAME_ATTRIBUTE, lastName);
-		request.setAttribute(BIRTHDAY_ATTRIBUTE, birthday);
-		request.setAttribute(GROUP_ATTRIBUTE, group);
+		session.setAttribute(LOGIN_ATTRIBUTE, login);
+		session.setAttribute(FIRSTNAME_ATTRIBUTE, firstName);
+		session.setAttribute(MIDNAME_ATTRIBUTE, midName);
+		session.setAttribute(LASTNAME_ATTRIBUTE, lastName);
+		session.setAttribute(BIRTHDAY_ATTRIBUTE, birthday);
+		session.setAttribute(GROUP_ATTRIBUTE, group);
 
 		return Pages.HOME_STUDENT.getPagePath();
 	}
