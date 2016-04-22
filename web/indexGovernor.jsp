@@ -12,9 +12,9 @@
 
     <title>Заведующая</title>
 
-    <link href="Styles/bootstrap.min.css" rel="stylesheet">
+    <link href="/Styles/bootstrap.min.css" rel="stylesheet">
 
-    <link href="Styles/template.css" rel="stylesheet">
+    <link href="/Styles/template.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon">
     <!--[if lt IE 9]>

@@ -11,9 +11,11 @@
 
     <title>Студент</title>
 
-    <link href="Styles/bootstrap.min.css" rel="stylesheet">
+    <link href="/Styles/bootstrap.min.css" rel="stylesheet">
 
-    <link href="Styles/template.css" rel="stylesheet">
+    <link href="/Styles/template.css" rel="stylesheet">
+
+    <script src="/Scripts/jquery.js"></script>
 
     <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon">
     <!--[if lt IE 9]>
@@ -38,7 +40,7 @@
                             </span>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/settlerListPage.jsp>Списки на заселение</a>
+                        <a href=http://localhost:8080/Action/GetSettlers>Списки на заселение</a>
                     </li>
                     <li>
                         <a href=http://localhost:8080/docsPage.jsp>Документы</a>
@@ -47,7 +49,7 @@
                         <a href="#">Списки заселенных</a>
                     </li>
                     <li>
-                        <a href="#">...</a>
+                        <a class="dropdown-link" href="#">Options</a>
                     </li>
                 </ul>
             </div>
