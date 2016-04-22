@@ -12,25 +12,28 @@ public class StudentRepository {
     public int create(Student item, int userId) {
 
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         int resultId = -1;
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
 
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
-
-            ResultSet resultSet = statement.executeQuery("SELECT ID_Status FROM StudentStatus WHERE StatusName='candidate'");
+            Statement state = connection.createStatement();
+            ResultSet resultSet = state.executeQuery("SELECT ID_Status FROM StudentStatus WHERE StatusName='candidate'");
             resultSet.next();
             int statusId = resultSet.getInt("ID_Status");
 
-            statement.execute(String.format("INSERT INTO Student (FirstName, MidName, LastName, DateOfBirth, " +
-                            "GroupNumber, Statement, ID_Status, ID_User) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')",
-                    item.getFirstName(), item.getMidName(), item.getLastName(), item.getDateOfBirth(),
-                    item.getGroupNumber(), item.getStatement(), statusId, userId));
+            statement = connection.prepareStatement("INSERT INTO Student (FirstName, MidName, LastName, DateOfBirth, " +
+                    "GroupNumber, Statement, ID_Status, ID_User) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            statement.setString(1, item.getFirstName());
+            statement.setString(2, item.getMidName());
+            statement.setString(3, item.getLastName());
+            statement.setDate(4, item.getDateOfBirth());
+            statement.setString(5, item.getGroupNumber());
+            statement.setString(6, item.getStatement());
+            statement.setInt(7, statusId);
+            statement.setInt(8, userId);
+            statement.executeUpdate();
 
             resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
             resultSet.next();

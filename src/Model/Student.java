@@ -16,10 +16,13 @@ public class Student {
 	private String contract;
 	private int roomId;
 	private StudentStatus studentStatus;
+	private int userID;
 
 	public Student(){  }
 
 	public int getStudentId() { return studentId; }
+
+	public int getUserId() { return userID; }
 
 	public String getFirstName() { return firstName; }
 
@@ -58,6 +61,10 @@ public class Student {
 
 	public void setStudentId(int studentId){
 		this.studentId = studentId;
+	}
+
+	public void setUserId(int userId){
+		this.userID = userId;
 	}
 
 	public void setFirstName(String firstName){
