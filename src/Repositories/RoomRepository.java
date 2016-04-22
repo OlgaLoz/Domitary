@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class RoomRepository implements IRepository<Room> {
 
@@ -113,4 +114,65 @@ public class RoomRepository implements IRepository<Room> {
         }
     }
 
+    public int[] addAll(Room[] rooms){
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        int[] roomsIndexes = new int[rooms.length];
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            for (int i = 0; i < rooms.length; i++) {
+                statement.execute(String.format("INSERT INTO Room (ID_Block, RoomNumber, MaxPlacesCount, FreePlacesCount) " +
+                        "VALUES ('%s','%s','%s','%s')", rooms[i].getBlockId(), rooms[i].getRoomNumber(), rooms[i].getMaxPlacesCount(), rooms[i].getFreePlacesCount()));
+                resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
+                resultSet.next();
+                roomsIndexes[i] = resultSet.getInt("id");
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        return roomsIndexes;
+    }
+
+    public ArrayList<Room> readAll(){
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Room> list = new ArrayList<Room>();
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.executeQuery("SET CHARACTER SET UTF8");
+            statement.executeQuery("SET CHARSET UTF8");
+            statement.executeQuery("SET NAMES UTF8");
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Room"));
+
+            while(resultSet.next()){
+                Room room = new Room();
+                room.setBlockId(resultSet.getInt("ID_Block"));
+                room.setRoomNumber(resultSet.getInt("RoomNumber"));
+                room.setRoomId(resultSet.getInt("ID_Room"));
+                room.setMaxPlacesCount(resultSet.getInt("MaxPlacesCount"));
+                room.setFreePlacesCount(resultSet.getInt("FreePlacesCount"));
+                list.add(room);
+            }
+        }
+        catch (NamingException ex) {  }
+        catch (SQLException ex) {  }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        return list;
+    }
 }
