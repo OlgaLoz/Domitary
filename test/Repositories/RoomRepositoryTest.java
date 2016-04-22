@@ -10,9 +10,6 @@ import org.junit.Test;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by maksi on 18-Apr-16.
- */
 public class RoomRepositoryTest {
 
     @Test

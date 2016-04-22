@@ -14,22 +14,21 @@ import java.util.ArrayList;
 public class RoomRepository implements IRepository<Room> {
 
     @Override
-    public int create(Room item) {
+    public int create(Room room) {
 
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
-        int res = 0;
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
             statement.execute(String.format("INSERT INTO Room (ID_Block, RoomNumber, MaxPlacesCount, FreePlacesCount) " +
-                    "VALUES ('%s','%s','%s','%s')", item.getBlockId(), item.getRoomNumber(), item.getMaxPlacesCount(), item.getFreePlacesCount()));
+                    "VALUES ('%s','%s','%s','%s')", room.getBlockId(), room.getRoomNumber(), room.getMaxPlacesCount(), room.getFreePlacesCount()));
             resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
             resultSet.next();
-            res = resultSet.getInt("id");
+            room.setRoomId(resultSet.getInt("id"));
         }
         catch (NamingException ex) { }
         catch (SQLException ex) { }
@@ -38,7 +37,7 @@ public class RoomRepository implements IRepository<Room> {
             DatabaseUtils.closeConnection(connection);
         }
 
-        return res;
+        return room.getRoomId();
     }
 
     @Override
@@ -114,7 +113,7 @@ public class RoomRepository implements IRepository<Room> {
         }
     }
 
-    public int[] addAll(Room[] rooms){
+    public void addAll(Room[] rooms){
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -129,7 +128,7 @@ public class RoomRepository implements IRepository<Room> {
                         "VALUES ('%s','%s','%s','%s')", rooms[i].getBlockId(), rooms[i].getRoomNumber(), rooms[i].getMaxPlacesCount(), rooms[i].getFreePlacesCount()));
                 resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
                 resultSet.next();
-                roomsIndexes[i] = resultSet.getInt("id");
+                rooms[i].setRoomId(resultSet.getInt("id"));
             }
         }
         catch (NamingException ex) { }
@@ -138,8 +137,6 @@ public class RoomRepository implements IRepository<Room> {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
-
-        return roomsIndexes;
     }
 
     public ArrayList<Room> readAll(){
