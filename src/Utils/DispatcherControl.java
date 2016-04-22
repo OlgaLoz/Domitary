@@ -16,6 +16,7 @@ public class DispatcherControl {
         controllers.put("REGISTRATION", new RegistrationController());
         controllers.put("LOGOUT", new LogoutController());
         controllers.put("GETSETTLERS", new GetSettlersController());
+        controllers.put("FINDUSERSTODOCTOR", new DoctorSearchAllController());//FindUsersToDoctor
     }
 
     public IController getController(String controller) {

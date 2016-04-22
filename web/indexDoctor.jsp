@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="UTF-8"%>
+<%@ page import="Model.Student" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -72,6 +74,48 @@
                 </div>
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="input-group">
+                     <span class="input-group-btn">
+                          <form action="/Action/FindUsersToDoctor" method="post">
+                              <input type="submit" value="Найти" class="btn btn-info" type="button">
+                          </form>
+                     </span>
+                     <input type="text" class="form-control" placeholder="Введите фамилию...">
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            <div class="col-xs-6">
+                <form action="/Action/FindUsersToDoctor" method="post">
+                    <input type="submit" value="Показать всех" class="btn btn-info">
+                </form>
+            </div>
+        </div>    <!-- /.row -->
+
+        <c:if test = "${students != null}">
+
+            <div class="table-responsive">
+                <table class="table table-hover" >
+                    <tr>
+                        <td><b>Имя</b></td>
+                        <td><b>Отчество</b></td>
+                        <td><b>Фамилия</b></td>
+                        <td><b>Номер группы</b></td>
+                        <td><b>Статус</b></td>
+                    </tr>
+                    <c:forEach  var="data" items="${students}" >
+                    <tr>
+                        <td>${data.getFirstName()}</td>
+                        <td>${data.getMidName()}</td>
+                        <td>${data.getLastName()}</td>
+                        <td>${data.getGroupNumber()}</td>
+                        <td>${data.getStudentStatus().toString()}</td>
+                    </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </c:if>
 
         <div class="col-xs-12 footer">
             <hr class="colorgraph">

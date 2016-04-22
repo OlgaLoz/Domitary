@@ -20,7 +20,6 @@ public class StudentRepository {
             connection = DatabaseUtils.getInstance().getConnection();
 
             Statement state = connection.createStatement();
-
             ResultSet resultSet = state.executeQuery("SELECT ID_Status FROM StudentStatus WHERE StatusName='candidate'");
             resultSet.next();
             int statusId = resultSet.getInt("ID_Status");
@@ -51,7 +50,7 @@ public class StudentRepository {
         return resultId;
     }
 
-    public ArrayList<Student> readAll() {
+    public ArrayList<Student> readAllByStatus(StudentStatus status) {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Student> students = new ArrayList<Student>();
@@ -62,7 +61,53 @@ public class StudentRepository {
             statement.execute("SET CHARACTER SET UTF8");
             statement.execute("SET CHARSET UTF8");
             statement.execute("SET NAMES UTF8");
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student"));
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'", status));
+            resultSet.next();
+            int statusId = resultSet.getInt("ID_Status");
+
+            resultSet = statement.executeQuery(String.format("SELECT * FROM Student WHERE ID_Status=%d", statusId));
+            while (resultSet.next()) {
+
+                Student student = new Student();
+                student.setStudentId(resultSet.getInt("ID_Student"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setMidName(resultSet.getString("MidName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
+                student.setGroupNumber(resultSet.getString("GroupNumber"));
+                student.setStatement(resultSet.getString("Statement"));
+                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
+                student.setOrder(resultSet.getString("Order"));
+                student.setContract(resultSet.getString("Contract"));
+                student.setRoomId(resultSet.getInt("ID_Room"));
+                student.setStudentStatus(status);
+                students.add(student);
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return students;
+    }
+
+    public ArrayList<Student> readAllByLastName(String lastName) {
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Student> students = new ArrayList<Student>();
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.execute("SET CHARACTER SET UTF8");
+            statement.execute("SET CHARSET UTF8");
+            statement.execute("SET NAMES UTF8");
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student WHERE LastName='%s'", lastName));
+            
             while (resultSet.next()) {
 
                 Student student = new Student();
