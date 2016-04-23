@@ -50,6 +50,52 @@ public class StudentRepository {
         return resultId;
     }
 
+    public ArrayList<Student> readAll() {
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Student> students = new ArrayList<Student>();
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.execute("SET CHARACTER SET UTF8");
+            statement.execute("SET CHARSET UTF8");
+            statement.execute("SET NAMES UTF8");
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student ORDER BY LastName ASC"));
+            while (resultSet.next()) {
+
+                Student student = new Student();
+                student.setStudentId(resultSet.getInt("ID_Student"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setMidName(resultSet.getString("MidName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
+                student.setGroupNumber(resultSet.getString("GroupNumber"));
+                student.setStatement(resultSet.getString("Statement"));
+                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
+                student.setOrder(resultSet.getString("Order"));
+                student.setContract(resultSet.getString("Contract"));
+                student.setRoomId(resultSet.getInt("ID_Room"));
+
+                int statusId = resultSet.getInt("ID_Status");
+                ResultSet tempRS = statement.executeQuery(String.format("SELECT StatusName FROM StudentStatus WHERE ID_Status='%s'", statusId));
+                tempRS.next();
+                String statusName = tempRS.getString("StatusName");
+                student.setStudentStatus(StudentStatus.valueOf(statusName));
+
+                students.add(student);
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return students;
+    }
+
     public ArrayList<Student> readAllByStatus(StudentStatus status) {
         Connection connection = null;
         Statement statement = null;
