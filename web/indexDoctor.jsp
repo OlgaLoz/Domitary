@@ -87,7 +87,8 @@
                             <td><b>Отчество</b></td>
                             <td><b>Фамилия</b></td>
                             <td><b>Номер группы</b></td>
-                            <td> <span class="glyphicon glyphicon-ok"></span></td>
+                            <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
+                            <td> <span class="glyphicon glyphicon-remove" style="color: red"></span></td>
                         </tr>
                         <c:forEach  var="data" items="${students}" >
                         <tr>
@@ -98,6 +99,11 @@
                             <td>
                                 <div class="checkbox">
                                   <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name ="uncheckers" value="${data.getStudentId()}"></label>
                                 </div>
                             </td>
                         </tr>

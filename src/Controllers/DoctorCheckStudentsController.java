@@ -18,14 +18,26 @@ public class DoctorCheckStudentsController implements IController {
         StudentRepository repository = new StudentRepository();
 
         ArrayList<Student> students = (ArrayList<Student>)request.getSession().getAttribute(STUDENTS_ATTRIBUTE);
-        String[] results = request.getParameterValues("checkers");
+        String[] positiveResults = request.getParameterValues("checkers");
+        String[] negativeResults = request.getParameterValues("uncheckers");
 
 
-        if(results != null) {
-            for (int i = 0; i < results.length; i++ ) {
-                repository.updateStatus(Integer.parseInt(results[i]), StudentStatus.BodyCheckPassed);
+        if(positiveResults != null) {
+            for (int i = 0; i < positiveResults.length; i++ ) {
+                repository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.BodyCheckPassed);
                 for( int j = 0; j < students.size(); j++) {
-                    if (students.get(j).getStudentId() == Integer.parseInt(results[i])){
+                    if (students.get(j).getStudentId() == Integer.parseInt(positiveResults[i])){
+                        students.remove(j);
+                    }
+                }
+            }
+        }
+
+        if(negativeResults != null) {
+            for (int i = 0; i < negativeResults.length; i++ ) {
+                repository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.BodyCheckNotPassed);
+                for( int j = 0; j < students.size(); j++) {
+                    if (students.get(j).getStudentId() == Integer.parseInt(negativeResults[i])){
                         students.remove(j);
                     }
                 }

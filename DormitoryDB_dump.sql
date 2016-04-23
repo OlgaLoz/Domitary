@@ -147,7 +147,7 @@ CREATE TABLE `student` (
   CONSTRAINT `FK_Student_Room` FOREIGN KEY (`ID_Room`) REFERENCES `room` (`ID_Room`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_Student_StudentStatus` FOREIGN KEY (`ID_Status`) REFERENCES `studentstatus` (`ID_Status`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_Student_User` FOREIGN KEY (`ID_User`) REFERENCES `user` (`ID_User`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +156,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES (9,'ÐŸÐµÑ‚Ñ€','ÐŸÐµÑ‚Ñ€Ð¾Ð²Ð¸Ñ‡','ÐŸÐµÑ‚Ñ€Ð¾Ð²','1996-01-20','123456','',NULL,NULL,NULL,NULL,1,13),(10,'Ð˜Ð²Ð°Ð½','Ð˜Ð²Ð°Ð½Ð¾Ð²Ð¸Ñ‡','Ð˜Ð²Ð°Ð½Ð¾Ð²','1995-01-02','654321','',NULL,NULL,NULL,NULL,4,15),(11,'Ð¤ÐµÐ´Ð¾Ñ€','Ð¤ÐµÐ´Ð¾Ñ€Ð¾Ð²Ð¸Ñ‡','Ð¤ÐµÐ´ÐµÐ²','1996-01-03','147369','',NULL,NULL,NULL,NULL,5,16);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +200,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`ID_User`),
   KEY `FK_User_Role` (`ID_Role`),
   CONSTRAINT `FK_User_Role` FOREIGN KEY (`ID_Role`) REFERENCES `role` (`ID_Role`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +209,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'doctor','†Äô}¼v‚Ožjî™‡{ý·','Û×`«¼t$',3),(2,'governor','–»ëñ¬h-‡½!æC¾ÝEo\Z|','”ÛÓŠ®?Ö',4),(3,'deaneryworker','âé¨—®RMkœknDÜ{!O)','[t^ªÑö‘',5),(5,'Peter','†°PDwëÙ×‰/¸„‡#ÉžoK','éÎø‡¹<ÈX',2);
+INSERT INTO `user` VALUES (1,'doctor','†Äô}¼v‚Ožjî™‡{ý·','Û×`«¼t$',3),(2,'governor','–»ëñ¬h-‡½!æC¾ÝEo\Z|','”ÛÓŠ®?Ö',4),(3,'deaneryworker','âé¨—®RMkœknDÜ{!O)','[t^ªÑö‘',5),(13,'Peter','²nZ*—zD³õýTV›<ä&“Y','¿X›3¯8,',2),(15,'Ivan','Ô¼‰ÿ4j\0÷”­t®¯§z<´ì','2(ÉÕù·',2),(16,'Fedor','¢-¬•Õo -\' ‘Ê: ?zS','?Bkm«¿Ùg',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -221,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-22 17:24:45
+-- Dump completed on 2016-04-23 13:54:33
