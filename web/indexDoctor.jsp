@@ -114,6 +114,12 @@
                     <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg">
                 </div>
             </c:if>
+            <c:if test = "${students == null || students.size() == 0}">
+                <div class="col-lg-2 col-lg-offset-5">
+                   <label class="label-success label">Все здоровы :)</label>
+                </div>
+            </c:if>
+
         </form>
 
         <div class="col-xs-12 footer">

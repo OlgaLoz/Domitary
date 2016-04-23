@@ -21,6 +21,10 @@
     width: 100%;
 }
 
+.label{
+    font-size: large;
+}
+
 .glyphicon-user, .sidebar-brand{
     color: #31b0d5;
 }

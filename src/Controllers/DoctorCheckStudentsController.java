@@ -24,9 +24,9 @@ public class DoctorCheckStudentsController implements IController {
 
         if(positiveResults != null) {
             for (int i = 0; i < positiveResults.length; i++ ) {
-                repository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.BodyCheckPassed);
                 for( int j = 0; j < students.size(); j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(positiveResults[i])){
+                        repository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.BodyCheckPassed);
                         students.remove(j);
                     }
                 }
@@ -35,9 +35,9 @@ public class DoctorCheckStudentsController implements IController {
 
         if(negativeResults != null) {
             for (int i = 0; i < negativeResults.length; i++ ) {
-                repository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.BodyCheckNotPassed);
                 for( int j = 0; j < students.size(); j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(negativeResults[i])){
+                        repository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.BodyCheckNotPassed);
                         students.remove(j);
                     }
                 }

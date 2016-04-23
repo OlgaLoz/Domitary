@@ -6,6 +6,7 @@ import Model.Student;
 import Model.User;
 import Repositories.StudentRepository;
 import Repositories.UserRepository;
+import Utils.DispatcherControl;
 import Utils.Pages;
 import Utils.PasswordEncryptionService;
 import Utils.RoleControl;
@@ -60,6 +61,10 @@ public class AuthorizationController implements IController {
 		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
 
 		if (!Role.Student.equals(user.getRole())){
+			if (Role.Doctor.equals(user.getRole())){
+				DispatcherControl dispatcherControl = new DispatcherControl();
+				return dispatcherControl.getController("FINDUSERSTODOCTOR").run(request);
+			}
 			return roleControl.getPagePathByRole(user.getRole());
 		}
 
