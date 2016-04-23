@@ -5,6 +5,7 @@ import Model.Role;
 import Model.User;
 import Utils.DatabaseUtils;
 
+import javax.jws.soap.SOAPBinding;
 import javax.naming.NamingException;
 import java.sql.*;
 
@@ -14,7 +15,6 @@ public class UserRepository implements IRepository<User> {
     public int create(User item) {
         Connection connection = null;
         PreparedStatement statement = null;
-        int result = -1;
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
@@ -22,12 +22,11 @@ public class UserRepository implements IRepository<User> {
             statement.setString(1, item.getLogin());
             statement.setBytes(2, item.getPassword());
             statement.setBytes(3, item.getSalt());
-            statement.executeUpdate();
+            statement.execute();
 
-            ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
+            ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id;");
             resultSet.next();
-            result = resultSet.getInt("LAST_INSERT_ID()");
-            item.setUserId(result);
+            item.setUserId(resultSet.getInt("id"));
         }
         catch (NamingException ex) {  }
         catch (SQLException ex) { }
@@ -35,7 +34,7 @@ public class UserRepository implements IRepository<User> {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
-        return result;
+        return item.getUserId();
     }
 
     public User getUserByLogin(String login) {
@@ -109,13 +108,16 @@ public class UserRepository implements IRepository<User> {
     @Override
     public void update(User item) {
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-            statement.executeUpdate(String.format("UPDATE dormitorydb.user SET Login = '%s', Password = '%s' WHERE ID_User = '%s';",
-                item.getLogin(), item.getPassword(), item.getUserId()));
+            statement = connection.prepareStatement(String.format("UPDATE User SET Login = ?, Password = ?, Salt = ?, ID_Role = 2 WHERE ID_User = ?;"));
+            statement.setString(1, item.getLogin());
+            statement.setBytes(2, item.getPassword());
+            statement.setBytes(3, item.getSalt());
+            statement.setInt(4, item.getUserId());
+            statement.execute();
         }
         catch (NamingException ex) {}
         catch (SQLException ex) { }
