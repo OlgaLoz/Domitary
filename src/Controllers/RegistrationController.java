@@ -11,7 +11,6 @@ import Utils.PasswordEncryptionService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,39 +33,39 @@ public class RegistrationController implements IController {
 
 		String login = request.getParameter("display_name");
 
+		if (login.trim().equals("")){
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=4";
+		}
+
 		User user = userRepository.getUserByLogin(login);
 
-		//such user exists!
 		if (user != null){
-			return Pages.HOME_GUEST.getPagePath();
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=1";
 		}
 
 		String password = request.getParameter("password");
 		String password_confirmation = request.getParameter("password_confirmation");
 
+		if (password.trim().equals("") || password_confirmation.trim().equals("")){
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=4";
+		}
+
 		if (!password.equals(password_confirmation)){
-			return Pages.HOME_GUEST.getPagePath();
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=2";
 		}
 
 		byte[] salt;
-		try {
-			salt = encryptionService.generateSalt();
-		}
-		catch (NoSuchAlgorithmException ex){
-			return Pages.HOME_GUEST.getPagePath();
-		}
-
 		byte[] encryptedPassword;
 		try {
+			salt = encryptionService.generateSalt();
 			encryptedPassword = encryptionService.getEncryptedPassword(password, salt);
 		}
-		catch (Exception ex) {
-			return Pages.HOME_GUEST.getPagePath();
+		catch (Exception ex){
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=3";
 		}
 
 		user = new User(login, encryptedPassword, Role.Student);
 		user.setSalt(salt);
-		userRepository.create(user);
 
 		HttpSession session = request.getSession();
 		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
@@ -75,22 +74,31 @@ public class RegistrationController implements IController {
 		String midName = request.getParameter("mid_name");
 		String lastName = request.getParameter("last_name");
 		String birthday = request.getParameter("birthday");
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-		Date expectedDateOfBirth;
-		try {
-			java.util.Date parsed = formatter.parse(birthday);
-			expectedDateOfBirth = new java.sql.Date(parsed.getTime());
-		}
-		catch (ParseException ex){
-			expectedDateOfBirth = null;
-		}
 		String group = request.getParameter("group");
 
+		if (firstName.trim().equals("") || midName.trim().equals("") || lastName.trim().equals("")
+				|| group.trim().equals("")){
+			session.invalidate();
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=4";
+		}
+
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+		Date dateOfBirth;
+		try {
+			java.util.Date parsed = formatter.parse(birthday);
+			dateOfBirth = new java.sql.Date(parsed.getTime());
+		}
+		catch (ParseException ex){
+			session.invalidate();
+			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=5";
+		}
+
+		userRepository.create(user);
 		Student student = new Student();
 		student.setFirstName(firstName);
 		student.setMidName(midName);
 		student.setLastName(lastName);
-		student.setDateOfBirth(expectedDateOfBirth);
+		student.setDateOfBirth(dateOfBirth);
 		student.setGroupNumber(group);
 		student.setStatement("");
 		student.setUserId(user.getUserId());

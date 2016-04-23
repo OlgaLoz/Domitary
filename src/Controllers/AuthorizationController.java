@@ -31,29 +31,25 @@ public class AuthorizationController implements IController {
 	@Override
 	public String run(HttpServletRequest request) {
 
-
 		String login = request.getParameter("login");
-
 		User user = userRepository.getUserByLogin(login);
 
-		//wrong login or password!
 		if (user == null){
-			return Pages.HOME_GUEST.getPagePath();
+			return Pages.HOME_GUEST.getPagePath() + "?error=authorization";
 		}
 
 		String password = request.getParameter("password");
-
 		boolean isValidCredentials;
+
 		try {
 			isValidCredentials = encryptionService.authenticate(password, user.getPassword(), user.getSalt());
-		}//something wrong
+		}
 		catch (Exception ex){
-			return Pages.HOME_GUEST.getPagePath();
+			return Pages.HOME_GUEST.getPagePath() + "?error=authorization&state=1";
 		}
 
-		//wrong login or password!
 		if (!isValidCredentials){
-			return Pages.HOME_GUEST.getPagePath();
+			return Pages.HOME_GUEST.getPagePath() + "?error=authorization";
 		}
 
 
@@ -63,20 +59,19 @@ public class AuthorizationController implements IController {
 		if (!Role.Student.equals(user.getRole())){
 			if (Role.Doctor.equals(user.getRole())){
 				DispatcherControl dispatcherControl = new DispatcherControl();
-				return dispatcherControl.getController("FINDUSERSTODOCTOR").run(request);
+				return dispatcherControl.getController("FindUsersToDoctor").run(request);
 			}
 			return roleControl.getPagePathByRole(user.getRole());
 		}
 
 		Student student = studentRepository.getStudentByUserId(user.getUserId());
 
-		//something wrong
 		if (student == null){
 			session.invalidate();
-			return Pages.HOME_GUEST.getPagePath();
+			return Pages.HOME_GUEST.getPagePath() + "?error=authorization&state=1";
 		}
 
-		session.setAttribute(LOGIN_ATTRIBUTE, login);
+		session.setAttribute(LOGIN_ATTRIBUTE, user.getLogin());
 		session.setAttribute(FIRSTNAME_ATTRIBUTE, student.getFirstName());
 		session.setAttribute(MIDNAME_ATTRIBUTE, student.getMidName());
 		session.setAttribute(LASTNAME_ATTRIBUTE, student.getLastName());
