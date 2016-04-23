@@ -19,6 +19,9 @@ public class DispatcherControl {
         controllers.put("FINDUSERSTODOCTOR", new DoctorSearchAllController());
         controllers.put("FINDSINGLEUSERTODOCTOR", new DoctorSearchByLastNameController());
         controllers.put("CHECKSTUDENTSBYDOCTOR", new DoctorCheckStudentsController());
+        controllers.put("GETALLBYSTATUS", new DeaneryGetAllByStatusController());
+        controllers.put("READALLTODEANERY", new DeaneryFindAllController());
+        controllers.put("FINDBYLASTNAMETODEANERY", new DeaneryFindByLastNameController());
     }
 
     public IController getController(String controller) {
