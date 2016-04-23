@@ -62,7 +62,7 @@ public class StudentRepository {
             statement.execute("SET CHARSET UTF8");
             statement.execute("SET NAMES UTF8");
 
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student ORDER BY LastName ASC"));
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status;");
             while (resultSet.next()) {
 
                 Student student = new Student();
@@ -77,12 +77,8 @@ public class StudentRepository {
                 student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
-
-                int statusId = resultSet.getInt("ID_Status");
-                ResultSet tempRS = statement.executeQuery(String.format("SELECT StatusName FROM StudentStatus WHERE ID_Status='%s'", statusId));
-                tempRS.next();
-                String statusName = tempRS.getString("StatusName");
-                student.setStudentStatus(StudentStatus.valueOf(statusName));
+                student.setUserId(resultSet.getInt("ID_User"));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
 
                 students.add(student);
             }
@@ -108,11 +104,7 @@ public class StudentRepository {
             statement.execute("SET CHARSET UTF8");
             statement.execute("SET NAMES UTF8");
 
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'", status));
-            resultSet.next();
-            int statusId = resultSet.getInt("ID_Status");
-
-            resultSet = statement.executeQuery(String.format("SELECT * FROM Student WHERE ID_Status=%d", statusId));
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where StatusName = '%s'", status));
             while (resultSet.next()) {
 
                 Student student = new Student();
@@ -127,6 +119,7 @@ public class StudentRepository {
                 student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
+                student.setUserId(resultSet.getInt("ID_User"));
                 student.setStudentStatus(status);
                 students.add(student);
             }
@@ -152,8 +145,8 @@ public class StudentRepository {
             statement.execute("SET CHARSET UTF8");
             statement.execute("SET NAMES UTF8");
 
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student WHERE LastName='%s'", lastName));
-            
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where LastName = '%s'", lastName));
+
             while (resultSet.next()) {
 
                 Student student = new Student();
@@ -167,13 +160,9 @@ public class StudentRepository {
                 student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
                 student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
+                student.setUserId(resultSet.getInt("ID_User"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
-
-                int statusId = resultSet.getInt("ID_Status");
-                ResultSet tempRS = statement.executeQuery(String.format("SELECT StatusName FROM StudentStatus WHERE ID_Status='%s'", statusId));
-                tempRS.next();
-                String statusName = tempRS.getString("StatusName");
-                student.setStudentStatus(StudentStatus.valueOf(statusName));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
 
                 students.add(student);
             }
@@ -194,14 +183,15 @@ public class StudentRepository {
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
-            student = new Student();
 
             statement.execute("SET CHARACTER SET UTF8");
             statement.execute("SET CHARSET UTF8");
             statement.execute("SET NAMES UTF8");
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student WHERE ID_Student = '%s'", id));
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where ID_Student = %d", id));
             while (resultSet.next()) {
 
+                student = new Student();
                 student.setStudentId(resultSet.getInt("ID_Student"));
                 student.setFirstName(resultSet.getString("FirstName"));
                 student.setMidName(resultSet.getString("MidName"));
@@ -213,12 +203,8 @@ public class StudentRepository {
                 student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
-
-                int statusId = resultSet.getInt("ID_Status");
-                ResultSet tempRS = statement.executeQuery(String.format("SELECT StatusName FROM StudentStatus WHERE ID_Status='%s'", statusId));
-                tempRS.next();
-                String statusName = tempRS.getString("StatusName");
-                student.setStudentStatus(StudentStatus.valueOf(statusName));
+                student.setUserId(resultSet.getInt("ID_User"));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
             }
         }
         catch (NamingException ex) { }
@@ -238,8 +224,7 @@ public class StudentRepository {
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student WHERE ID_User = %d", userId));
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where ID_User = %d", userId));
             while (resultSet.next()) {
                 student = new Student();
                 student.setStudentId(resultSet.getInt("ID_Student"));
@@ -253,12 +238,8 @@ public class StudentRepository {
                 student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
-
-                int statusId = resultSet.getInt("ID_Status");
-                ResultSet tempRS = statement.executeQuery(String.format("SELECT StatusName FROM StudentStatus WHERE ID_Status='%s'", statusId));
-                tempRS.next();
-                String statusName = tempRS.getString("StatusName");
-                student.setStudentStatus(StudentStatus.valueOf(statusName));
+                student.setUserId(resultSet.getInt("ID_User"));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
             }
 
         }

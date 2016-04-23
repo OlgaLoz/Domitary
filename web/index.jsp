@@ -197,7 +197,7 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
 							<div class="form-group">
-								<input type="text" name="login" class="form-control input-lg" placeholder="Login" tabindex="1">
+								<input type="text" name="login" class="form-control input-lg" placeholder="Логин" tabindex="1">
 							</div>
 						</div>
 					</div>
@@ -205,7 +205,7 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
 							<div class="form-group">
-								<input type="password" name="password"  class="form-control input-lg" placeholder="Password" tabindex="5">
+								<input type="password" name="password"  class="form-control input-lg" placeholder="Пароль" tabindex="2">
 							</div>
 						</div>
 					</div>
