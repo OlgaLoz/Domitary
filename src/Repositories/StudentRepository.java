@@ -225,6 +225,33 @@ public class StudentRepository {
         return student;
     }
 
+    public void updateStatus(int studentId, StudentStatus status) {
+
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.execute("SET CHARACTER SET UTF8");
+            statement.execute("SET CHARSET UTF8");
+            statement.execute("SET NAMES UTF8");
+
+            String statusName = status.toString();
+            ResultSet tempRS = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'", statusName));
+            tempRS.next();
+            int statusId = tempRS.getInt("ID_Status");
+
+            statement.executeUpdate(String.format("UPDATE Student SET ID_Status=%d WHERE ID_Student=%d", statusId, studentId));
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
     public void update(Student item) {
 
         Connection connection = null;
