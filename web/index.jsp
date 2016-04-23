@@ -11,6 +11,7 @@
 	<link href="/Styles/bootstrap.css" rel="stylesheet">
 	<link href="/Styles/indexStyle.css" rel="stylesheet">
 
+
 	<title>Общежитие</title>
 </head>
 
@@ -186,7 +187,8 @@
 	<div class="modal fade" id="autorizModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header"><button class="close" type="button" data-dismiss="modal">x</button>
+				<div class="modal-header">
+					<button id="authorizeClose" class="close" type="button" data-dismiss="modal">x</button>
 					<h4 class="modal-title" >Войти</h4>
 				</div>
 				<div class="modal-body">
@@ -208,6 +210,12 @@
 						</div>
 					</div>
 
+					<div class="row">
+						<div class = "has-error col-xs-12 col-sm-12 col-md-12">
+							<label class = "control-label"  id="authorizeError" />
+						</div>
+					</div>
+
 					<hr class="colorgraph">
 				</div>
 
@@ -223,62 +231,69 @@
 	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header"><button class="close" type="button" data-dismiss="modal">x</button>
+				<div class="modal-header">
+					<button id="registerClose" class="close" type="button" data-dismiss="modal">x</button>
 					<h4 class="modal-title" id="myModalLabel">Регистрация</h4>
 				</div>
 
 				<div class="modal-body">
-
 					<hr class="colorgraph">
-					<div class="row">
-						<div class="col-xs-4 col-sm-4 col-md-4">
-							<div class="form-group">
-								<input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4">
-							<div class="form-group">
-								<input type="text" name="mid_name" id="mid_name" class="form-control input-lg" placeholder="Mid Name" tabindex="2">
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4">
-							<div class="form-group">
-								<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="3">
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-xs-6 col-sm-6 col-md-6">
-							<div class="form-group">
-								<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="Birthday: yyyy-mm-dd" tabindex="1">
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-6 col-md-6">
-							<div class="form-group">
-								<input type="text" name="group" id="group" class="form-control input-lg" placeholder="Group" tabindex="2">
-							</div>
-						</div>
-					</div>
 
 					<div class="form-group">
-						<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
+						<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Логин" tabindex="1">
 					</div>
 
 					<div class="row">
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<div class="form-group">
-								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
 							</div>
 						</div>
 
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<div class="form-group">
-								<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+								<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Подтвердите пароль" tabindex="3">
 							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<div class="form-group">
+								<input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Имя" tabindex="4">
+							</div>
+						</div>
+
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<div class="form-group">
+								<input type="text" name="mid_name" id="mid_name" class="form-control input-lg" placeholder="Отчество" tabindex="5">
+							</div>
+						</div>
+
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<div class="form-group">
+								<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Фамилия" tabindex="6">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="Дата рождения: дд-мм-гггг" tabindex="7">
+							</div>
+						</div>
+
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="group" id="group" class="form-control input-lg" placeholder="Номер группы" tabindex="8">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class = "has-error col-xs-12 col-sm-12 col-md-12">
+							<label class = "control-label"  id="registerError" />
 						</div>
 					</div>
 
@@ -307,6 +322,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="Scripts/bootstrap.js"></script>
+
+	<script type="text/javascript" src="Scripts/indexUtils.js"></script>
 
 	</body>
 </html>

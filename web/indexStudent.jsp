@@ -33,7 +33,7 @@
                     <li class="sidebar-brand">
                             <span class="dropdown">
                                 <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
-                                Тут имя студента
+                                ${login}
                                 <ul class="dropdown-menu ">
                                     <li><form action="/Action/Logout" method="post">
                                         <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
@@ -70,7 +70,6 @@
                 </div>
 
                 <div>
-                    login: ${login}<br>
                     first name: ${first_name}<br>
                     mid name: ${mid_name}<br>
                     last name: ${last_name}<br>
