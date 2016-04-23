@@ -1,5 +1,3 @@
-<%@ page import="Model.Student" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,28 +34,13 @@
             <li class="sidebar-brand">
                     <span class="dropdown">
                         <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
-                        Доктор
+                         Доктор
                         <ul class="dropdown-menu ">
                             <li><form action="/Action/Logout" method="post">
                                 <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
                             </form></li>
                         </ul>
                     </span>
-            </li>
-            <li>
-                <a href="#">Список всех</a>
-            </li>
-            <li>
-                <a href="#">Прошли медосмотр</a>
-            </li>
-            <li>
-                <a href="#">Не прошли медосмотр</a>
-            </li>
-            <li>
-                <a href="#">Отмечать</a>
-            </li>
-            <li>
-                <a href="#">...</a>
             </li>
         </ul>
     </div>
@@ -77,14 +60,14 @@
         <br>
         <div class="row">
             <div class="col-xs-6">
-                <div class="input-group">
-                     <span class="input-group-btn">
-                          <form action="/Action/FindUsersToDoctor" method="post">
+                <form action="/Action/FindSingleUserToDoctor" method="post">
+                    <div class="input-group">
+                         <span class="input-group-btn">
                               <input type="submit" value="Найти" class="btn btn-info" type="button">
-                          </form>
-                     </span>
-                     <input type="text" class="form-control" placeholder="Введите фамилию...">
-                </div><!-- /input-group -->
+                         </span>
+                         <input type="text" name="lastNameInput" class="form-control" placeholder="Введите фамилию...">
+                    </div><!-- /input-group -->
+                </form>
             </div><!-- /.col-lg-6 -->
             <div class="col-xs-6">
                 <form action="/Action/FindUsersToDoctor" method="post">
@@ -93,29 +76,39 @@
             </div>
         </div>    <!-- /.row -->
 
-        <c:if test = "${students != null}">
+        <br>
+        <form action="/Action/CheckStudentsByDoctor" method="post">
+            <c:if test = "${students != null && students.size() != 0}">
 
-            <div class="table-responsive">
-                <table class="table table-hover" >
-                    <tr>
-                        <td><b>Имя</b></td>
-                        <td><b>Отчество</b></td>
-                        <td><b>Фамилия</b></td>
-                        <td><b>Номер группы</b></td>
-                        <td><b>Статус</b></td>
-                    </tr>
-                    <c:forEach  var="data" items="${students}" >
-                    <tr>
-                        <td>${data.getFirstName()}</td>
-                        <td>${data.getMidName()}</td>
-                        <td>${data.getLastName()}</td>
-                        <td>${data.getGroupNumber()}</td>
-                        <td>${data.getStudentStatus().toString()}</td>
-                    </tr>
-                    </c:forEach>
-                </table>
-            </div>
-        </c:if>
+                <div class="table-responsive">
+                    <table class="table table-hover" >
+                        <tr>
+                            <td><b>Имя</b></td>
+                            <td><b>Отчество</b></td>
+                            <td><b>Фамилия</b></td>
+                            <td><b>Номер группы</b></td>
+                            <td> <span class="glyphicon glyphicon-ok"></span></td>
+                        </tr>
+                        <c:forEach  var="data" items="${students}" >
+                        <tr>
+                            <td>${data.getFirstName()}</td>
+                            <td>${data.getMidName()}</td>
+                            <td>${data.getLastName()}</td>
+                            <td>${data.getGroupNumber()}</td>
+                            <td>
+                                <div class="checkbox">
+                                  <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <div class="col-lg-2 col-lg-offset-5">
+                    <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg">
+                </div>
+            </c:if>
+        </form>
 
         <div class="col-xs-12 footer">
             <hr class="colorgraph">
