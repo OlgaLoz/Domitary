@@ -7,14 +7,9 @@ import Utils.PasswordEncryptionService;
 import Utils.TestDatabaseUtils;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class UserRepositoryTest {
-
-    UserRepository userRepository = new UserRepository();
 
     @Test
     public void testCreateReadDelete() throws Exception {
@@ -58,7 +53,7 @@ public class UserRepositoryTest {
         byte[] expectedPassword = pasEncService.getEncryptedPassword(password, expectedSalt);
         byte[] newExpectedPassword = pasEncService.getEncryptedPassword(newPassword, expectedSalt);
         byte[] actualPassword, actualSalt;
-        Role expectedRole = Role.Student;
+        Role expectedRole = Role.Governor;
 
         User expectedUser = new User();
         expectedUser.setLogin(expectedLogin);
@@ -66,14 +61,13 @@ public class UserRepositoryTest {
         expectedUser.setSalt(expectedSalt);
         expectedUser.setRole(expectedRole);
 
-        UserRepository rr = new UserRepository();
-        int last_inserted_id = rr.create(expectedUser);
-        expectedUser.setUserId(last_inserted_id);
+        UserRepository userRepository = new UserRepository();
+        userRepository.create(expectedUser);
         expectedUser.setPassword(newExpectedPassword);
-        rr.update(expectedUser);
+        userRepository.update(expectedUser);
 
-        User actualUser = rr.read(expectedUser.getUserId());
-        rr.delete(expectedUser.getUserId());
+        User actualUser = userRepository.read(expectedUser.getUserId());
+        userRepository.delete(expectedUser.getUserId());
 
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
         actualPassword = actualUser.getPassword();
@@ -94,7 +88,7 @@ public class UserRepositoryTest {
         byte[] expectedSalt = pasEncService.generateSalt();
         byte[] expectedPassword = pasEncService.getEncryptedPassword(password, expectedSalt);
         byte[] actualPassword, actualSalt;
-        Role expectedRole = Role.Student;
+        Role expectedRole = Role.Doctor;
 
         User expectedUser = new User();
         expectedUser.setLogin(expectedLogin);
@@ -102,12 +96,12 @@ public class UserRepositoryTest {
         expectedUser.setSalt(expectedSalt);
         expectedUser.setRole(expectedRole);
 
-        UserRepository rr = new UserRepository();
-        int last_inserted_id = rr.create(expectedUser);
+        UserRepository userRepository = new UserRepository();
+        int last_inserted_id = userRepository.create(expectedUser);
         expectedUser.setUserId(last_inserted_id);
 
-        User actualUser = rr.getUserByLogin(expectedUser.getLogin());
-        rr.delete(expectedUser.getUserId());
+        User actualUser = userRepository.getUserByLogin(expectedUser.getLogin());
+        userRepository.delete(expectedUser.getUserId());
 
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
         actualPassword = actualUser.getPassword();
