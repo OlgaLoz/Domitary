@@ -18,7 +18,6 @@ public class UserRepositoryTest {
         PasswordEncryptionService pasEncService = new PasswordEncryptionService();
         byte[] expectedSalt = pasEncService.generateSalt();
         byte[] expectedPassword = pasEncService.getEncryptedPassword(password, expectedSalt);
-        byte[] actualPassword, actualSalt;
         Role expectedRole = Role.Student;
 
         User expectedUser = new User();
@@ -30,18 +29,12 @@ public class UserRepositoryTest {
         UserRepository userRepository = new UserRepository();
         int last_inserted_id = userRepository.create(expectedUser);
         User actualUser = userRepository.read(last_inserted_id);
-
         userRepository.delete(last_inserted_id);
 
+        Assert.assertEquals(last_inserted_id, actualUser.getUserId());
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
-        actualPassword = actualUser.getPassword();
-        actualSalt = actualUser.getSalt();
-        for (int i = 0; i < expectedPassword.length; i++){
-            Assert.assertEquals(expectedPassword[i], actualPassword[i]);
-        }
-        for (int i = 0; i < expectedSalt.length; i++){
-            Assert.assertEquals(expectedSalt[i], actualSalt[i]);
-        }
+        Assert.assertArrayEquals(expectedPassword, actualUser.getPassword());
+        Assert.assertArrayEquals(expectedSalt,actualUser.getSalt());
         Assert.assertEquals(expectedRole, actualUser.getRole());
     }
 
@@ -52,7 +45,6 @@ public class UserRepositoryTest {
         byte[] expectedSalt = pasEncService.generateSalt();
         byte[] expectedPassword = pasEncService.getEncryptedPassword(password, expectedSalt);
         byte[] newExpectedPassword = pasEncService.getEncryptedPassword(newPassword, expectedSalt);
-        byte[] actualPassword, actualSalt;
         Role expectedRole = Role.Governor;
 
         User expectedUser = new User();
@@ -62,22 +54,17 @@ public class UserRepositoryTest {
         expectedUser.setRole(expectedRole);
 
         UserRepository userRepository = new UserRepository();
-        userRepository.create(expectedUser);
+        int last_inserted_id = userRepository.create(expectedUser);
         expectedUser.setPassword(newExpectedPassword);
         userRepository.update(expectedUser);
 
         User actualUser = userRepository.read(expectedUser.getUserId());
         userRepository.delete(expectedUser.getUserId());
 
+        Assert.assertEquals(last_inserted_id, actualUser.getUserId());
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
-        actualPassword = actualUser.getPassword();
-        actualSalt = actualUser.getSalt();
-        for (int i = 0; i < newExpectedPassword.length; i++){
-            Assert.assertEquals(newExpectedPassword[i], actualPassword[i]);
-        }
-        for (int i = 0; i < expectedSalt.length; i++){
-            Assert.assertEquals(expectedSalt[i], actualSalt[i]);
-        }
+        Assert.assertArrayEquals(newExpectedPassword, actualUser.getPassword());
+        Assert.assertArrayEquals(expectedSalt,actualUser.getSalt());
         Assert.assertEquals(expectedRole, actualUser.getRole());
     }
 
@@ -87,31 +74,20 @@ public class UserRepositoryTest {
         PasswordEncryptionService pasEncService = new PasswordEncryptionService();
         byte[] expectedSalt = pasEncService.generateSalt();
         byte[] expectedPassword = pasEncService.getEncryptedPassword(password, expectedSalt);
-        byte[] actualPassword, actualSalt;
         Role expectedRole = Role.Doctor;
 
-        User expectedUser = new User();
-        expectedUser.setLogin(expectedLogin);
-        expectedUser.setPassword(expectedPassword);
+        User expectedUser = new User(expectedLogin, expectedPassword, expectedRole);
         expectedUser.setSalt(expectedSalt);
-        expectedUser.setRole(expectedRole);
 
         UserRepository userRepository = new UserRepository();
         int last_inserted_id = userRepository.create(expectedUser);
-        expectedUser.setUserId(last_inserted_id);
-
         User actualUser = userRepository.getUserByLogin(expectedUser.getLogin());
         userRepository.delete(expectedUser.getUserId());
 
+        Assert.assertEquals(last_inserted_id, actualUser.getUserId());
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
-        actualPassword = actualUser.getPassword();
-        actualSalt = actualUser.getSalt();
-        for (int i = 0; i < expectedPassword.length; i++){
-            Assert.assertEquals(expectedPassword[i], actualPassword[i]);
-        }
-        for (int i = 0; i < expectedSalt.length; i++){
-            Assert.assertEquals(expectedSalt[i], actualSalt[i]);
-        }
+        Assert.assertArrayEquals(expectedPassword, actualUser.getPassword());
+        Assert.assertArrayEquals(expectedSalt,actualUser.getSalt());
         Assert.assertEquals(expectedRole, actualUser.getRole());
     }
 
