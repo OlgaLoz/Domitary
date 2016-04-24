@@ -94,6 +94,24 @@ public class RoomRepository implements IRepository<Room> {
         }
     }
 
+    public void updateFreePlacesCount(int roomId, int newFreePlacesCount) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.executeUpdate(String.format("UPDATE Room SET FreePlacesCount = '%s' WHERE ID_Room = '%d'", newFreePlacesCount, roomId));
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
     @Override
     public void delete(int id) {
         Connection connection = null;
