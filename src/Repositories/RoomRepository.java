@@ -151,7 +151,11 @@ public class RoomRepository implements IRepository<Room> {
             statement.executeQuery("SET CHARACTER SET UTF8");
             statement.executeQuery("SET CHARSET UTF8");
             statement.executeQuery("SET NAMES UTF8");
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Room"));
+            ResultSet resultSet = statement.executeQuery("Select ID_Room, blockRoom.ID_Block, blockRoom.ID_Dormitory, RoomNumber, " +
+                    "BlockNumber, dormitory.Number, FreePlacesCount, MaxPlacesCount from (SELECT ID_Room, RoomNumber, FreePlacesCount," +
+                    " room.ID_Block, BlockNumber, ID_Dormitory, MaxPlacesCount FROM room join block on room.ID_Block = block.ID_Block)" +
+                    "as blockRoom Join dormitory on dormitory.ID_Dormitory = blockRoom.ID_Dormitory ORDER BY dormitory.Number, " +
+                    "BlockNumber, RoomNumber");
 
             while(resultSet.next()){
                 Room room = new Room();
@@ -160,6 +164,9 @@ public class RoomRepository implements IRepository<Room> {
                 room.setRoomId(resultSet.getInt("ID_Room"));
                 room.setMaxPlacesCount(resultSet.getInt("MaxPlacesCount"));
                 room.setFreePlacesCount(resultSet.getInt("FreePlacesCount"));
+                room.setBlockNumber(resultSet.getInt("BlockNumber"));
+                room.setDormitoryId(resultSet.getInt("ID_Dormitory"));
+                room.setDormitoryNumber(resultSet.getInt("Number"));
                 list.add(room);
             }
         }
