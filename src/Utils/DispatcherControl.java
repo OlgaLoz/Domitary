@@ -22,6 +22,7 @@ public class DispatcherControl {
         controllers.put("GETALLBYSTATUS", new DeaneryGetAllByStatusController());
         controllers.put("READALLTODEANERY", new DeaneryFindAllController());
         controllers.put("FINDBYLASTNAMETODEANERY", new DeaneryFindByLastNameController());
+        controllers.put("CHECKSTUDENTSBYDEANERY", new DeaneryCheckStudentsController());
     }
 
     public IController getController(String controller) {
