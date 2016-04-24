@@ -82,7 +82,7 @@ public class RegistrationController implements IController {
 			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=4";
 		}
 
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		Date dateOfBirth;
 		try {
 			java.util.Date parsed = formatter.parse(birthday);

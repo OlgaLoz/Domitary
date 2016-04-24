@@ -20,25 +20,26 @@ public class StudentRepository {
             connection = DatabaseUtils.getInstance().getConnection();
 
             Statement state = connection.createStatement();
-            ResultSet resultSet = state.executeQuery("SELECT ID_Status FROM StudentStatus WHERE StatusName='candidate'");
+            ResultSet resultSet = state.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'",
+                    item.getStudentStatus()));
             resultSet.next();
             int statusId = resultSet.getInt("ID_Status");
 
             statement = connection.prepareStatement("INSERT INTO Student (FirstName, MidName, LastName, DateOfBirth, " +
-                    "GroupNumber, Statement, ID_Status, ID_User) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                    "GroupNumber, ID_Status, ID_User) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, item.getFirstName());
             statement.setString(2, item.getMidName());
             statement.setString(3, item.getLastName());
             statement.setDate(4, item.getDateOfBirth());
             statement.setString(5, item.getGroupNumber());
-            statement.setString(6, item.getStatement());
-            statement.setInt(7, statusId);
-            statement.setInt(8, item.getUserId());
+            statement.setInt(6, statusId);
+            statement.setInt(7, item.getUserId());
             statement.executeUpdate();
 
-            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
+            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() AS id");
             resultSet.next();
             resultId = resultSet.getInt("id");
+            item.setStudentId(resultId);
         }
         catch (NamingException ex) { }
         catch (SQLException ex) { }
@@ -50,6 +51,77 @@ public class StudentRepository {
         return resultId;
     }
 
+    public Student read(int id) {
+        Connection connection = null;
+        Statement statement = null;
+        Student student = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus " +
+                    "ON Student.ID_Status = StudentStatus.ID_Status Where ID_Student = %d", id));
+            while (resultSet.next()) {
+                student = new Student();
+                student.setStudentId(resultSet.getInt("ID_Student"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setMidName(resultSet.getString("MidName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
+                student.setGroupNumber(resultSet.getString("GroupNumber"));
+                student.setStatement(resultSet.getString("Statement"));
+                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
+                student.setOrder(resultSet.getString("Order"));
+                student.setContract(resultSet.getString("Contract"));
+                student.setRoomId(resultSet.getInt("ID_Room"));
+                student.setUserId(resultSet.getInt("ID_User"));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return student;
+    }
+
+    public Student getStudentByUserId(int userId) {
+        Connection connection = null;
+        Statement statement = null;
+        Student student = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus " +
+                    "ON Student.ID_Status = StudentStatus.ID_Status Where ID_User = %d", userId));
+            while (resultSet.next()) {
+                student = new Student();
+                student.setStudentId(resultSet.getInt("ID_Student"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setMidName(resultSet.getString("MidName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
+                student.setGroupNumber(resultSet.getString("GroupNumber"));
+                student.setStatement(resultSet.getString("Statement"));
+                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
+                student.setOrder(resultSet.getString("Order"));
+                student.setContract(resultSet.getString("Contract"));
+                student.setRoomId(resultSet.getInt("ID_Room"));
+                student.setUserId(resultSet.getInt("ID_User"));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) {  }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return student;
+    }
+
     public ArrayList<Student> readAll() {
         Connection connection = null;
         Statement statement = null;
@@ -58,13 +130,9 @@ public class StudentRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
-
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status;");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Student JOIN StudentStatus " +
+                    "ON Student.ID_Status = StudentStatus.ID_Status;");
             while (resultSet.next()) {
-
                 Student student = new Student();
                 student.setStudentId(resultSet.getInt("ID_Student"));
                 student.setFirstName(resultSet.getString("FirstName"));
@@ -79,7 +147,6 @@ public class StudentRepository {
                 student.setRoomId(resultSet.getInt("ID_Room"));
                 student.setUserId(resultSet.getInt("ID_User"));
                 student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
-
                 students.add(student);
             }
         }
@@ -100,13 +167,9 @@ public class StudentRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
-
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where StatusName = '%s'", status));
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus " +
+                    "ON Student.ID_Status = StudentStatus.ID_Status Where StatusName = '%s'", status));
             while (resultSet.next()) {
-
                 Student student = new Student();
                 student.setStudentId(resultSet.getInt("ID_Student"));
                 student.setFirstName(resultSet.getString("FirstName"));
@@ -141,14 +204,9 @@ public class StudentRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
-
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where LastName = '%s'", lastName));
-
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus " +
+                    "ON Student.ID_Status = StudentStatus.ID_Status Where LastName = '%s'", lastName));
             while (resultSet.next()) {
-
                 Student student = new Student();
                 student.setStudentId(resultSet.getInt("ID_Student"));
                 student.setFirstName(resultSet.getString("FirstName"));
@@ -163,7 +221,6 @@ public class StudentRepository {
                 student.setUserId(resultSet.getInt("ID_User"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
                 student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
-
                 students.add(student);
             }
         }
@@ -176,99 +233,16 @@ public class StudentRepository {
         return students;
     }
 
-    public Student read(int id) {
-        Connection connection = null;
-        Statement statement = null;
-        Student student = null;
-        try {
-            connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
-
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where ID_Student = %d", id));
-            while (resultSet.next()) {
-
-                student = new Student();
-                student.setStudentId(resultSet.getInt("ID_Student"));
-                student.setFirstName(resultSet.getString("FirstName"));
-                student.setMidName(resultSet.getString("MidName"));
-                student.setLastName(resultSet.getString("LastName"));
-                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
-                student.setGroupNumber(resultSet.getString("GroupNumber"));
-                student.setStatement(resultSet.getString("Statement"));
-                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
-                student.setContract(resultSet.getString("Contract"));
-                student.setRoomId(resultSet.getInt("ID_Room"));
-                student.setUserId(resultSet.getInt("ID_User"));
-                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
-            }
-        }
-        catch (NamingException ex) { }
-        catch (SQLException ex) { }
-        finally {
-            DatabaseUtils.closeStatement(statement);
-            DatabaseUtils.closeConnection(connection);
-        }
-        return student;
-    }
-
-    public Student getStudentByUserId(int userId) {
-        Connection connection = null;
-        Statement statement = null;
-        Student student = null;
-
-        try {
-            connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus ON Student.ID_Status = StudentStatus.ID_Status Where ID_User = %d", userId));
-            while (resultSet.next()) {
-                student = new Student();
-                student.setStudentId(resultSet.getInt("ID_Student"));
-                student.setFirstName(resultSet.getString("FirstName"));
-                student.setMidName(resultSet.getString("MidName"));
-                student.setLastName(resultSet.getString("LastName"));
-                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
-                student.setGroupNumber(resultSet.getString("GroupNumber"));
-                student.setStatement(resultSet.getString("Statement"));
-                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
-                student.setContract(resultSet.getString("Contract"));
-                student.setRoomId(resultSet.getInt("ID_Room"));
-                student.setUserId(resultSet.getInt("ID_User"));
-                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
-            }
-
-        }
-        catch (NamingException ex) { }
-        catch (SQLException ex) {  }
-        finally {
-            DatabaseUtils.closeStatement(statement);
-            DatabaseUtils.closeConnection(connection);
-        }
-        return student;
-    }
-
     public void updateStatus(int studentId, StudentStatus status) {
-
         Connection connection = null;
         Statement statement = null;
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
-
-            String statusName = status.toString();
-            ResultSet tempRS = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'", statusName));
-            tempRS.next();
-            int statusId = tempRS.getInt("ID_Status");
-
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'", status));
+            resultSet.next();
+            int statusId = resultSet.getInt("ID_Status");
             statement.executeUpdate(String.format("UPDATE Student SET ID_Status=%d WHERE ID_Student=%d", statusId, studentId));
         }
         catch (NamingException ex) { }
@@ -279,29 +253,99 @@ public class StudentRepository {
         }
     }
 
-    public void update(Student item) {
+    public void updateStatement(int studentId, String statement) {
+        if (statement == null){
+            return;
+        }
+
+        Connection connection = null;
+        Statement stmt = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            stmt = connection.createStatement();
+            stmt.executeUpdate(String.format("UPDATE Student SET Statement='%s' WHERE ID_Student=%d", statement, studentId));
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(stmt);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
+    public void updateDateOfSettlement(int studentId, Date dateOfSettlement) {
+        if (dateOfSettlement == null){
+            return;
+        }
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.prepareStatement("UPDATE Student SET DateOfSettlement=? WHERE ID_Student=?");
+            statement.setDate(1, dateOfSettlement);
+            statement.setInt(2, studentId);
+            statement.executeUpdate();
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
+    public void updateOrder(int studentId, String order) {
+        if (order == null){
+            return;
+        }
 
         Connection connection = null;
         Statement statement = null;
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
+            statement.executeUpdate(String.format("UPDATE Student SET Student.Order='%s' WHERE ID_Student=%d", order, studentId));
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
 
-            statement.execute("SET CHARACTER SET UTF8");
-            statement.execute("SET CHARSET UTF8");
-            statement.execute("SET NAMES UTF8");
+    public void updateContract(int studentId, String contract) {
+        if (contract == null){
+            return;
+        }
 
-            String statusName = item.getStudentStatus().toString();
-            ResultSet tempRS = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'", statusName));
-            tempRS.next();
-            int statusId = tempRS.getInt("ID_Status");
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate(String.format("UPDATE Student SET Contract='%s' WHERE ID_Student=%d", contract, studentId));
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
 
-            statement.executeUpdate(String.format("UPDATE Student SET FirstName='%s', MidName='%s', " +
-                            "LastName='%s', DateOfBirth='%s', GroupNumber='%s', Statement='%s', DateOfSettlement='%s' " +
-                            "Order='%s', Contract='%s', ID_Room='%s', ID_Status='%s' WHERE ID_Student='%s'",
-                    item.getFirstName(), item.getMidName(), item.getLastName(), item.getDateOfBirth(),
-                    item.getGroupNumber(), item.getStatement(), item.getDateOfSettlement(), item.getOrder(),
-                    item.getContract(), item.getRoomId(), statusId, item.getStudentId()));
+    public void updateRoomId(int studentId, int roomId) {
+        if (roomId <= 0){
+            return;
+        }
+
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate(String.format("UPDATE Student SET ID_Room=%d WHERE ID_Student=%d", roomId, studentId));
         }
         catch (NamingException ex) { }
         catch (SQLException ex) { }
@@ -318,7 +362,7 @@ public class StudentRepository {
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
-            statement.execute(String.format("DELETE FROM Student WHERE ID_Student = '%s'", id));
+            statement.execute(String.format("DELETE FROM Student WHERE ID_Student = %d", id));
         }
         catch (NamingException ex) { }
         catch (SQLException ex) { }
@@ -326,6 +370,5 @@ public class StudentRepository {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
-
     }
 }
