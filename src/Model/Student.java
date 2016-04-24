@@ -18,7 +18,9 @@ public class Student {
 	private StudentStatus studentStatus;
 	private int userID;
 
-	public Student(){  }
+	public Student() {
+		this.studentStatus = StudentStatus.Default;
+	}
 
 	public int getStudentId() { return studentId; }
 

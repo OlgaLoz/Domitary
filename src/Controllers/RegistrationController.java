@@ -100,7 +100,6 @@ public class RegistrationController implements IController {
 		student.setLastName(lastName);
 		student.setDateOfBirth(dateOfBirth);
 		student.setGroupNumber(group);
-		student.setStatement("");
 		student.setUserId(user.getUserId());
 		studentRepository.create(student);
 
