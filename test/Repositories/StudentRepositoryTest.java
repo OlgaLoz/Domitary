@@ -17,7 +17,7 @@ public class StudentRepositoryTest {
     @Test
     public void testCreateReadDelete() throws Exception {
 
-        String expectedFirstName = "Test1";
+        String expectedFirstName = "Русский";
         String expectedMidName = "Test2";
         String expectedLastName = "Test3";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -592,7 +592,7 @@ public class StudentRepositoryTest {
         Assert.assertEquals(expectedUserId, actualStudent.getUserId());
 
         Assert.assertEquals(null, actualStudent.getStatement());
-        Assert.assertEquals(newExpectedDateOfSettlement.toString(), actualStudent.getDateOfSettlement().toString());
+        Assert.assertEquals(newExpectedDateOfSettlement, actualStudent.getDateOfSettlement().toString());
         Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
