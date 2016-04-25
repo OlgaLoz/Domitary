@@ -41,7 +41,7 @@
 	<div class = "bg">
 		<div class="first">
 			<div class="row">
-				<div class =" col-xs-12 content">
+				<div class ="col-xs-12 content">
 					<p class="lead">
 						В состав студенческого городка БГУИР входят четыре комфортабельных общежития на 3100 мест,
 						расположенных в центре города, в 30 минутах ходьбы от учебных корпусов университета.
@@ -173,11 +173,11 @@
 			</div>
 
 			<div class="col-xs-12 footer">
-			<hr class="colorgraph">
-			<div class="col-xs-4 col-xs-offset-5 ">
-				<p class="lead">&copy; By MON </p>
+				<hr class="colorgraph">
+				<div class="col-xs-4 col-xs-offset-5 ">
+					<p class="lead">&copy; By MON </p>
+				</div>
 			</div>
-		</div>
 
 		</div>
 	</div>

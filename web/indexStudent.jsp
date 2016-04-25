@@ -42,10 +42,16 @@
                             </span>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/Action/GetSettlers>Списки на заселение</a>
+                        <a href=http://localhost:8080/statementPage.jsp>Заявление на заселение</a>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/docsPage.jsp>Документы</a>
+                        <a href=http://localhost:8080/orderPage.jsp>Ордер</a>
+                    </li>
+                    <li>
+                        <a href=http://localhost:8080/contractPage.jsp>Договор</a>
+                    </li>
+                    <li>
+                        <a href=http://localhost:8080/Action/GetSettlers>Списки на заселение</a>
                     </li>
                     <li>
                         <a href="#">Списки заселенных</a>
@@ -74,7 +80,8 @@
                     mid name: ${mid_name}<br>
                     last name: ${last_name}<br>
                     birthday: ${birthday}<br>
-                    group: ${group}
+                    group: ${group}<br>
+                    role: ${student_status}
                 </div>
 
                 <div class="col-xs-12 footer">
