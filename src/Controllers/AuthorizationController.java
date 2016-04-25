@@ -27,6 +27,7 @@ public class AuthorizationController implements IController {
 	private static final String LASTNAME_ATTRIBUTE = "last_name";
 	private static final String BIRTHDAY_ATTRIBUTE = "birthday";
 	private static final String GROUP_ATTRIBUTE = "group";
+	private static final String STATUS_ATTRIBUTE = "student_status";
 
 	@Override
 	public String run(HttpServletRequest request) {
@@ -52,7 +53,6 @@ public class AuthorizationController implements IController {
 			return Pages.HOME_GUEST.getPagePath() + "?error=authorization";
 		}
 
-
 		HttpSession session = request.getSession();
 		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
 
@@ -60,6 +60,14 @@ public class AuthorizationController implements IController {
 			if (Role.Doctor.equals(user.getRole())){
 				DispatcherControl dispatcherControl = new DispatcherControl();
 				return dispatcherControl.getController("FindUsersToDoctor").run(request);
+			}
+			if (Role.Governor.equals(user.getRole())){
+				DispatcherControl dispatcherControl = new DispatcherControl();
+				return dispatcherControl.getController("SearchUsersToGovernor").run(request);
+			}
+			if (Role.DeaneryWorker.equals(user.getRole())){
+				DispatcherControl dispatcherControl = new DispatcherControl();
+				return dispatcherControl.getController("ReadAllToDeanery").run(request);
 			}
 			return roleControl.getPagePathByRole(user.getRole());
 		}
@@ -77,8 +85,8 @@ public class AuthorizationController implements IController {
 		session.setAttribute(LASTNAME_ATTRIBUTE, student.getLastName());
 		session.setAttribute(BIRTHDAY_ATTRIBUTE, student.getDateOfBirth().toString());
 		session.setAttribute(GROUP_ATTRIBUTE, student.getGroupNumber());
+		session.setAttribute(STATUS_ATTRIBUTE, student.getStudentStatus());
 
 		return roleControl.getPagePathByRole(user.getRole());
 	}
-
 }
