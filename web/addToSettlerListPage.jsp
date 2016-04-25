@@ -25,7 +25,7 @@
                 </div>
                 <div class="navbar-collapse collapse" id = "menu">
                     <ul class="nav navbar-nav ">
-                        <li><a  href="#" data-toggle="modal"  data-target="#registerModal">
+                        <li><a  href=/Action/ReadAllToDeanery>
                             <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
                         </a>
                         </li>
@@ -35,8 +35,8 @@
         </div>
 
         <form action="/Action/CheckStudentsByDeanery" method="post">
-            <c:if test = "${students != null && students.size() != 0}">
 
+            <c:if test = "${students != null && students.size() != 0}">
                 <div class="table-responsive col-lg-6">
                     <table class="table table-hover" >
                         <tr>
@@ -54,24 +54,61 @@
                                 <td>${data.getGroupNumber()}</td>
                                 <td>
                                     <div class="radio">
-                                        <label><input type="radio" name ="checkers" value="${data.getStudentId()}"></label>
+                                        <label><input type="radio" name ="student" value="${data.getStudentId()}"></label>
                                     </div>
                                 </td>
                             </tr>
                         </c:forEach>
                     </table>
                 </div>
-                <div class="col-lg-2 col-lg-offset-5">
-                    <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg">
-                </div>
+                <c:if test = "${students == null || students.size() == 0}">
+                    <div class="col-lg-2 col-lg-offset-4">
+                        <label class="label-info label">Кандидатов нет :)</label>
+                    </div>
+                </c:if>
             </c:if>
-            <c:if test = "${students == null || students.size() == 0}">
-                <div class="col-lg-2 col-lg-offset-5">
-                    <label class="label-success label">Кандидатов нет :)</label>
-                </div>
-            </c:if>
-        </form>
 
+
+
+            <c:if test = "${rooms != null && rooms.size() != 0}">
+                <div class="table-responsive col-lg-6">
+                    <table class="table table-hover" >
+                        <tr>
+                            <td><b>Общежитие</b></td>
+                            <td><b>Блок</b></td>
+                            <td><b>Комната</b></td>
+                            <td><b>Всего мест</b></td>
+                            <td><b>Свободно мест</b></td>
+                            <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
+                        </tr>
+                        <c:forEach  var="data" items="${rooms}" >
+                            <tr>
+                                <td>${data.getDormitoryNumber()}</td>
+                                <td>${data.getBlockNumber()}</td>
+                                <td>${data.getRoomNumber()}</td>
+                                <td>${data.getMaxPlacesCount()}</td>
+                                <td>${data.getFreePlacesCount()}</td>
+                                <td>
+                                    <div class="radio">
+                                        <label><input type="radio" name ="room" value="${data.getRoomId()}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </c:if>
+
+            <c:if test = "${rooms == null || rooms.size() == 0}">
+                <div class="col-lg-2 col-lg-offset-8">
+                    <label class="label-info label">Комнат нет :(</label>
+                </div>
+            </c:if>
+
+            <div class="col-lg-2 col-lg-offset-5">
+                <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg">
+            </div>
+        </form>
         </div>
     </div>
 </div>
