@@ -136,9 +136,7 @@
                     <label class="label-success label">Студентов нет :)</label>
                 </div>
             </c:if>
-
         </form>
-
 
         <div class="col-xs-12 footer">
             <hr class="colorgraph">

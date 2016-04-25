@@ -27,9 +27,7 @@
 </head>
 
 <body>
-
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -44,7 +42,6 @@
                         </ul>
                     </span>
                 </li>
-
                 <li>
                     <form action="/Action/ReadAllToDeanery" method="post">
                         <a href="#">
@@ -54,50 +51,50 @@
                 </li>
                 <li>
                     <form action="/Action/GetAllByStatus" method="post">
-                    <a href="#">
-                        <input type="submit" value="Кандидаты" class="btn btn-link gray-button ">
-                        <input type="hidden" name="status" value="Candidate"/>
-                    </a>
+                        <a href="#">
+                            <input type="submit" value="Кандидаты" class="btn btn-link gray-button ">
+                            <input type="hidden" name="status" value="Candidate"/>
+                        </a>
                     </form>
                 </li>
                 <li>
                     <form action="/Action/GetAllByStatus" method="post">
-                    <a href="#">
-                        <input type="submit" value="Прошли деканат" class="btn btn-link gray-button ">
-                        <input type="hidden" name="status" value="DeaneryPassed"/>
-                    </a>
+                        <a href="#">
+                            <input type="submit" value="Прошли деканат" class="btn btn-link gray-button ">
+                            <input type="hidden" name="status" value="DeaneryPassed"/>
+                        </a>
                     </form>
                 </li>
                 <li>
                     <form action="/Action/GetAllByStatus" method="post">
-                    <a href="#">
-                        <input type="submit" value="Не прошли деканат" class="btn btn-link gray-button ">
-                        <input type="hidden" name="status" value="DeaneryNotPassed"/>
-                    </a>
+                        <a href="#">
+                            <input type="submit" value="Не прошли деканат" class="btn btn-link gray-button ">
+                            <input type="hidden" name="status" value="DeaneryNotPassed"/>
+                        </a>
                     </form>
                 </li>
                 <li>
                     <form action="/Action/GetAllByStatus" method="post">
-                    <a href="#">
-                        <input type="submit" value="Прошли доктора" class="btn btn-link gray-button " >
-                        <input type="hidden" name="status" value="BodyCheckPassed"/>
-                    </a>
+                        <a href="#">
+                            <input type="submit" value="Прошли доктора" class="btn btn-link gray-button " >
+                            <input type="hidden" name="status" value="BodyCheckPassed"/>
+                        </a>
                     </form>
                 </li>
                 <li>
                     <form action="/Action/GetAllByStatus" method="post">
-                    <a href="#">
-                        <input type="submit" value="Не прошли доктора" class="btn btn-link gray-button ">
-                        <input type="hidden" name="status" value="BodyCheckNotPassed"/>
-                    </a>
+                        <a href="#">
+                            <input type="submit" value="Не прошли доктора" class="btn btn-link gray-button ">
+                            <input type="hidden" name="status" value="BodyCheckNotPassed"/>
+                        </a>
                     </form>
                 </li>
                 <li>
                     <form action="/Action/GetAllByStatus" method="post">
-                    <a href="#">
-                        <input type="submit" value="Заселены" class="btn btn-link gray-button ">
-                        <input type="hidden" name="status" value="Settled"/>
-                    </a>
+                        <a href="#">
+                            <input type="submit" value="Заселены" class="btn btn-link gray-button ">
+                            <input type="hidden" name="status" value="Settled"/>
+                        </a>
                     </form>
                 </li>
                 <li>
@@ -106,7 +103,6 @@
                 <li>
                     <a href="/Action/CheckStudentsByDeanery">Распределить студентов</a>
                 </li>
-                </form>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -124,6 +120,7 @@
             </div>
 
             <br>
+
             <div class="row">
                 <div class="col-xs-12">
                     <form action="/Action/FindByLastNameToDeanery" method="post">
@@ -140,7 +137,6 @@
             <br>
      <!--       <form action="/Action/GetAllByStatus" method="post">-->
                 <c:if test = "${students != null && students.size() != 0}">
-
                     <div class="table-responsive">
                         <table class="table table-hover" >
                             <tr>
@@ -179,7 +175,6 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 

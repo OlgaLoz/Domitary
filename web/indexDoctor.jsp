@@ -27,20 +27,19 @@
 <body>
 
 <div id="wrapper">
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                    <span class="dropdown">
-                        <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
-                         Доктор
-                        <ul class="dropdown-menu ">
-                            <li><form action="/Action/Logout" method="post">
-                                <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
-                            </form></li>
-                        </ul>
-                    </span>
+                <span class="dropdown">
+                    <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
+                    Доктор
+                    <ul class="dropdown-menu ">
+                        <li><form action="/Action/Logout" method="post">
+                            <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
+                        </form></li>
+                    </ul>
+                </span>
             </li>
         </ul>
     </div>
@@ -79,7 +78,6 @@
         <br>
         <form action="/Action/CheckStudentsByDoctor" method="post">
             <c:if test = "${students != null && students.size() != 0}">
-
                 <div class="table-responsive">
                     <table class="table table-hover" >
                         <tr>
@@ -119,7 +117,6 @@
                    <label class="label-success label">Все здоровы :)</label>
                 </div>
             </c:if>
-
         </form>
 
         <div class="col-xs-12 footer">
