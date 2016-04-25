@@ -1,32 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>Студент</title>
+        <title>Студент</title>
 
-    <link href="/Styles/bootstrap.min.css" rel="stylesheet">
+        <link href="Styles/bootstrap.min.css" rel="stylesheet">
+        <link href="Styles/template.css" rel="stylesheet">
 
-    <link href="/Styles/template.css" rel="stylesheet">
+        <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="Scripts/html5shiv.js"></script>
+        <script type="text/javascript" src="Scripts/respond.min.js"></script>
+        <![endif]-->
 
-    <script src="/Scripts/jquery.js"></script>
-
-    <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
+    </head>
     <body>
         <div id="wrapper">
-
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
@@ -35,7 +30,7 @@
                                 <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
                                 ${login}
                                 <ul class="dropdown-menu ">
-                                    <li><form action="/Action/Logout" method="post">
+                                    <li><form action="Action/Logout" method="post">
                                         <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
                                     </form></li>
                                 </ul>
@@ -81,7 +76,7 @@
                     last name: ${last_name}<br>
                     birthday: ${birthday}<br>
                     group: ${group}<br>
-                    role: ${student_status}
+                    status: ${student_status}
                 </div>
 
                 <div class="col-xs-12 footer">
@@ -92,18 +87,15 @@
                 </div>
             </div>
             <!-- /#page-content-wrapper -->
-
         </div>
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="Scripts/jquery.js"></script>
-
+        <script type="text/javascript" src="Scripts/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
-        <script src="Scripts/bootstrap.min.js"></script>
-
+        <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
         <!-- Menu Toggle Script -->
-        <script>
+        <script type="text/javascript">
             $("#menu-toggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");

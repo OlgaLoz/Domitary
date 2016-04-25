@@ -2,21 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
 
-	<link href="/Styles/bootstrap.css" rel="stylesheet">
-	<link href="/Styles/indexStyle.css" rel="stylesheet">
-
+	<link href="Styles/bootstrap.css" rel="stylesheet">
+	<link href="Styles/indexStyle.css" rel="stylesheet">
 
 	<title>Общежитие</title>
 </head>
-
 <body>
-
 <div class="container">
 	<div class = "row">
 		<div class="navbar navbar-inverse">
@@ -183,7 +180,7 @@
 	</div>
 </div>
 
-<form action="/Action/Authorization" method="post">
+<form action="Action/Authorization" method="post">
 	<div class="modal fade" id="autorizModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -212,7 +209,7 @@
 
 					<div class="row">
 						<div class = "has-error col-xs-12 col-sm-12 col-md-12">
-							<label class = "control-label"  id="authorizeError" />
+							<label class = "control-label"  id="authorizeError"></label>
 						</div>
 					</div>
 
@@ -227,7 +224,7 @@
 	</div>
 </form>
 
-<form action="/Action/Registration" method="post">
+<form action="Action/Registration" method="post">
 	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -293,7 +290,7 @@
 
 					<div class="row">
 						<div class = "has-error col-xs-12 col-sm-12 col-md-12">
-							<label class = "control-label"  id="registerError" />
+							<label class = "control-label"  id="registerError"></label>
 						</div>
 					</div>
 
@@ -311,17 +308,13 @@
 
 	<h3><a href="http://localhost:8080/indexStudent.jsp">Student</a></h3>
 	<h3><a href="http://localhost:8080/indexDeaneryWorker.jsp">Deanery Worker</a></h3>
-	<h3><a href="http://localhost:8080/indexGovernor.jsp">Gorverner</a></h3>
+	<h3><a href="http://localhost:8080/indexGovernor.jsp">Governor</a></h3>
 	<h3><a href="http://localhost:8080/indexDoctor.jsp">Doctor</a></h3>
 
-		<form action="Authorization" method="post">
-			<input type="submit" value="test"/>
-		</form>
-
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="Scripts/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="Scripts/bootstrap.js"></script>
+	<script type="text/javascript" src="Scripts/bootstrap.js"></script>
 
 	<script type="text/javascript" src="Scripts/indexUtils.js"></script>
 

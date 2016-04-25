@@ -1,16 +1,14 @@
-
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.Student" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon">
-    <link href="/Styles/tmp.css" rel="stylesheet">
-    <link href="/Styles/bootstrap.css" rel="stylesheet">
-    <link href="/Styles/bootstrap.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+    <link href="Styles/tmp.css" rel="stylesheet">
+    <link href="Styles/bootstrap.css" rel="stylesheet">
+    <link href="Styles/bootstrap.min.css" rel="stylesheet">
 <title>Список</title>
 </head>
     <body>

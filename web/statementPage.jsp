@@ -3,10 +3,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon">
-    <link href="/Styles/tmp.css" rel="stylesheet">
-    <link href="/Styles/bootstrap.css" rel="stylesheet">
-    <link href="/Styles/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+    <link href="Styles/tmp.css" rel="stylesheet">
+    <link href="Styles/bootstrap.css" rel="stylesheet">
+    <link href="Styles/bootstrap.min.css" rel="stylesheet">
     <title>Заявление</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="navbar-collapse collapse" id = "menu">
                     <ul class="nav navbar-nav ">
-                        <li><a  href="/indexStudent.jsp">
+                        <li><a  href="indexStudent.jsp">
                             <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
                         </a>
                         </li>
@@ -39,7 +39,7 @@
                 <hr class="colorgraph">
             </div>
 
-            <form class="form-horizontal" action="/Action/Statement" method="post">
+            <form class="form-horizontal" action="Action/Statement" method="post">
                 <div class="col-lg-7 col-lg-offset-5">
                     <div class="form-group">
                         <div class="col-xs-2">Декану </div>
