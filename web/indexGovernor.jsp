@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,30 +32,20 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                    <span class="dropdown">
-                        <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
-                        Заведующий
-                        <ul class="dropdown-menu ">
-                            <li><form action="/Action/Logout" method="post">
-                                <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
-                            </form></li>
-                        </ul>
-                    </span>
+                <span class="dropdown">
+                    <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
+                    Заведующий
+                    <ul class="dropdown-menu ">
+                        <li><form action="/Action/Logout" method="post">
+                            <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
+                        </form></li>
+                    </ul>
+                </span>
             </li>
             <li>
-                <a href="#">Добавить студента</a>
-            </li>
-            <li>
-                <a href="#">Удалить студента</a>
-            </li>
-            <li>
-                <a href="#">Список заселенных</a>
-            </li>
-            <li>
-                <a href="#">Список заселяющихся</a>
-            </li>
-            <li>
-                <a href="#">...</a>
+                <a href="#">
+                    <input type="submit" value="Заселенные" class="btn btn-link gray-button ">
+                </a>
             </li>
         </ul>
     </div>
@@ -72,6 +62,83 @@
                 </div>
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <form action="/Action/SearchByLastNameToGovernor" method="post">
+                    <div class="input-group">
+                         <span class="input-group-btn">
+                              <input type="submit" value="Найти" class="btn btn-info" type="button">
+                         </span>
+                        <input type="text" name="lastNameInput" class="form-control" placeholder="Введите фамилию...">
+                    </div><!-- /input-group -->
+                </form>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <form action="/Action/SearchUsersToGovernor" method="post">
+                    <input type="submit" value="Показать всех" class="btn btn-info">
+                </form>
+            </div>
+        </div>
+        <br>
+        <form action="/Action/CheckStudentsByGovernor" method="post">
+            <c:if test = "${students != null && students.size() != 0}">
+
+                <div class="table-responsive">
+                    <table class="table table-hover" >
+                        <tr>
+                            <td><b>Имя</b></td>
+                            <td><b>Отчество</b></td>
+                            <td><b>Фамилия</b></td>
+                            <td><b>Номер группы</b></td>
+                            <td> <span class="glyphicon glyphicon-duplicate"></span></td>
+                            <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
+                            <td> <span class="glyphicon glyphicon-remove" style="color: red"></span></td>
+                        </tr>
+                        <c:forEach  var="data" items="${students}" >
+                            <tr>
+                                <td>${data.getFirstName()}</td>
+                                <td>${data.getMidName()}</td>
+                                <td>${data.getLastName()}</td>
+                                <td>${data.getGroupNumber()}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Заявление</a></li>
+                                            <li><a href="#">Пропуск</a></li>
+                                            <li><a href="#">Ордер</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name ="uncheckers" value="${data.getStudentId()}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <div class="col-lg-2 col-lg-offset-5">
+                    <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg">
+                </div>
+            </c:if>
+            <c:if test = "${students == null || students.size() == 0}">
+                <div class="col-lg-2 col-lg-offset-5">
+                    <label class="label-success label">Студентов нет :)</label>
+                </div>
+            </c:if>
+
+        </form>
+
 
         <div class="col-xs-12 footer">
             <hr class="colorgraph">
