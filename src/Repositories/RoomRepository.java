@@ -53,6 +53,7 @@ public class RoomRepository implements IRepository<Room> {
             statement.executeQuery("SET CHARACTER SET UTF8");
             statement.executeQuery("SET CHARSET UTF8");
             statement.executeQuery("SET NAMES UTF8");
+
             ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Room WHERE ID_Room = %d", id));
             while(resultSet.next())
             {
@@ -169,10 +170,11 @@ public class RoomRepository implements IRepository<Room> {
             statement.executeQuery("SET CHARACTER SET UTF8");
             statement.executeQuery("SET CHARSET UTF8");
             statement.executeQuery("SET NAMES UTF8");
-            ResultSet resultSet = statement.executeQuery("Select ID_Room, blockRoom.ID_Block, blockRoom.ID_Dormitory, RoomNumber, " +
-                    "BlockNumber, dormitory.Number, FreePlacesCount, MaxPlacesCount from (SELECT ID_Room, RoomNumber, FreePlacesCount," +
-                    " room.ID_Block, BlockNumber, ID_Dormitory, MaxPlacesCount FROM room join block on room.ID_Block = block.ID_Block)" +
-                    "as blockRoom Join dormitory on dormitory.ID_Dormitory = blockRoom.ID_Dormitory ORDER BY dormitory.Number, " +
+
+            ResultSet resultSet = statement.executeQuery("SELECT ID_Room, blockRoom.ID_Block, blockRoom.ID_Dormitory, RoomNumber, " +
+                    "BlockNumber, dormitory.Number, FreePlacesCount, MaxPlacesCount FROM (SELECT ID_Room, RoomNumber, FreePlacesCount," +
+                    " room.ID_Block, BlockNumber, ID_Dormitory, MaxPlacesCount FROM room JOIN block ON room.ID_Block = block.ID_Block)" +
+                    "AS blockRoom JOIN dormitory ON dormitory.ID_Dormitory = blockRoom.ID_Dormitory WHERE FreePlacesCount > 0 ORDER BY dormitory.Number, " +
                     "BlockNumber, RoomNumber");
 
             while(resultSet.next()){
