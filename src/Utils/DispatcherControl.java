@@ -26,6 +26,7 @@ public class DispatcherControl {
         controllers.put("SEARCHUSERSTOGOVERNOR", new GovernorSearchAllController());
         controllers.put("SEARCHBYLASTNAMETOGOVERNOR", new GovernorSearchByLastNameController());
         controllers.put("CHECKSTUDENTSBYGOVERNOR", new GovernorCheckStudentsController());
+        controllers.put("STATEMENT", new StatementController());
     }
 
     public IController getController(String controller) {

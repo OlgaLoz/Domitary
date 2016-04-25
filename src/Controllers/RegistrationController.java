@@ -27,6 +27,7 @@ public class RegistrationController implements IController {
 	private static final String LASTNAME_ATTRIBUTE = "last_name";
 	private static final String BIRTHDAY_ATTRIBUTE = "birthday";
 	private static final String GROUP_ATTRIBUTE = "group";
+	private static final String STATUS_ATTRIBUTE = "student_status";
 
 	@Override
 	public String run(HttpServletRequest request) {
@@ -109,6 +110,7 @@ public class RegistrationController implements IController {
 		session.setAttribute(LASTNAME_ATTRIBUTE, lastName);
 		session.setAttribute(BIRTHDAY_ATTRIBUTE, birthday);
 		session.setAttribute(GROUP_ATTRIBUTE, group);
+		session.setAttribute(STATUS_ATTRIBUTE, student.getStudentStatus());
 
 		return Pages.HOME_STUDENT.getPagePath();
 	}
