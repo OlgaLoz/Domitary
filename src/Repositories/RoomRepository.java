@@ -109,6 +109,24 @@ public class RoomRepository {
         }
     }
 
+    public void delete(int id) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.execute(String.format("DELETE FROM Room WHERE ID_Room = '%d'", id));
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
     public void deleteByBlockId(int blockId) {
         Connection connection = null;
         Statement statement = null;
