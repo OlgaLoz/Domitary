@@ -85,23 +85,6 @@ public class BlockRepository {
         }
     }
 
-    /*public void updateFreePlacesCount(int roomId, int newFreePlacesCount) {
-        Connection connection = null;
-        Statement statement = null;
-
-        try {
-            connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-
-            statement.executeUpdate(String.format("UPDATE Room SET FreePlacesCount = '%s' WHERE ID_Room = '%d'", newFreePlacesCount, roomId));
-        } catch (NamingException ex) {
-        } catch (SQLException ex) {
-        } finally {
-            DatabaseUtils.closeStatement(statement);
-            DatabaseUtils.closeConnection(connection);
-        }
-    }*/
-
     public void delete(int id) {
         Connection connection = null;
         Statement statement = null;
@@ -156,11 +139,44 @@ public class BlockRepository {
             statement.executeQuery("SET CHARSET UTF8");
             statement.executeQuery("SET NAMES UTF8");
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Block");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Block ORDER BY BlockNumber");
 
             while (resultSet.next()) {
                 Block block = new Block();
                 block.setDormitoryId(resultSet.getInt("ID_Dormitory"));
+                block.setBlockNumber(resultSet.getInt("BlockNumber"));
+                block.setBlockId(resultSet.getInt("ID_Block"));
+                list.add(block);
+            }
+        } catch (NamingException ex) {
+        } catch (SQLException ex) {
+        } finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        return list;
+    }
+
+    public ArrayList<Block> readAllByDormitoryId(int dormitoryId) {
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Block> list = new ArrayList<Block>();
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.executeQuery("SET CHARACTER SET UTF8");
+            statement.executeQuery("SET CHARSET UTF8");
+            statement.executeQuery("SET NAMES UTF8");
+
+            ResultSet resultSet = statement.executeQuery("SELECT BlockNumber, ID_Block FROM Block " +
+                    "WHERE ID_Dormitory = " + dormitoryId + " ORDER BY BlockNumber");
+
+            while (resultSet.next()) {
+                Block block = new Block();
+                block.setDormitoryId(dormitoryId);
                 block.setBlockNumber(resultSet.getInt("BlockNumber"));
                 block.setBlockId(resultSet.getInt("ID_Block"));
                 list.add(block);

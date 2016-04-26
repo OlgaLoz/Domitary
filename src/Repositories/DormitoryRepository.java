@@ -89,23 +89,6 @@ public class DormitoryRepository {
         }
     }
 
-    /*public void updateFreePlacesCount(int roomId, int newFreePlacesCount) {
-        Connection connection = null;
-        Statement statement = null;
-
-        try {
-            connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-
-            statement.executeUpdate(String.format("UPDATE Room SET FreePlacesCount = '%s' WHERE ID_Room = '%d'", newFreePlacesCount, roomId));
-        } catch (NamingException ex) {
-        } catch (SQLException ex) {
-        } finally {
-            DatabaseUtils.closeStatement(statement);
-            DatabaseUtils.closeConnection(connection);
-        }
-    }*/
-
     public void delete(int id) {
         Connection connection = null;
         Statement statement = null;
@@ -157,7 +140,7 @@ public class DormitoryRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Dormitory");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Dormitory ORDER BY Number");
 
             while (resultSet.next()) {
                 Dormitory dormitory = new Dormitory();
@@ -177,5 +160,4 @@ public class DormitoryRepository {
 
         return list;
     }
-
 }

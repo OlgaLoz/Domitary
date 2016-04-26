@@ -198,4 +198,40 @@ public class RoomRepository implements IRepository<Room> {
 
         return list;
     }
+
+    public ArrayList<Room> readAllByBlockId(int blockId){
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Room> list = new ArrayList<Room>();
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.executeQuery("SET CHARACTER SET UTF8");
+            statement.executeQuery("SET CHARSET UTF8");
+            statement.executeQuery("SET NAMES UTF8");
+
+            ResultSet resultSet = statement.executeQuery("SELECT ID_Room, RoomNumber, FreePlacesCount," +
+                    " MaxPlacesCount FROM room WHERE ID_Block = " + blockId + " ORDER BY RoomNumber");
+
+            while(resultSet.next()){
+                Room room = new Room();
+                room.setBlockId(blockId);
+                room.setRoomNumber(resultSet.getInt("RoomNumber"));
+                room.setRoomId(resultSet.getInt("ID_Room"));
+                room.setMaxPlacesCount(resultSet.getInt("MaxPlacesCount"));
+                room.setFreePlacesCount(resultSet.getInt("FreePlacesCount"));
+                list.add(room);
+            }
+        }
+        catch (NamingException ex) {  }
+        catch (SQLException ex) {  }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        return list;
+    }
 }
