@@ -7,7 +7,8 @@ public enum Pages {
     HOME_GOVERNOR("/indexGovernor.jsp"),
     HOME_DEANERY("/indexDeaneryWorker.jsp"),
     HOME_SETTLERS("/settlerListPage.jsp"),
-    DISTR_CANDIDATES("/addToSettlerListPage.jsp");
+    DISTR_CANDIDATES("/addToSettlerListPage.jsp"),
+    EDIT_DORMITORY("/editDormitory.jsp");
 
     private String pagePath;
 
