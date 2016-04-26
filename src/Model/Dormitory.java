@@ -5,6 +5,8 @@ public class Dormitory {
 	private String address;
 	private int dormitoryId;
 	private int dormitoryNumber;
+	private int maxBlocksCount;
+	private int freeBlocksCount;
 
 	public Dormitory(){	}
 
@@ -20,6 +22,14 @@ public class Dormitory {
 		return  dormitoryNumber;
 	}
 
+	public int getMaxBlocksCount(){
+		return maxBlocksCount;
+	}
+
+	public int getFreeBlocksCount(){
+		return freeBlocksCount;
+	}
+
 	public void setAddress(String address){
 		this.address = address;
 	}
@@ -30,5 +40,13 @@ public class Dormitory {
 
 	public void setDormitoryNumber(int dormitoryNumber){
 		this.dormitoryNumber = dormitoryNumber;
+	}
+
+	public void setMaxBlocksCount(int maxBlocksCount){
+		this.maxBlocksCount = maxBlocksCount;
+	}
+
+	public void setFreeBlocksCount(int freeBlocksCount){
+		this.freeBlocksCount = freeBlocksCount;
 	}
 }

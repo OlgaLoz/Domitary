@@ -135,8 +135,7 @@ public class RoomRepository implements IRepository<Room> {
     public void addAll(Room[] rooms){
         Connection connection = null;
         Statement statement = null;
-        ResultSet resultSet = null;
-        int[] roomsIndexes = new int[rooms.length];
+        ResultSet resultSet;
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
