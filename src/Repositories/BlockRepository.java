@@ -161,7 +161,8 @@ public class BlockRepository {
     public ArrayList<Block> readAllByDormitoryId(int dormitoryId) {
         Connection connection = null;
         Statement statement = null;
-        ArrayList<Block> list = new ArrayList<Block>();
+        ArrayList<Block> blocks = new ArrayList<Block>();
+        RoomRepository rr = new RoomRepository();
 
         try {
             connection = DatabaseUtils.getInstance().getConnection();
@@ -177,38 +178,6 @@ public class BlockRepository {
             while (resultSet.next()) {
                 Block block = new Block();
                 block.setDormitoryId(dormitoryId);
-                block.setBlockNumber(resultSet.getInt("BlockNumber"));
-                block.setBlockId(resultSet.getInt("ID_Block"));
-                list.add(block);
-            }
-        } catch (NamingException ex) {
-        } catch (SQLException ex) {
-        } finally {
-            DatabaseUtils.closeStatement(statement);
-            DatabaseUtils.closeConnection(connection);
-        }
-
-        return list;
-    }
-
-    public ArrayList<Block> readAllWithRooms() {
-        Connection connection = null;
-        Statement statement = null;
-        RoomRepository rr = new RoomRepository();
-        ArrayList<Block> blocks = new ArrayList<Block>();
-
-        try {
-            connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-
-            statement.executeQuery("SET CHARACTER SET UTF8");
-            statement.executeQuery("SET CHARSET UTF8");
-            statement.executeQuery("SET NAMES UTF8");
-
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Block"));
-            while (resultSet.next()) {
-                Block block = new Block();
-                block.setDormitoryId(resultSet.getInt("ID_Dormitory"));
                 block.setBlockNumber(resultSet.getInt("BlockNumber"));
                 block.setBlockId(resultSet.getInt("ID_Block"));
                 blocks.add(block);

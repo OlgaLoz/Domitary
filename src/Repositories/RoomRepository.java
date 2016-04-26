@@ -1,6 +1,5 @@
 package Repositories;
 
-import Interfaces.IRepository;
 import Utils.DatabaseUtils;
 import Model.Room;
 
@@ -11,9 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class RoomRepository implements IRepository<Room> {
+public class RoomRepository {
 
-    @Override
     public int create(Room room) {
 
         Connection connection = null;
@@ -40,7 +38,6 @@ public class RoomRepository implements IRepository<Room> {
         return room.getRoomId();
     }
 
-    @Override
     public Room read(int id) {
         Connection connection = null;
         Statement statement = null;
@@ -74,7 +71,6 @@ public class RoomRepository implements IRepository<Room> {
         return room;
     }
 
-    @Override
     public void update(Room item) {
         Connection connection = null;
         Statement statement = null;
@@ -113,8 +109,7 @@ public class RoomRepository implements IRepository<Room> {
         }
     }
 
-    @Override
-    public void delete(int id) {
+    public void deleteByBlockId(int blockId) {
         Connection connection = null;
         Statement statement = null;
 
@@ -122,7 +117,7 @@ public class RoomRepository implements IRepository<Room> {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute(String.format("DELETE FROM Room WHERE ID_Room = '%d'", id));
+            statement.execute(String.format("DELETE FROM Room WHERE ID_Block = '%d'", blockId));
         }
         catch (NamingException ex) { }
         catch (SQLException ex) { }
