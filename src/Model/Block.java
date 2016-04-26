@@ -1,10 +1,13 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Block {
 
 	private int blockId;
 	private int blockNumber;
 	private int dormitoryId;
+	private ArrayList<Room> rooms;
 
 	public Block(){ }
 
@@ -20,6 +23,10 @@ public class Block {
 		return dormitoryId;
 	}
 
+	public ArrayList<Room> getRooms(){
+		return rooms;
+	}
+
 	public void setBlockId(int blockId) {
 		this.blockId = blockId;
 	}
@@ -30,5 +37,9 @@ public class Block {
 
 	public void setDormitoryId(int dormitoryId){
 		this.dormitoryId = dormitoryId;
+	}
+
+	public void setRooms(ArrayList<Room> rooms){
+		this.rooms = rooms;
 	}
 }
