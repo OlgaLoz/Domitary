@@ -40,67 +40,10 @@
       <li>
         <a href="Action/DeleteDormitory">Общежития</a>
       </li>
- <!--     <li>
-        <form action="Action/ReadAllToDeanery" method="post">
-          <a href="#">
-            <input type="submit" value="Все студенты" class="btn btn-link gray-button ">
-          </a>
-        </form>
-      </li>
       <li>
-        <form action="Action/GetAllByStatus" method="post">
-          <a href="#">
-            <input type="submit" value="Кандидаты" class="btn btn-link gray-button ">
-            <input type="hidden" name="status" value="Candidate"/>
-          </a>
-        </form>
+        <a href="Action/GetBlocks">Блоки</a>
       </li>
-      <li>
-        <form action="Action/GetAllByStatus" method="post">
-          <a href="#">
-            <input type="submit" value="Прошли деканат" class="btn btn-link gray-button ">
-            <input type="hidden" name="status" value="DeaneryPassed"/>
-          </a>
-        </form>
-      </li>
-      <li>
-        <form action="Action/GetAllByStatus" method="post">
-          <a href="#">
-            <input type="submit" value="Не прошли деканат" class="btn btn-link gray-button ">
-            <input type="hidden" name="status" value="DeaneryNotPassed"/>
-          </a>
-        </form>
-      </li>
-      <li>
-        <form action="Action/GetAllByStatus" method="post">
-          <a href="#">
-            <input type="submit" value="Прошли доктора" class="btn btn-link gray-button " >
-            <input type="hidden" name="status" value="BodyCheckPassed"/>
-          </a>
-        </form>
-      </li>
-      <li>
-        <form action="Action/GetAllByStatus" method="post">
-          <a href="#">
-            <input type="submit" value="Не прошли доктора" class="btn btn-link gray-button ">
-            <input type="hidden" name="status" value="BodyCheckNotPassed"/>
-          </a>
-        </form>
-      </li>
-      <li>
-        <form action="Action/GetAllByStatus" method="post">
-          <a href="#">
-            <input type="submit" value="Заселены" class="btn btn-link gray-button ">
-            <input type="hidden" name="status" value="Settled"/>
-          </a>
-        </form>
-      </li>
-      <li>
-        <hr>
-      </li>
-      <li>
-        <a href="Action/CheckStudentsByDeanery">Распределить студентов</a>
-      </li>-->
+
     </ul>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -137,12 +80,12 @@
       <div class="table-responsive">
         <table class="table table-hover" >
           <tr>
-            <td><b>Имя</b></td>
-            <td><b>Отчество</b></td>
-            <td><b>Фамилия</b></td>
-            <td><b>Номер группы</b></td>
-            <td><b>Дата рождения</b></td>
-            <td><b>Статус</b></td>
+            <td><b>ТУТ</b></td>
+            <td><b>БУДУТ</b></td>
+            <td><b>ЮЗЕРЫ</b></td>
+            <td><b>НАВЕРНОЕ</b></td>
+            <td><b>ДУМАЮ</b></td>
+            <td><b>Я</b></td>
           </tr>
           <c:forEach  var="data" items="${students}" >
             <tr>
