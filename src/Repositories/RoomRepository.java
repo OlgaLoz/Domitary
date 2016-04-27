@@ -1,5 +1,6 @@
 package Repositories;
 
+import Model.StudentStatus;
 import Utils.DatabaseUtils;
 import Model.Room;
 
@@ -127,6 +128,26 @@ public class RoomRepository {
         }
     }
 
+    public void deleteAll(ArrayList<Integer> idlist) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            for (int id : idlist){
+                statement.execute(String.format("DELETE FROM Room WHERE ID_Room = '%d'", id));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
     public void deleteByBlockId(int blockId) {
         Connection connection = null;
         Statement statement = null;
@@ -143,6 +164,33 @@ public class RoomRepository {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
+    }
+
+    public void deleteByDormitoryId(int dormitoryId){
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Integer> idList = new ArrayList<Integer>();
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT " +
+                    "ID_Room FROM room JOIN block " +
+                    "ON block.ID_Block = room.ID_Block WHERE ID_Dormitory = %d", dormitoryId));
+
+            while(resultSet.next()) {
+                idList.add(resultSet.getInt("ID_Room"));
+                //statement.execute(String.format("DELETE FROM room WHERE ID_Room = '%d';", resultSet.getInt("ID_Room")));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        deleteAll(idList);
     }
 
     public void addAll(Room[] rooms){

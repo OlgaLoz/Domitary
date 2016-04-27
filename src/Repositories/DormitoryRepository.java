@@ -22,8 +22,8 @@ public class DormitoryRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.execute(String.format("INSERT INTO Dormitory (Number, Address, FreeBlocksCount" +
-                    " MaxBlocksCount) VALUES ('%s','%s','%s','%s')", dormitory.getDormitoryNumber(),
+            statement.execute(String.format("INSERT INTO Dormitory (`Number`, `Address`, `FreeBlocksCount`, `MaxBlocksCount`) " +
+                    "VALUES ('%s','%s','%s','%s')", dormitory.getDormitoryNumber(),
                     dormitory.getAddress(), dormitory.getFreeBlocksCount(), dormitory.getMaxBlocksCount()));
             resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
             resultSet.next();

@@ -75,6 +75,10 @@ public class BlockRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
+            statement.executeQuery("SET CHARACTER SET UTF8");
+            statement.executeQuery("SET CHARSET UTF8");
+            statement.executeQuery("SET NAMES UTF8");
+
             statement.executeUpdate(String.format("UPDATE Block SET ID_Dormitory = '%d', BlockNumber = '%s' WHERE ID_Block = '%d'",
                     item.getDormitoryId(), item.getBlockNumber(), item.getBlockId()));
         } catch (NamingException ex) {
@@ -100,6 +104,58 @@ public class BlockRepository {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
+    }
+
+    public void deleteAll(ArrayList<Integer> idlist) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            for (int id : idlist){
+                statement.execute(String.format("DELETE FROM Block WHERE ID_Block = '%d'", id));
+            }
+
+        } catch (NamingException ex) {
+        } catch (SQLException ex) {
+        } finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
+    public void deleteByDormitoryId(int dormitoryId){
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet;
+        ArrayList<Integer> idList = new ArrayList<Integer>();
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.executeQuery("SET CHARACTER SET UTF8");
+            statement.executeQuery("SET CHARSET UTF8");
+            statement.executeQuery("SET NAMES UTF8");
+
+            resultSet = statement.executeQuery("SELECT BlockNumber, ID_Block FROM Block " +
+                    "WHERE ID_Dormitory = " + dormitoryId + " ORDER BY BlockNumber");
+
+            while(resultSet.next()) {
+                idList.add(resultSet.getInt("ID_Block"));
+                //statement.execute(String.format("DELETE FROM block WHERE ID_Block = " + resultSet.getInt("ID_Block")));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        deleteAll(idList);
     }
 
     public void addAll(Block[] blocks) {
