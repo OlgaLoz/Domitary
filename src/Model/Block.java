@@ -7,7 +7,7 @@ public class Block {
 	private int blockId;
 	private int blockNumber;
 	private int dormitoryId;
-	private ArrayList<Room> rooms;
+	private ArrayList<Room> rooms = new ArrayList<Room>();
 
 	public Block(){ }
 
