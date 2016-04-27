@@ -355,6 +355,36 @@ public class StudentRepository {
         }
     }
 
+    public void removeAllFromBlock(int blockId) {
+
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'",
+                    StudentStatus.Candidate));
+            resultSet.next();
+            int statusId = resultSet.getInt("ID_Status");
+
+            resultSet = statement.executeQuery(String.format("SELECT Student.ID_Student AS id FROM Student " +
+                    "JOIN Room ON Student.ID_Room = Room.ID_Room WHERE Room.ID_Block = %d" , blockId));
+
+            while (resultSet.next()) {
+                int studentId = resultSet.getInt("id");
+                statement.executeUpdate(String.format("UPDATE Student SET ID_Room = null, ID_Status = %d WHERE ID_Student=%d",
+                        statusId, studentId));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
     public void delete(int id) {
 
         Connection connection = null;
