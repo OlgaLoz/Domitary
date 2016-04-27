@@ -14,6 +14,7 @@ public class RoleControl {
         pages.put(Role.Doctor, Pages.HOME_DOCTOR.getPagePath());
         pages.put(Role.Governor, Pages.HOME_GOVERNOR.getPagePath());
         pages.put(Role.DeaneryWorker,Pages.HOME_DEANERY.getPagePath());
+        pages.put(Role.Admin, Pages.HOME_ADMIN.getPagePath());
     }
 
     public String getPagePathByRole(Role role) {

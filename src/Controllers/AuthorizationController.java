@@ -55,6 +55,7 @@ public class AuthorizationController implements IController {
 
 		HttpSession session = request.getSession();
 		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
+		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
 		if (!Role.Student.equals(user.getRole())){
 			if (Role.Doctor.equals(user.getRole())){

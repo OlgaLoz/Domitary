@@ -65,12 +65,6 @@ public class RegistrationController implements IController {
 			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=3";
 		}
 
-		user = new User(login, encryptedPassword, Role.Student);
-		user.setSalt(salt);
-
-		HttpSession session = request.getSession();
-		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
-
 		String firstName = request.getParameter("first_name");
 		String midName = request.getParameter("mid_name");
 		String lastName = request.getParameter("last_name");
@@ -79,7 +73,6 @@ public class RegistrationController implements IController {
 
 		if (firstName.trim().equals("") || midName.trim().equals("") || lastName.trim().equals("")
 				|| group.trim().equals("")){
-			session.invalidate();
 			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=4";
 		}
 
@@ -90,11 +83,15 @@ public class RegistrationController implements IController {
 			dateOfBirth = new java.sql.Date(parsed.getTime());
 		}
 		catch (ParseException ex){
-			session.invalidate();
 			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=5";
 		}
 
+		HttpSession session = request.getSession();
+
+		user = new User(login, encryptedPassword, Role.Student);
+		user.setSalt(salt);
 		userRepository.create(user);
+
 		Student student = new Student();
 		student.setFirstName(firstName);
 		student.setMidName(midName);
@@ -103,6 +100,9 @@ public class RegistrationController implements IController {
 		student.setGroupNumber(group);
 		student.setUserId(user.getUserId());
 		studentRepository.create(student);
+
+		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
+		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
 		session.setAttribute(LOGIN_ATTRIBUTE, login);
 		session.setAttribute(FIRSTNAME_ATTRIBUTE, firstName);

@@ -10,13 +10,13 @@
 
         <title>Студент</title>
 
-        <link href="Styles/bootstrap.min.css" rel="stylesheet">
-        <link href="Styles/template.css" rel="stylesheet">
+        <link href="../../Styles/bootstrap.min.css" rel="stylesheet">
+        <link href="../../Styles/template.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../../img/icon.ico" type="image/x-icon">
         <!--[if lt IE 9]>
-        <script type="text/javascript" src="Scripts/html5shiv.js"></script>
-        <script type="text/javascript" src="Scripts/respond.min.js"></script>
+        <script type="text/javascript" src="/Scripts/html5shiv.js"></script>
+        <script type="text/javascript" src="/Scripts/respond.min.js"></script>
         <![endif]-->
 
     </head>
@@ -30,20 +30,20 @@
                                 <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
                                 ${login}
                                 <ul class="dropdown-menu ">
-                                    <li><form action="Action/Logout" method="post">
+                                    <li><form action="/Action/Logout" method="post">
                                         <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
                                     </form></li>
                                 </ul>
                             </span>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/statementPage.jsp>Заявление на заселение</a>
+                        <a href=statementPage.jsp>Заявление на заселение</a>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/orderPage.jsp>Ордер</a>
+                        <a href=orderPage.jsp>Ордер</a>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/contractPage.jsp>Договор</a>
+                        <a href=contractPage.jsp>Договор</a>
                     </li>
                     <li>
                         <a href=http://localhost:8080/Action/GetSettlers>Списки на заселение</a>
@@ -91,9 +91,9 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script type="text/javascript" src="Scripts/jquery.js"></script>
+        <script type="text/javascript" src="/Scripts/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
-        <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
         <!-- Menu Toggle Script -->
         <script type="text/javascript">
             $("#menu-toggle").click(function(e) {
