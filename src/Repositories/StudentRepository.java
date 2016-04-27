@@ -389,6 +389,9 @@ public class StudentRepository {
 
         Connection connection = null;
         Statement statement = null;
+        ArrayList<Integer> idList = new ArrayList<Integer>();
+        int statusId = 0;
+
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
@@ -396,7 +399,7 @@ public class StudentRepository {
             ResultSet resultSet = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'",
                     StudentStatus.Candidate));
             resultSet.next();
-            int statusId = resultSet.getInt("ID_Status");
+            statusId = resultSet.getInt("ID_Status");
 
             resultSet = statement.executeQuery(String.format("SELECT student.ID_student AS id FROM Student " +
                             "JOIN ( " +
@@ -408,9 +411,29 @@ public class StudentRepository {
                             "ON Student.ID_Room = tableDorm.ID_Room", dormitoryId));
 
             while (resultSet.next()) {
-                int studentId = resultSet.getInt("id");
+                idList.add(resultSet.getInt("id"));
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+
+        updateAllStudentsStatus(idList, statusId);
+    }
+
+    public void updateAllStudentsStatus(ArrayList<Integer> idList, int statusId){
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            for(int id : idList){
                 statement.executeUpdate(String.format("UPDATE Student SET ID_Room = null, ID_Status = %d WHERE ID_Student=%d",
-                        statusId, studentId));
+                        statusId, id));
             }
         }
         catch (NamingException ex) { }
