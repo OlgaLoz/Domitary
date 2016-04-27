@@ -359,6 +359,9 @@ public class StudentRepository {
 
         Connection connection = null;
         Statement statement = null;
+        ArrayList<Integer> idList = new ArrayList<Integer>();
+        int statusId = 0;
+
         try {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
@@ -366,15 +369,13 @@ public class StudentRepository {
             ResultSet resultSet = statement.executeQuery(String.format("SELECT ID_Status FROM StudentStatus WHERE StatusName='%s'",
                     StudentStatus.Candidate));
             resultSet.next();
-            int statusId = resultSet.getInt("ID_Status");
+            statusId = resultSet.getInt("ID_Status");
 
             resultSet = statement.executeQuery(String.format("SELECT Student.ID_Student AS id FROM Student " +
                     "JOIN Room ON Student.ID_Room = Room.ID_Room WHERE Room.ID_Block = %d" , blockId));
 
             while (resultSet.next()) {
-                int studentId = resultSet.getInt("id");
-                statement.executeUpdate(String.format("UPDATE Student SET ID_Room = null, ID_Status = %d WHERE ID_Student=%d",
-                        statusId, studentId));
+                idList.add(resultSet.getInt("id"));
             }
         }
         catch (NamingException ex) { }
@@ -383,6 +384,8 @@ public class StudentRepository {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);
         }
+
+        updateAllStudentsStatus(idList, statusId);
     }
 
     public void removeAllFromDormitory(int dormitoryId) {
