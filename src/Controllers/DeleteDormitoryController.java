@@ -2,7 +2,10 @@ package Controllers;
 
 import Interfaces.IController;
 import Model.Dormitory;
+import Repositories.BlockRepository;
 import Repositories.DormitoryRepository;
+import Repositories.RoomRepository;
+import Repositories.StudentRepository;
 import Utils.Pages;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,21 +18,29 @@ public class DeleteDormitoryController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        DormitoryRepository repository = new DormitoryRepository();
-        ArrayList<Dormitory> dormitories = repository.readAll();
+        DormitoryRepository dormitoryRepository = new DormitoryRepository();
+        BlockRepository blockRepository = new BlockRepository();
+        RoomRepository roomRepository = new RoomRepository();
+        StudentRepository studentRepository = new StudentRepository();
+
+        ArrayList<Dormitory> dormitories = dormitoryRepository.readAll();
 
         String dormitoryToDel = request.getParameter(DORMITORY_TO_DELETE);
         if (dormitoryToDel != null) {
             Integer dormitoryToDelId = Integer.parseInt(dormitoryToDel);
+
+            studentRepository.removeAllFromDormitory(dormitoryToDelId);
+            roomRepository.deleteByDormitoryId(dormitoryToDelId);
+            blockRepository.deleteByDormitoryId(dormitoryToDelId);
+            dormitoryRepository.delete(dormitoryToDelId);
+
             for( int j = 0; j < dormitories.size(); j++) {
                 if (dormitories.get(j).getDormitoryId() == dormitoryToDelId){
-                    repository.delete(dormitoryToDelId);
                     dormitories.remove(j);
                     break;
                 }
             }
         }
-
 
         request.getSession().setAttribute(DORMITORIES, dormitories);
 

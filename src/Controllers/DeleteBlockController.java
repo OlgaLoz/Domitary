@@ -6,6 +6,7 @@ import Model.Dormitory;
 import Repositories.BlockRepository;
 import Repositories.DormitoryRepository;
 import Repositories.RoomRepository;
+import Repositories.StudentRepository;
 import Utils.Pages;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,16 +21,18 @@ public class DeleteBlockController implements IController {
     public String run(HttpServletRequest request) {
         BlockRepository blockRepository = new BlockRepository();
         RoomRepository roomRepository = new RoomRepository();
+        StudentRepository studentRepository = new StudentRepository();
 
         ArrayList<Block> blocks = (ArrayList<Block>)request.getSession().getAttribute(BLOCKS);
 
         String blockToDel = request.getParameter(BLOCK_TO_DELETE);
         if (blockToDel != null) {
             Integer blockToDelId = Integer.parseInt(blockToDel);
+            studentRepository.removeAllFromBlock(blockToDelId);
             roomRepository.deleteByBlockId(blockToDelId);
+            blockRepository.delete(blockToDelId);
             for( int j = 0; j < blocks.size(); j++) {
                 if (blocks.get(j).getBlockId() == blockToDelId){
-                    blockRepository.delete(blockToDelId);
                     blocks.remove(j);
                     break;
                 }

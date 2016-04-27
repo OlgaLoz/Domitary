@@ -28,8 +28,8 @@ public class DeaneryCheckStudentsController implements IController {
         ArrayList<Student> students = repository.readAllByStatus(StudentStatus.Candidate);
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
 
-        RoomRepository rrepository = new RoomRepository();
-        ArrayList<Room> rooms = rrepository.readAll();
+        RoomRepository roomRepository = new RoomRepository();
+        ArrayList<Room> rooms = roomRepository.readAll();
         request.getSession().setAttribute(ROOMS_ATTRIBUTE, rooms);
 
         if(student == null || room == null)
@@ -50,7 +50,7 @@ public class DeaneryCheckStudentsController implements IController {
             Integer roomId  = rooms.get(i).getRoomId();
             if (roomId == Integer.parseInt(room)){
                 rooms.get(i).setFreePlacesCount(rooms.get(i).getFreePlacesCount() - 1);
-                rrepository.updateFreePlacesCount(roomId, rooms.get(i).getFreePlacesCount());
+                roomRepository.updateFreePlacesCount(roomId, rooms.get(i).getFreePlacesCount());
                 if (rooms.get(i).getFreePlacesCount() == 0){
                     rooms.remove(i);
                 }
