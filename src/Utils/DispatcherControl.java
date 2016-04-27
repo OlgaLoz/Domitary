@@ -29,7 +29,9 @@ public class DispatcherControl {
         controllers.put("STATEMENT", new StatementController());
         controllers.put("DELETEDORMITORY",new DeleteDormitoryController());
         controllers.put("ADDDORMITORY",new AddDormitoryController());
-
+        controllers.put("DELETEBLOCK",new DeleteBlockController());
+        controllers.put("ADDBLOCK",new AddBlockController());
+        controllers.put("GETBLOCKS",new GetDormitoryBlocksController());
     }
 
     public IController getController(String controller) {

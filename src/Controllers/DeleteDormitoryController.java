@@ -2,13 +2,11 @@ package Controllers;
 
 import Interfaces.IController;
 import Model.Dormitory;
-import Model.StudentStatus;
 import Repositories.DormitoryRepository;
 import Utils.Pages;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DeleteDormitoryController implements IController {
 
