@@ -93,6 +93,14 @@
                         </form>
                     </li>
                     <li>
+                        <form action="/Action/GetAllByStatus" method="post">
+                            <a href="#">
+                                <input type="submit" value="Не заселены" class="btn btn-link gray-button ">
+                                <input type="hidden" name="status" value="NotSettled"/>
+                            </a>
+                        </form>
+                    </li>
+                    <li>
                         <hr>
                     </li>
                     <li>

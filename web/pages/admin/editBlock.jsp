@@ -24,7 +24,7 @@
         </div>
         <div class="navbar-collapse collapse" id = "menu">
           <ul class="nav navbar-nav ">
-            <li><a  href=/Action/ReadAllToDeanery>
+            <li><a  href=http://localhost:8080/pages/admin/indexAdmin.jsp>
               <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
             </a>
             </li>
@@ -60,13 +60,14 @@
     </div>
 
     <c:if test = "${dormitories == null || dormitories.size() == 0}">
-      <div class="col-lg-2 col-lg-offset-4">
+      <div class="col-lg-3 col-lg-offset-2">
         <label class="label-info label">Общежитий нет :)</label>
       </div>
     </c:if>
 
-    <div class="table-responsive col-lg-7">
-      <c:if test = "${blocks != null && blocks.size() != 0}">
+
+    <c:if test = "${blocks != null && blocks.size() != 0}">
+      <div class="table-responsive col-lg-7">
         <table class="table table-hover" >
           <tr>
             <td><b>Номер блока</b></td>
@@ -89,11 +90,11 @@
             </tr>
           </c:forEach>
         </table>
-      </c:if>
-    </div>
+      </div>
+    </c:if>
 
     <c:if test = "${blocks == null || blocks.size() == 0}">
-      <div class="col-lg-2 col-lg-offset-4">
+      <div class="col-lg-4 col-lg-offset-8">
         <label class="label-info label">Блоков нет :)</label>
       </div>
     </c:if>

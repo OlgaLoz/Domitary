@@ -60,12 +60,14 @@
                             </c:forEach>
                         </table>
                     </div>
-                    <c:if test = "${students == null || students.size() == 0}">
-                        <div class="col-lg-2 col-lg-offset-4">
+                </c:if>
+
+                <c:if test = "${students == null || students.size() == 0}">
+                        <div class="col-lg-4 col-lg-offset-2">
                             <label class="label-info label">Кандидатов нет :)</label>
                         </div>
                     </c:if>
-                </c:if>
+
 
                 <c:if test = "${rooms != null && rooms.size() != 0}">
                     <div class="table-responsive col-lg-6">
@@ -97,7 +99,7 @@
                 </c:if>
 
                 <c:if test = "${rooms == null || rooms.size() == 0}">
-                    <div class="col-lg-2 col-lg-offset-8">
+                    <div class="col-lg-4 col-lg-offset-8">
                         <label class="label-info label">Комнат нет :(</label>
                     </div>
                 </c:if>

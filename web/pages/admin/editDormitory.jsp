@@ -24,7 +24,7 @@
         </div>
         <div class="navbar-collapse collapse" id = "menu">
           <ul class="nav navbar-nav ">
-            <li><a  href=/Action/ReadAllToDeanery>
+            <li><a  href=http://localhost:8080/pages/admin/indexAdmin.jsp>
               <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
             </a>
             </li>
@@ -81,7 +81,7 @@
           <h4><strong>Номер общежития:</strong></h4>
         </div>
         <div class="col-lg-4">
-          <input type="text" name="numberD" id="numberD" class="form-control" placeholder="Номер общежития" onkeyup="checkParams()" tabindex="1">
+          <input type="number" min ="0" maxlength="7" name="numberD" id="numberD" class="form-control" placeholder="Номер общежития" onkeyup="checkParams()" tabindex="1">
         </div>
         <div class="col-lg-4">
          <label class="has-error" id = "numberDError" style="color: red"></label>
@@ -92,7 +92,7 @@
           <h4><strong>Максимальное количество блоков:</strong></h4>
         </div>
         <div class="col-lg-4">
-          <input type="text" name="maxBlock" id="maxBlock" class="form-control" placeholder="Максимальное количество блоков" onkeyup="checkParams()" tabindex="2">
+          <input type="number" min ="0" maxlength="7" name="maxBlock" id="maxBlock" class="form-control" placeholder="Максимальное количество блоков" onkeyup="checkParams()" tabindex="2">
         </div>
         <div class="col-lg-4">
           <label id = "blockError" style="color: red"></label>

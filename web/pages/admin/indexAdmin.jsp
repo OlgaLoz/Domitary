@@ -27,15 +27,15 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-                        <span class="dropdown">
-                            <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
-                            Администратор
-                            <ul class="dropdown-menu ">
-                              <li><form action="/Action/Logout" method="post">
-                                <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm ">
-                              </form></li>
-                            </ul>
-                        </span>
+        <span class="dropdown">
+          <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
+          Администратор
+          <ul class="dropdown-menu ">
+            <li><form action="/Action/Logout" method="post">
+              <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm ">
+            </form></li>
+          </ul>
+        </span>
       </li>
       <li>
         <a href="/Action/DeleteDormitory">Общежития</a>
@@ -63,53 +63,29 @@
     <br>
 
     <div class="row">
-      <div class="col-xs-12">
-        <form action="/Action/FindByLastNameToDeanery" method="post">
-          <div class="input-group">
-                             <span class="input-group-btn">
-                                  <input type="submit" value="Найти" class="btn btn-info">
-                             </span>
-            <input type="text" name="lastNameInput" class="form-control" placeholder="Введите фамилию...">
-          </div><!-- /input-group -->
-        </form>
+      <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-lg-5">
+       <h3 style="color: #28a4c9">
+         Вы вошли как администратор приложения! В Ваши обязанности входит следить за актуальной информацией для приложения.
+         А именно о жилых и нежилых общежитиях и блоках! Просьба своевременно выполнять свою работу!
+       </h3>
+        <h2 style="color: #46b8da">
+          Спасибо, админушка :)
+        </h2>
       </div><!-- /.col-lg-6 -->
-    </div>    <!-- /.row -->
 
-    <br>
-    <c:if test = "${students != null && students.size() != 0}">
-      <div class="table-responsive">
-        <table class="table table-hover" >
-          <tr>
-            <td><b>ТУТ</b></td>
-            <td><b>БУДУТ</b></td>
-            <td><b>ЮЗЕРЫ</b></td>
-            <td><b>НАВЕРНОЕ</b></td>
-            <td><b>ДУМАЮ</b></td>
-            <td><b>Я</b></td>
-          </tr>
-          <c:forEach  var="data" items="${students}" >
-            <tr>
-              <td>${data.getFirstName()}</td>
-              <td>${data.getMidName()}</td>
-              <td>${data.getLastName()}</td>
-              <td>${data.getGroupNumber()}</td>
-              <td>${data.getDateOfBirth().toString()}</td>
-              <td>${data.getStudentStatus().toString()}</td>
-            </tr>
-          </c:forEach>
-        </table>
+      <div class="col-lg-5">
+      <div class="img-responsive">
+        <img src="../../img/adminCat.jpg" alt="">
       </div>
-    </c:if>
-    <c:if test = "${students == null || students.size() == 0}">
-      <div class="col-lg-2 col-lg-offset-5">
-        <label class="label-success label">Общежитий нет!</label>
       </div>
-    </c:if>
+    </div>
 
-    <div class="col-xs-12 footer">
-      <hr class="colorgraph">
-      <div class="col-xs-4 col-xs-offset-5 ">
-        <p class="lead">&copy; By MON </p>
+    <div class="row">
+      <div class="col-xs-12 footer">
+        <hr class="colorgraph">
+        <div class="col-xs-4 col-xs-offset-5 ">
+          <p class="lead">&copy; By MON </p>
+        </div>
       </div>
     </div>
   </div>
