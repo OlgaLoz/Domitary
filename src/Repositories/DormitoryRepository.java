@@ -77,12 +77,12 @@ public class DormitoryRepository {
             connection = DatabaseUtils.getInstance().getConnection();
             statement = connection.createStatement();
 
-            statement.executeUpdate(String.format("UPDATE Dormitory SET Number = '%s', Address = '%s'" +
-                    "FreeBlocksCount = '%s' MaxBlocksCount = '%s' WHERE ID_Dormitory = '%d'",
+            statement.executeUpdate(String.format("UPDATE `Dormitory` SET `Number` = '%d', `Address` = '%s', " +
+                    "`FreeBlocksCount` = '%d', `MaxBlocksCount` = '%d' WHERE `ID_Dormitory` = '%d'",
                     item.getDormitoryNumber(), item.getAddress(), item.getFreeBlocksCount(),
                     item.getMaxBlocksCount(), item.getDormitoryId()));
-        } catch (NamingException ex) {
-        } catch (SQLException ex) {
+        } catch (NamingException ex) { int i = 2;
+        } catch (SQLException ex) { int i = 2;
         } finally {
             DatabaseUtils.closeStatement(statement);
             DatabaseUtils.closeConnection(connection);

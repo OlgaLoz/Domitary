@@ -23,9 +23,7 @@ public class Block {
 		return dormitoryId;
 	}
 
-	public ArrayList<Room> getRooms(){
-		return rooms;
-	}
+	public ArrayList<Room> getRooms(){ return rooms; }
 
 	public void setBlockId(int blockId) {
 		this.blockId = blockId;
