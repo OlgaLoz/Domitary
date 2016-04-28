@@ -34,6 +34,7 @@ public class DispatcherControl {
         controllers.put("ADDBLOCK",new AddBlockController());
         controllers.put("GETBLOCKS",new GetDormitoryBlocksController());
         controllers.put("DOWNLOAD", new DownloadSingleListController());
+        controllers.put("DOWNLOADM", new DownloadMultListController());
     }
 
     public IController getController(String controller) {
