@@ -10,12 +10,6 @@ import java.io.FileOutputStream;
 
 public class PdfGenerationService {
 
-    public static String getFolderPath(String initialFolder) throws Exception {
-        File file = new File(initialFolder + TEMPLATES_PATH);
-        String absolutePath = file.getAbsolutePath();
-        return absolutePath;
-    }
-
     private static String TEMPLATES_PATH = "/documentTemplates/";
     private static String OUTPUT_DOCUMENTS_PATH = "/files/";
     private static String TPL_STATEMENT = "/templateStatement.pdf";
