@@ -44,27 +44,27 @@
                     <div class="form-group">
                         <div class="col-xs-2">Декану </div>
                         <div class="col-xs-10">
-                            <input type="text" name="dean" id="dean" class="form-control input-lg" placeholder="Фамилия И.О. декана" tabindex="1">
+                            <input type="text" name="dean" id="dean" required class="form-control input-lg" placeholder="Фамилия И.О. декана" tabindex="1">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-4">Студента(тки) гр. </div>
                         <div class="col-xs-8">
-                            <input type="text" name="group" id="group" class="form-control input-lg" placeholder="Группа" tabindex="2">
+                            <input type="text" name="group" id="group" required class="form-control input-lg" placeholder="Группа" tabindex="2">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-2">Ф.И.О. </div>
                         <div class="col-xs-10">
-                            <input type="text" name="lastname" id="lastname" class="form-control input-lg" placeholder="Фамилия" tabindex="3">
+                            <input type="text" name="lastname" id="lastname" required class="form-control input-lg" placeholder="Фамилия" tabindex="3">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-6">
-                            <input type="text" name="firstname" id="firstname" class="form-control input-lg" placeholder="Имя" tabindex="4">
+                            <input type="text" name="firstname" id="firstname" required class="form-control input-lg" placeholder="Имя" tabindex="4">
                         </div>
                         <div class="col-xs-6">
-                            <input type="text" name="midname" id="midname" class="form-control input-lg" placeholder="Отчество" tabindex="5">
+                            <input type="text" name="midname" id="midname" required class="form-control input-lg" placeholder="Отчество" tabindex="5">
                         </div>
                     </div>
                     <br/>
@@ -84,32 +84,32 @@
                     <div class="form-group">
                         <div class="col-xs-2">Проживаю в </div>
                         <div class="col-xs-8">
-                            <input type="text" name="region" id="region" class="form-control input-lg" placeholder="Область" tabindex="6">
+                            <input type="text" name="region" id="region" required class="form-control input-lg" placeholder="Область" tabindex="6">
                         </div>
                         <div class="col-xs-2"> области</div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-1">город </div>
                         <div class="col-xs-2">
-                            <input type="text" name="city" id="city" class="form-control input-lg" placeholder="Город" tabindex="7">
+                            <input type="text" name="city" id="city" required class="form-control input-lg" placeholder="Город" tabindex="7">
                         </div>
                         <div class="col-xs-1">улица </div>
                         <div class="col-xs-2">
-                            <input type="text" name="street" id="street" class="form-control input-lg" placeholder="Улица" tabindex="8">
+                            <input type="text" name="street" id="street" required class="form-control input-lg" placeholder="Улица" tabindex="8">
                         </div>
                         <div class="col-xs-1">дом </div>
                         <div class="col-xs-2">
-                            <input type="text" name="house" id="house" class="form-control input-lg" placeholder="Дом" tabindex="9">
+                            <input type="text" name="house" id="house" required class="form-control input-lg" placeholder="Дом" tabindex="9">
                         </div>
                         <div class="col-xs-1">квартира </div>
                         <div class="col-xs-2">
-                            <input type="text" name="flat" id="flat" class="form-control input-lg" placeholder="Квартира" tabindex="10">
+                            <input type="text" name="flat" id="flat" required class="form-control input-lg" placeholder="Квартира" tabindex="10">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-3">Форма обучения: </div>
                         <div class="col-xs-6">
-                            <input type="text" name="training" id="training" class="form-control input-lg" placeholder="Бюджетная/Платная" tabindex="11">
+                            <input type="text" name="training" id="training" required class="form-control input-lg" placeholder="Бюджетная/Платная" tabindex="11">
                         </div>
                         <div class="col-xs-3"> (документы прилагаются)</div>
                     </div>
@@ -119,13 +119,13 @@
                             <div class="form-group">
                                 <div class="col-xs-5">Мобильный телефон </div>
                                 <div class="col-xs-7">
-                                    <input type="text" name="mobile_phone" id="mobile_phone" class="form-control input-lg" placeholder="(+XXX XX) XXX-XX-XX" tabindex="12">
+                                    <input type="text" name="mobile_phone" id="mobile_phone" required class="form-control input-lg" placeholder="(+XXX XX) XXX-XX-XX" tabindex="12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-5">Домашний телефон </div>
                                 <div class="col-xs-7">
-                                    <input type="text" name="home_phone" id="home_phone" class="form-control input-lg" placeholder="XXX-XX-XX" tabindex="13">
+                                    <input type="text" name="home_phone" id="home_phone" required class="form-control input-lg" placeholder="XXX-XX-XX" tabindex="13">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -133,12 +133,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <input type="text" name="mother" id="mother" class="form-control input-lg" placeholder="Ф.И.О. матери" tabindex="14">
+                                    <input type="text" name="mother" id="mother" required class="form-control input-lg" placeholder="Ф.И.О. матери" tabindex="14">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <input type="text" name="father" id="father" class="form-control input-lg" placeholder="Ф.И.О. отца" tabindex="15">
+                                    <input type="text" name="father" id="father" required class="form-control input-lg" placeholder="Ф.И.О. отца" tabindex="15">
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                             <div class="form-group">
                                 <div class="col-xs-3">Дата </div>
                                 <div class="col-xs-9">
-                                    <input type="text" name="filling_date" id="filling_date" class="form-control input-lg" placeholder="дд-мм-гггг" tabindex="16">
+                                    <input type="text" name="filling_date" id="filling_date" required class="form-control input-lg" placeholder="дд.мм.гггг" tabindex="16">
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                 </div>
 
                 <div class="text-center">
-                    <input type="submit" value="Подать заявление" class="btn btn-primary btn-lg">
+                    <input type="submit" id="apply" value="Подать заявление" class="btn btn-primary btn-lg">
                 </div>
             </form>
         </div>
@@ -170,5 +170,16 @@
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="studentStatus" value="${student_status}">
+    <script type="text/javascript" src="/Scripts/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            if ($('#studentStatus').val() != 'Default') {
+                $('#apply').hide();
+            }
+        });
+    </script>
+
 </body>
 </html>
