@@ -44,6 +44,14 @@
                             </a>
                         </form>
                     </li>
+                    <li>
+                        <form action="/Action/Download" method="post">
+                            <a href="#">
+                                <input type="submit" value="Заселенные(xlsx)" class="btn btn-link gray-button ">
+                                <input type="hidden" value="Settled" name="student_status">
+                            </a>
+                        </form>
+                    </li>
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -106,7 +114,13 @@
                                                 <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">Заявление</a></li>
+                                                    <form action="/Action/Download" method="post">
+                                                        <li>
+                                                            <input type="submit" value="ЧТОТО" class="btn btn-link btn-block btn-sm">
+                                                            <input type="hidden" value="${data.getStudentId()}" name="student_ID">
+                                                            <input type="hidden" value="" name="doc_type">
+                                                        </li>
+                                                    </form>
                                                     <li><a href="#">Пропуск</a></li>
                                                     <li><a href="#">Ордер</a></li>
                                                 </ul>

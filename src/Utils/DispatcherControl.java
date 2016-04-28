@@ -33,6 +33,7 @@ public class DispatcherControl {
         controllers.put("DELETEBLOCK",new DeleteBlockController());
         controllers.put("ADDBLOCK",new AddBlockController());
         controllers.put("GETBLOCKS",new GetDormitoryBlocksController());
+        controllers.put("DOWNLOAD", new DownloadSingleListController());
     }
 
     public IController getController(String controller) {
