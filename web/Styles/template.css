@@ -63,6 +63,13 @@
     color: gray;
 }
 
+
+.blue{
+    color:#8A7E7E;
+    font-style: oblique;
+}
+
+
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }

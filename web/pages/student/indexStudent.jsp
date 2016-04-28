@@ -62,21 +62,52 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-2">
                             <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </a>
                         </div>
-                    </div>
-                </div>
+                        <div class="col-lg-10">
+                            <div class="row"> <button class="btn btn-info col-lg-5" data-toggle="collapse" data-target="#hide-me">Информация обо мне</button></div>
 
-                <div>
-                    first name: ${first_name}<br>
-                    mid name: ${mid_name}<br>
-                    last name: ${last_name}<br>
-                    birthday: ${birthday}<br>
-                    group: ${group}<br>
-                    status: ${student_status}
+                            <div id="hide-me" class="collapse in">
+                                <div class="row"></div>
+                                <div class="row blue">
+                                    <div class="col-lg-2">
+                                        <h3> Текущий статус:</h3>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <h2 id="status"> ${student_status}</h2>
+                                        <input type="hidden" id="hideStatus" value="${student_status}" />
+                                    </div>
+                                </div>
+                                <div class="row blue">
+                                    <div class="col-lg-2">
+                                        <h3>ФИО:</h3>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <h3> ${first_name} ${mid_name} ${last_name}</h3>
+                                    </div>
+                                </div>
+                                <div class="row blue">
+                                    <div class="col-lg-2">
+                                        <h3> Дата рождения:</h3>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <h3> ${birthday}</h3>
+                                    </div>
+                                </div>
+                                <div class="row blue">
+                                    <div class="col-lg-2">
+                                        <h3> Номер группы:</h3>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <h3> ${group}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-xs-12 footer">
@@ -92,6 +123,7 @@
 
         <!-- jQuery -->
         <script type="text/javascript" src="/Scripts/jquery.js"></script>
+        <script type="text/javascript" src="/Scripts/statusHelper.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
         <!-- Menu Toggle Script -->
