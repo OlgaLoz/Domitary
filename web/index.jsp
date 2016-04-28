@@ -305,12 +305,6 @@
 		</div>
 	</div>
 </form>
-
-	<h3><a href="http://localhost:8080/indexStudent.jsp">Student</a></h3>
-	<h3><a href="http://localhost:8080/indexDeaneryWorker.jsp">Deanery Worker</a></h3>
-	<h3><a href="http://localhost:8080/indexGovernor.jsp">Governor</a></h3>
-	<h3><a href="http://localhost:8080/indexDoctor.jsp">Doctor</a></h3>
-
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script type="text/javascript" src="Scripts/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->

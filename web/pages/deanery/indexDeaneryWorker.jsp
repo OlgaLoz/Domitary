@@ -37,6 +37,13 @@
                             </ul>
                         </span>
                     </li>
+
+
+                    <li>
+                        <hr>
+                        <a href="/Action/CheckStudentsByDeanery">Распределить студентов</a>
+                        <hr>
+                    </li>
                     <li>
                         <form action="/Action/ReadAllToDeanery" method="post">
                             <a href="#">
@@ -99,13 +106,43 @@
                                 <input type="hidden" name="status" value="NotSettled"/>
                             </a>
                         </form>
-                    </li>
-                    <li>
                         <hr>
                     </li>
-                    <li>
-                        <a href="/Action/CheckStudentsByDeanery">Распределить студентов</a>
+
+                    <form action="/Action/DownloadM" method="post">
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="Candidate"/>
+                        Кандидаты
                     </li>
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="DeaneryPassed"/>
+                        Прошли деканат
+                    </li>
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="DeaneryNotPassed"/>
+                        Не прошли деканат
+                    </li>
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="BodyCheckPassed"/>
+                        Прошли доктора
+                    </li>
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="BodyCheckNotPassed"/>
+                        Не прошли доктора
+                    </li>
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="Settled"/>
+                        Заселены
+                    </li>
+                    <li class="blue">
+                        <input type="checkbox" name="chStatus" value="NotSettled"/>
+                        Не заселены
+                    </li>
+                    <li class="blue">
+                        <input type="submit" value="Скачать" class="btn btn-info ">
+                        <hr>
+                    </li>
+                    </form>
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
