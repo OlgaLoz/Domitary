@@ -10,10 +10,17 @@ import java.io.FileOutputStream;
 
 public class PdfGenerationService {
 
-    private static String TEMPLATES_PATH = "documentTemplates/";
-    private static String OUTPUT_DOCUMENTS_PATH = "web/files/";
-    private static String TPL_STATEMENT = "templateStatement.pdf";
-    private static String TPL_CONTRACT = "templateContract.pdf";
+    public static String getFolderPath(String initialFolder) throws Exception {
+        File file = new File(initialFolder + TEMPLATES_PATH);
+        String absolutePath = file.getAbsolutePath();
+        return absolutePath;
+    }
+
+    private static String TEMPLATES_PATH = "/documentTemplates/";
+    private static String OUTPUT_DOCUMENTS_PATH = "/files/";
+    private static String TPL_STATEMENT = "/templateStatement.pdf";
+    private static String IMG_BACKGROUND = "/backgroundPDF-2.jpg";
+    private static String TPL_CONTRACT = "/templateContract.pdf";
     private static int FONT_SIZE_SMALL = 10;
     private static int FONT_SIZE_NORMAL = 14;
     private static int FONT_SIZE_MEDIUM = 16;
@@ -26,15 +33,21 @@ public class PdfGenerationService {
     private static int VERTICAL_SPACE_BIG = 80;
     private static int HEIGHT_NORMAL_LINE = FONT_SIZE_NORMAL + VERTICAL_SPACE_TINY + 2;
 
-    synchronized public static void createStatementTemplate() throws Exception {
+    synchronized public static void createStatementTemplate(String initialFolder) throws Exception {
         Document document = new Document();
 
         try {
-            BaseFont bf = BaseFont.createFont(TEMPLATES_PATH + "fonts/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            BaseFont bf = BaseFont.createFont(initialFolder + TEMPLATES_PATH + "fonts/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font font = new Font(bf, FONT_SIZE_NORMAL);
             Font font5 = new Font(bf, FONT_SIZE_MEDIUM);
-            PdfWriter.getInstance(document, new FileOutputStream(TEMPLATES_PATH + TPL_STATEMENT));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(initialFolder + TEMPLATES_PATH + TPL_STATEMENT));
             document.open();
+
+            PdfContentByte canvas = writer.getDirectContentUnder();
+            Image image = Image.getInstance(initialFolder + TEMPLATES_PATH + IMG_BACKGROUND);
+            image.scaleAbsolute(PageSize.A4);
+            image.setAbsolutePosition(0, 0);
+            canvas.addImage(image);
 
             Paragraph headLine = new Paragraph();
             headLine.setFont(font);
@@ -158,21 +171,21 @@ public class PdfGenerationService {
         }
     }
 
-    public static void createStudentStatement(Statement statement, String outputFileName) throws Exception {
-        PdfReader reader = new PdfReader(new FileInputStream(TEMPLATES_PATH + TPL_STATEMENT));
+    public static void createStudentStatement(String initialFolder, String outputFileName, Statement statement) throws Exception {
+        PdfReader reader = new PdfReader(new FileInputStream(initialFolder + TEMPLATES_PATH + TPL_STATEMENT));
 
-        File dir = new File(OUTPUT_DOCUMENTS_PATH);
+        File dir = new File(initialFolder + OUTPUT_DOCUMENTS_PATH);
         if (!dir.exists()){
             dir.mkdir();
         }
 
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(OUTPUT_DOCUMENTS_PATH + outputFileName));
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(initialFolder + OUTPUT_DOCUMENTS_PATH + outputFileName));
 
         PdfContentByte stream = stamper.getOverContent(1);
         stream.beginText();
         stream.setColorFill(BaseColor.BLUE);
 
-        BaseFont font = BaseFont.createFont(TEMPLATES_PATH + "fonts/timesi.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        BaseFont font = BaseFont.createFont(initialFolder + TEMPLATES_PATH + "fonts/timesi.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
         float pageWidth = reader.getPageSize(1).getWidth();
         float pageHeight = reader.getPageSize(1).getHeight();

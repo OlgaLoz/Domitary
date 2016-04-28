@@ -14,9 +14,9 @@ import java.util.List;
 public class ExcelGenerationService {
 
     private static StudentRepository studentRepository = new StudentRepository();
-    private static String OUTPUT_DOCUMENTS_PATH = "web/files/";
+    private static String OUTPUT_DOCUMENTS_PATH = "/files/";
 
-    public static void createStudentsSheetsByStatuses(String outputFileName, List<StudentStatus> statuses) throws Exception {
+    public static void createStudentsSheetsByStatuses(String initialFolder, String outputFileName, List<StudentStatus> statuses) throws Exception {
         FileOutputStream os = null;
         Workbook book = null;
         try {
@@ -75,11 +75,11 @@ public class ExcelGenerationService {
                     sheet.autoSizeColumn(i);
                 }
             }
-            File dir = new File(OUTPUT_DOCUMENTS_PATH);
+            File dir = new File(initialFolder + OUTPUT_DOCUMENTS_PATH);
             if (!dir.exists()){
                 dir.mkdir();
             }
-            os = new FileOutputStream(new File(OUTPUT_DOCUMENTS_PATH + outputFileName));
+            os = new FileOutputStream(new File(initialFolder + OUTPUT_DOCUMENTS_PATH + outputFileName));
             book.write(os);
 
         } finally {

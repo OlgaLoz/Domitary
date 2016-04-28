@@ -13,14 +13,14 @@ import java.util.List;
 public class CsvGenerationService {
 
     private static StudentRepository studentRepository = new StudentRepository();
-    private static String OUTPUT_DOCUMENTS_PATH = "web/files/";
+    private static String OUTPUT_DOCUMENTS_PATH = "/files/";
 
-    public static void createCSVListByStudentStatus(String outputFileName, StudentStatus status) throws Exception {
-        File dir = new File(OUTPUT_DOCUMENTS_PATH);
+    public static void createCSVListByStudentStatus(String initialFolder, String outputFileName, StudentStatus status) throws Exception {
+        File dir = new File(initialFolder + OUTPUT_DOCUMENTS_PATH);
         if (!dir.exists()){
             dir.mkdir();
         }
-        File outputFile = new File(OUTPUT_DOCUMENTS_PATH + outputFileName);
+        File outputFile = new File(initialFolder + OUTPUT_DOCUMENTS_PATH + outputFileName);
         FileOutputStream fos = null;
         OutputStreamWriter out = null;
         List<Student> students = studentRepository.readAllByStatus(status);
