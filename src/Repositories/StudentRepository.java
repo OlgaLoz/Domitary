@@ -122,6 +122,73 @@ public class StudentRepository {
         return student;
     }
 
+    public int getRoomNumberByStudentId(int studentId) {
+        Connection connection = null;
+        Statement statement = null;
+        int roomNumber = 0;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT RoomNumber FROM Room " +
+                    "JOIN Student ON Student.ID_Room = Room.ID_Room WHERE ID_Student = %d", studentId));
+            resultSet.next();
+            roomNumber = resultSet.getInt("RoomNumber");
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) {  }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return roomNumber;
+    }
+
+    public int getBlockNumberByStudentId(int studentId) {
+        Connection connection = null;
+        Statement statement = null;
+        int blockNumber = 0;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT BlockNumber FROM block JOIN " +
+                    "(SELECT ID_Block FROM room JOIN student ON student.ID_Room = room.ID_Room WHERE ID_Student = %d) as blockID " +
+                    "ON block.ID_Block = blockID.ID_Block", studentId));
+            resultSet.next();
+            blockNumber = resultSet.getInt("BlockNumber");
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) {  }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return blockNumber;
+    }
+
+    public int getDormitoryNumberByStudentId(int studentId) {
+        Connection connection = null;
+        Statement statement = null;
+        int dormitoryNumber = 0;
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT dormitory.Number FROM dormitory JOIN " +
+                    "(SELECT ID_Dormitory FROM block JOIN" +
+                    "(SELECT ID_Block FROM room JOIN student ON student.ID_Room = room.ID_Room WHERE ID_Student = %d) as blockID " +
+                    "ON block.ID_Block = blockID.ID_Block) as dormitoryID " +
+                    "ON dormitory.ID_Dormitory = dormitoryID.ID_Dormitory", studentId));
+            resultSet.next();
+            dormitoryNumber = resultSet.getInt("Number");
+        }
+        catch (NamingException ex) { int i = 1; }
+        catch (SQLException ex) { int i = 1; }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return dormitoryNumber;
+    }
+
     public ArrayList<Student> readAll() {
         Connection connection = null;
         Statement statement = null;
@@ -168,7 +235,7 @@ public class StudentRepository {
             statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus " +
-                    "ON Student.ID_Status = StudentStatus.ID_Status Where StatusName = '%s'", status));
+                    "ON Student.ID_Status = StudentStatus.ID_Status Where StatusName = '%s' ORDER BY LastName ASC", status));
             while (resultSet.next()) {
                 Student student = new Student();
                 student.setStudentId(resultSet.getInt("ID_Student"));
@@ -232,6 +299,8 @@ public class StudentRepository {
         }
         return students;
     }
+
+
 
     public void updateStatus(int studentId, StudentStatus status) {
         Connection connection = null;
