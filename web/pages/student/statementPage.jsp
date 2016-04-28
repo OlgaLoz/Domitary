@@ -64,7 +64,7 @@
                             <input type="text" name="firstname" id="firstname" required class="form-control input-lg" placeholder="Имя" tabindex="4">
                         </div>
                         <div class="col-xs-6">
-                            <input type="text" name="midname" id="midname" required class="form-control input-lg" placeholder="Отчество" tabindex="5">
+                            <input type="text" name="midname" id="midname" class="form-control input-lg" placeholder="Отчество" tabindex="5">
                         </div>
                     </div>
                     <br/>
