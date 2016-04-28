@@ -14,7 +14,7 @@ import java.util.List;
 public class ExcelGenerationService {
 
     private static StudentRepository studentRepository = new StudentRepository();
-    private static String TEMPLATES_PATH = "documentTemplates/";
+    private static String OUTPUT_DOCUMENTS_PATH = "web/files/";
 
     public static void createStudentsSheetsByStatuses(String outputFileName, List<StudentStatus> statuses) throws Exception {
         FileOutputStream os = null;
@@ -39,6 +39,11 @@ public class ExcelGenerationService {
                     cell.setCellValue(names[i]);
                 }
                 for (Student student : students) {
+
+                    int roomNumber = studentRepository.getRoomNumberByStudentId(student.getStudentId());
+                    int blockNumber = studentRepository.getBlockNumberByStudentId(student.getStudentId());
+                    int dormitoryNumber = studentRepository.getDormitoryNumberByStudentId(student.getStudentId());
+
                     row = sheet.createRow(rowNumber);
                     cell = row.createCell(0);
                     cell.setCellValue(rowNumber);
@@ -51,11 +56,14 @@ public class ExcelGenerationService {
                     cell = row.createCell(4);
                     cell.setCellValue(student.getGroupNumber());
                     cell = row.createCell(5);
-                    cell.setCellValue("room");
+                    if (roomNumber == 0) { cell.setCellValue(""); }
+                    else { cell.setCellValue(roomNumber); }
                     cell = row.createCell(6);
-                    cell.setCellValue("block");
+                    if (blockNumber == 0) { cell.setCellValue(""); }
+                    else { cell.setCellValue(blockNumber); }
                     cell = row.createCell(7);
-                    cell.setCellValue("dormitory");
+                    if (dormitoryNumber == 0) { cell.setCellValue(""); }
+                    else { cell.setCellValue(dormitoryNumber); }
                     cell = row.createCell(8);
                     cell.setCellStyle(dateStyle);
                     Date date = student.getDateOfSettlement();
@@ -67,7 +75,11 @@ public class ExcelGenerationService {
                     sheet.autoSizeColumn(i);
                 }
             }
-            os = new FileOutputStream(new File(TEMPLATES_PATH + outputFileName));
+            File dir = new File(OUTPUT_DOCUMENTS_PATH);
+            if (!dir.exists()){
+                dir.mkdir();
+            }
+            os = new FileOutputStream(new File(OUTPUT_DOCUMENTS_PATH + outputFileName));
             book.write(os);
 
         } finally {

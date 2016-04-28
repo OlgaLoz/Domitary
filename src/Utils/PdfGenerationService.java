@@ -4,12 +4,14 @@ import Model.Statement;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 public class PdfGenerationService {
 
     private static String TEMPLATES_PATH = "documentTemplates/";
+    private static String OUTPUT_DOCUMENTS_PATH = "web/files/";
     private static String TPL_STATEMENT = "templateStatement.pdf";
     private static String TPL_CONTRACT = "templateContract.pdf";
     private static int FONT_SIZE_SMALL = 10;
@@ -158,7 +160,13 @@ public class PdfGenerationService {
 
     public static void createStudentStatement(Statement statement, String outputFileName) throws Exception {
         PdfReader reader = new PdfReader(new FileInputStream(TEMPLATES_PATH + TPL_STATEMENT));
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(TEMPLATES_PATH + outputFileName));
+
+        File dir = new File(OUTPUT_DOCUMENTS_PATH);
+        if (!dir.exists()){
+            dir.mkdir();
+        }
+
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(OUTPUT_DOCUMENTS_PATH + outputFileName));
 
         PdfContentByte stream = stamper.getOverContent(1);
         stream.beginText();
