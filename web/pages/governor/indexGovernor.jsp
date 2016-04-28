@@ -40,15 +40,38 @@
                     <li>
                         <form action="/Action/GetAllSettledStudents" method="post">
                             <a href="#">
-                                <input type="submit" value="Заселенные" class="btn btn-link gray-button ">
+                                <input type="submit" value="Прошли доктора" class="btn btn-link gray-button ">
+                                <input type="hidden" name="status" value="BodyCheckPassed"/>
                             </a>
                         </form>
-                    </li>
-                    <li>
+                        <form action="/Action/Download" method="post">
+                            <a href="#">
+                                <input type="submit" value="Прошли доктора(xlsx)" class="btn btn-link gray-button ">
+                                <input type="hidden" value="BodyCheckPassed" name="student_status">
+                            </a>
+                        </form>
+                        <form action="/Action/GetAllByStatusGovernor" method="post">
+                            <a href="#">
+                                <input type="submit" value="Заселены" class="btn btn-link gray-button ">
+                                <input type="hidden" name="status" value="Settled"/>
+                            </a>
+                        </form>
                         <form action="/Action/Download" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселенные(xlsx)" class="btn btn-link gray-button ">
                                 <input type="hidden" value="Settled" name="student_status">
+                            </a>
+                        </form>
+                        <form action="/Action/GetAllByStatusGovernor" method="post">
+                            <a href="#">
+                                <input type="submit" value="Не заселены" class="btn btn-link gray-button ">
+                                <input type="hidden" name="status" value="NotSettled"/>
+                            </a>
+                        </form>
+                        <form action="/Action/Download" method="post">
+                            <a href="#">
+                                <input type="submit" value="Не заселенные(xlsx)" class="btn btn-link gray-button ">
+                                <input type="hidden" value="NotSettled" name="student_status">
                             </a>
                         </form>
                     </li>
