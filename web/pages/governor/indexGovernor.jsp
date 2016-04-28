@@ -38,9 +38,11 @@
                         </span>
                     </li>
                     <li>
-                        <a href="#">
-                            <input type="submit" value="Заселенные" class="btn btn-link gray-button ">
-                        </a>
+                        <form action="/Action/GetAllSettledStudents" method="post">
+                            <a href="#">
+                                <input type="submit" value="Заселенные" class="btn btn-link gray-button ">
+                            </a>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -88,8 +90,10 @@
                                     <td><b>Фамилия</b></td>
                                     <td><b>Номер группы</b></td>
                                     <td> <span class="glyphicon glyphicon-duplicate"></span></td>
-                                    <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
-                                    <td> <span class="glyphicon glyphicon-remove" style="color: red"></span></td>
+                                    <c:if test = "${isSettled == 'no'}">
+                                        <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
+                                        <td> <span class="glyphicon glyphicon-remove" style="color: red"></span></td>
+                                    </c:if>
                                 </tr>
                                 <c:forEach  var="data" items="${students}" >
                                     <tr>
@@ -108,16 +112,18 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" name ="uncheckers" value="${data.getStudentId()}"></label>
-                                            </div>
-                                        </td>
+                                        <c:if test = "${isSettled == 'no'}">
+                                            <td>
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox" name ="uncheckers" value="${data.getStudentId()}"></label>
+                                                </div>
+                                            </td>
+                                        </c:if>
                                     </tr>
                                 </c:forEach>
                             </table>

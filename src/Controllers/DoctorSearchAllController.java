@@ -1,8 +1,10 @@
 package Controllers;
 
 import Interfaces.IController;
+import Model.Dormitory;
 import Model.Student;
 import Model.StudentStatus;
+import Repositories.DormitoryRepository;
 import Repositories.StudentRepository;
 import Utils.Pages;
 

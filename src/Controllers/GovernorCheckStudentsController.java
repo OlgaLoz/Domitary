@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class GovernorCheckStudentsController implements IController {
 
     private static final String STUDENTS_ATTRIBUTE = "students";
+    private static final String SETTLED_ATTRIBUTE = "isSettled";
 
     @Override
     public String run(HttpServletRequest request) {
@@ -49,6 +50,7 @@ public class GovernorCheckStudentsController implements IController {
         }
 
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
+        request.getSession().setAttribute(SETTLED_ATTRIBUTE, "no");
         return Pages.HOME_GOVERNOR.getPagePath();
     }
 }
