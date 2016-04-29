@@ -37,13 +37,10 @@
                             </span>
                     </li>
                     <li>
-                        <a href=statementPage.jsp>Заявление на заселение</a>
+                        <a href=documentsPage.jsp>Документы на заселение</a>
                     </li>
                     <li>
                         <a href=orderPage.jsp>Ордер</a>
-                    </li>
-                    <li>
-                        <a href=contractPage.jsp>Договор</a>
                     </li>
                     <li>
                         <a href="#">Списки на заселение</a>
@@ -68,7 +65,7 @@
                             </a>
                         </div>
                         <div class="col-lg-10">
-                            <div class="row"> <button class="btn btn-info col-lg-5" data-toggle="collapse" data-target="#hide-me">Информация обо мне</button></div>
+                            <div class="row"> <button class="btn btn-info col-lg-6" data-toggle="collapse" data-target="#hide-me">Информация обо мне</button></div>
 
                             <div id="hide-me" class="collapse in">
                                 <div class="row"></div>
@@ -76,7 +73,7 @@
                                     <div class="col-lg-2">
                                         <h3> Текущий статус:</h3>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-4">
                                         <h2 id="status"> ${student_status}</h2>
                                         <input type="hidden" id="hideStatus" value="${student_status}" />
                                     </div>

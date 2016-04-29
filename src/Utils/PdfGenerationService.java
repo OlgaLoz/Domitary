@@ -1,6 +1,8 @@
 package Utils;
 
+import Model.Contract;
 import Model.Statement;
+import Model.Student;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
@@ -17,7 +19,7 @@ public class PdfGenerationService {
     private static String TPL_CONTRACT = "/templateContract.pdf";
     private static int FONT_SIZE_SMALL = 10;
     private static int FONT_SIZE_NORMAL = 14;
-    private static int FONT_SIZE_MEDIUM = 16;
+    private static int FONT_SIZE_BIG = 16;
     private static int HEAD_LINE_OFFSET = 273;
     private static int READ_LINE_OFFSET = 55;
     private static int FOOT_LINE_OFFSET = 370;
@@ -26,6 +28,7 @@ public class PdfGenerationService {
     private static int VERTICAL_SPACE_MEDIUM = 40;
     private static int VERTICAL_SPACE_BIG = 80;
     private static int HEIGHT_NORMAL_LINE = FONT_SIZE_NORMAL + VERTICAL_SPACE_TINY + 2;
+    private static int HEIGHT_SMALL_LINE = FONT_SIZE_SMALL + 1;
 
     synchronized public static void createStatementTemplate(String initialFolder) throws Exception {
         Document document = new Document();
@@ -33,7 +36,7 @@ public class PdfGenerationService {
         try {
             BaseFont bf = BaseFont.createFont(initialFolder + TEMPLATES_PATH + "fonts/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font font = new Font(bf, FONT_SIZE_NORMAL);
-            Font font5 = new Font(bf, FONT_SIZE_MEDIUM);
+            Font font5 = new Font(bf, FONT_SIZE_BIG);
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(initialFolder + TEMPLATES_PATH + TPL_STATEMENT));
             document.open();
 
@@ -71,7 +74,7 @@ public class PdfGenerationService {
             headLine.setFont(font);
             headLine.setFirstLineIndent(HEAD_LINE_OFFSET);
             headLine.add(new Chunk(getEmptyLine(71)).setUnderline(1f, -2f));
-            headLine.setSpacingAfter(FONT_SIZE_MEDIUM);
+            headLine.setSpacingAfter(FONT_SIZE_BIG);
             document.add(headLine);
 
             Paragraph bodyParagraph = new Paragraph("Заявление", font5);
@@ -248,6 +251,104 @@ public class PdfGenerationService {
         verticalPos -= 56;
         stream.setTextMatrix(pageWidth - 145, verticalPos);
         stream.showText(statement.getFillingDate());
+
+        stream.endText();
+        stamper.setFullCompression();
+        stamper.close();
+    }
+
+    public static void createStudentContract(String initialFolder, String outputFileName, Contract contract, Student student) throws Exception {
+        PdfReader reader = new PdfReader(new FileInputStream(initialFolder + TEMPLATES_PATH + TPL_CONTRACT));
+
+        File dir = new File(initialFolder + OUTPUT_DOCUMENTS_PATH);
+        if (!dir.exists()){
+            dir.mkdir();
+        }
+
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(initialFolder + OUTPUT_DOCUMENTS_PATH + outputFileName));
+
+        PdfContentByte stream = stamper.getOverContent(1);
+        stream.beginText();
+        stream.setColorFill(BaseColor.BLUE);
+
+        BaseFont font = BaseFont.createFont(initialFolder + TEMPLATES_PATH + "fonts/timesi.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
+        float pageWidth = reader.getPageSize(1).getWidth();
+        float pageHeight = reader.getPageSize(1).getHeight();
+        stream.setFontAndSize(font, FONT_SIZE_NORMAL);
+
+        float verticalPos = pageHeight - 60;
+
+        stream.setTextMatrix(HEAD_LINE_OFFSET + 70, verticalPos);
+        stream.showText(Integer.toString(student.getStudentId()));
+
+        verticalPos -= VERTICAL_SPACE_MEDIUM + 15;
+        stream.setTextMatrix(pageWidth - 135, verticalPos);
+        stream.showText(contract.getFillingDate());
+
+        stream.setFontAndSize(font, FONT_SIZE_SMALL);
+        verticalPos -= VERTICAL_SPACE_MEDIUM + 9;
+        stream.setTextMatrix(READ_LINE_OFFSET + 120, verticalPos);
+        stream.showText("Афанасьева Игоря Михайловича");
+
+        verticalPos -= 2 * HEIGHT_SMALL_LINE + 1;
+        stream.setTextMatrix(READ_LINE_OFFSET + 150, verticalPos);
+        stream.showText(student.getLastName());
+
+        int horizontalPos = 55;
+        verticalPos -= 2 * HEIGHT_SMALL_LINE + 1;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(student.getFirstName() + "  " + student.getMidName());
+
+        verticalPos -= HEIGHT_SMALL_LINE + 5;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(contract.getFaculty());
+
+        verticalPos -= 2 * HEIGHT_SMALL_LINE + 1;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(contract.getChair());
+
+        String prorector = "Прохоров А.И.";
+        String studentTownChief = "Городецкий В.Н.";
+        String bookKeeper = "Мухова П.З.";
+        String legalAdviser = "Синицын Э.В.";
+
+        stream = stamper.getOverContent(2);
+        stream.setColorFill(BaseColor.BLUE);
+        stream.setFontAndSize(font, FONT_SIZE_SMALL);
+
+        int localOffset = 135;
+        verticalPos = 234;
+        horizontalPos = 185;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(prorector);
+
+        stream.setTextMatrix(horizontalPos + localOffset, verticalPos);
+        stream.showText(student.getLastName() + "  " + student.getFirstName());
+
+        verticalPos -= 3 * HEIGHT_SMALL_LINE;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(studentTownChief);
+
+        stream.setTextMatrix(horizontalPos + localOffset, verticalPos + 2);
+        stream.showText(student.getMidName());
+
+        verticalPos -= 3 * HEIGHT_SMALL_LINE + 1;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(bookKeeper);
+
+        stream.setTextMatrix(horizontalPos + localOffset, verticalPos + 12);
+        stream.showText("г. " + contract.getCity());
+
+        verticalPos -= 3 * HEIGHT_SMALL_LINE;
+        stream.setTextMatrix(horizontalPos, verticalPos);
+        stream.showText(legalAdviser);
+
+        stream.setTextMatrix(horizontalPos + localOffset, verticalPos + 12);
+        stream.showText("ул. " + contract.getStreet() + ",  д. " + contract.getHouse() + ",  кв. " + contract.getFlat());
+
+        stream.setTextMatrix(horizontalPos + localOffset, verticalPos - 11);
+        stream.showText(contract.getPassport() + ",  " + contract.getPassportDateOfIssue());
 
         stream.endText();
         stamper.setFullCompression();

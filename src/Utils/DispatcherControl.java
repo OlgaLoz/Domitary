@@ -15,6 +15,7 @@ public class DispatcherControl {
         controllers.put("AUTHORIZATION", new AuthorizationController());
         controllers.put("REGISTRATION", new RegistrationController());
         controllers.put("LOGOUT", new LogoutController());
+        controllers.put("STUDENTDOCUMENTS", new StatementAndContractController());
         controllers.put("FINDUSERSTODOCTOR", new DoctorSearchAllController());
         controllers.put("FINDSINGLEUSERTODOCTOR", new DoctorSearchByLastNameController());
         controllers.put("CHECKSTUDENTSBYDOCTOR", new DoctorCheckStudentsController());
@@ -26,7 +27,6 @@ public class DispatcherControl {
         controllers.put("SEARCHBYLASTNAMETOGOVERNOR", new GovernorSearchByLastNameController());
         controllers.put("CHECKSTUDENTSBYGOVERNOR", new GovernorCheckStudentsController());
         controllers.put("GETALLSETTLEDSTUDENTS", new GovernorGetAllSettledStudentsController());
-        controllers.put("STATEMENT", new StatementController());
         controllers.put("DELETEDORMITORY",new DeleteDormitoryController());
         controllers.put("ADDDORMITORY",new AddDormitoryController());
         controllers.put("DELETEBLOCK",new DeleteBlockController());
