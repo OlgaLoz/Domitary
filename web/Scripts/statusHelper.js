@@ -2,7 +2,7 @@ $(document).ready(function(){
     var hidenStatus = $('#hideStatus').val();
     switch (hidenStatus) {
         case 'Default':
-            $('#status').text('Никто');
+            $('#status').text('Документы на заселение не поданы');
             break;
         case 'Candidate':
             $('#status').text('Кандидат');

@@ -15,7 +15,6 @@ public class DispatcherControl {
         controllers.put("AUTHORIZATION", new AuthorizationController());
         controllers.put("REGISTRATION", new RegistrationController());
         controllers.put("LOGOUT", new LogoutController());
-        controllers.put("GETSETTLERS", new GetSettlersController());
         controllers.put("FINDUSERSTODOCTOR", new DoctorSearchAllController());
         controllers.put("FINDSINGLEUSERTODOCTOR", new DoctorSearchByLastNameController());
         controllers.put("CHECKSTUDENTSBYDOCTOR", new DoctorCheckStudentsController());

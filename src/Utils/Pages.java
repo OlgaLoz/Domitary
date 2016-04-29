@@ -7,7 +7,6 @@ public enum Pages {
     HOME_GOVERNOR("/pages/governor/indexGovernor.jsp"),
     HOME_DEANERY("/pages/deanery/indexDeaneryWorker.jsp"),
     HOME_ADMIN("/pages/admin/indexAdmin.jsp"),
-    HOME_SETTLERS("/settlerListPage.jsp"),
     DISTR_CANDIDATES("/pages/deanery/addToSettlerListPage.jsp"),
     EDIT_DORMITORY("/pages/admin/editDormitory.jsp"),
     EDIT_BLOCK("/pages/admin/editBlock.jsp");

@@ -46,7 +46,7 @@
                         <a href=contractPage.jsp>Договор</a>
                     </li>
                     <li>
-                        <a href=http://localhost:8080/Action/GetSettlers>Списки на заселение</a>
+                        <a href="#">Списки на заселение</a>
                     </li>
                     <li>
                         <a href="#">Списки заселенных</a>
