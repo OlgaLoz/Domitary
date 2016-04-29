@@ -57,6 +57,42 @@ public class DormitoryRepositoryTest {
         Assert.assertEquals(updateAddress, actualDormitory.getAddress());
     }
 
+    @Test
+    public void testAddAllReadDelete() throws Exception {
+
+        Dormitory expectedDormitory1 = new Dormitory();
+        expectedDormitory1.setDormitoryNumber(8);
+        expectedDormitory1.setAddress("qwerty");
+        expectedDormitory1.setMaxBlocksCount(20);
+        expectedDormitory1.setFreeBlocksCount(20);
+
+        Dormitory expectedDormitory2 = new Dormitory();
+        expectedDormitory2.setDormitoryNumber(9);
+        expectedDormitory2.setAddress("asdfgh");
+        expectedDormitory2.setMaxBlocksCount(10);
+        expectedDormitory2.setFreeBlocksCount(10);
+
+        Dormitory[] dormitories = new Dormitory[2];
+        dormitories[0] = expectedDormitory1;
+        dormitories[1] = expectedDormitory2;
+
+        DormitoryRepository.addAll(dormitories);
+
+        Dormitory actualDormitory1 = DormitoryRepository.read(expectedDormitory1.getDormitoryId());
+        Dormitory actualDormitory2 = DormitoryRepository.read(expectedDormitory2.getDormitoryId());
+        DormitoryRepository.delete(expectedDormitory1.getDormitoryId());
+        DormitoryRepository.delete(expectedDormitory2.getDormitoryId());
+
+        Assert.assertEquals(expectedDormitory1.getDormitoryNumber(), actualDormitory1.getDormitoryNumber());
+        Assert.assertEquals(expectedDormitory1.getAddress(), actualDormitory1.getAddress());
+        Assert.assertEquals(expectedDormitory1.getFreeBlocksCount(), actualDormitory1.getFreeBlocksCount());
+        Assert.assertEquals(expectedDormitory1.getMaxBlocksCount(), actualDormitory1.getMaxBlocksCount());
+        Assert.assertEquals(expectedDormitory2.getDormitoryNumber(), actualDormitory2.getDormitoryNumber());
+        Assert.assertEquals(expectedDormitory2.getAddress(), actualDormitory2.getAddress());
+        Assert.assertEquals(expectedDormitory2.getFreeBlocksCount(), actualDormitory2.getFreeBlocksCount());
+        Assert.assertEquals(expectedDormitory2.getMaxBlocksCount(), actualDormitory2.getMaxBlocksCount());
+    }
+
     @Before
     public void createConnection() {
         DatabaseUtils.setInstance(new TestDatabaseUtils());
