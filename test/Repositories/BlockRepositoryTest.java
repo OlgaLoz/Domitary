@@ -7,9 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 public class BlockRepositoryTest {
 
     @Test
@@ -21,11 +18,9 @@ public class BlockRepositoryTest {
         expectedBlock.setDormitoryId(expectedDormitoryId);
         expectedBlock.setBlockNumber(expectedBlockNumber);
 
-        BlockRepository br = new BlockRepository();
-        int last_inserted_id = br.create(expectedBlock);
-        Block actualBlock = br.read(last_inserted_id);
-
-        br.delete(last_inserted_id);
+        int last_inserted_id = BlockRepository.create(expectedBlock);
+        Block actualBlock = BlockRepository.read(last_inserted_id);
+        BlockRepository.delete(last_inserted_id);
 
         Assert.assertEquals(expectedDormitoryId, actualBlock.getDormitoryId());
         Assert.assertEquals(expectedBlockNumber, actualBlock.getBlockNumber());
@@ -39,13 +34,12 @@ public class BlockRepositoryTest {
         expectedBlock.setDormitoryId(expectedDormitoryId);
         expectedBlock.setBlockNumber(expectedBlockNumber);
 
-        BlockRepository br = new BlockRepository();
-        int last_inserted_id = br.create(expectedBlock);
+        int last_inserted_id = BlockRepository.create(expectedBlock);
         expectedBlock.setBlockNumber(updateValue);
-        br.update(expectedBlock);
+        BlockRepository.update(expectedBlock);
 
-        Block actualBlock = br.read(last_inserted_id);
-        br.delete(last_inserted_id);
+        Block actualBlock = BlockRepository.read(last_inserted_id);
+        BlockRepository.delete(last_inserted_id);
 
         Assert.assertEquals(expectedDormitoryId, actualBlock.getDormitoryId());
         Assert.assertEquals(updateValue, actualBlock.getBlockNumber());

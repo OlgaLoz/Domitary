@@ -17,10 +17,7 @@ import java.text.SimpleDateFormat;
 
 public class RegistrationController implements IController {
 
-	private UserRepository userRepository = new UserRepository();
-	private StudentRepository studentRepository = new StudentRepository();
 	private PasswordEncryptionService encryptionService = new PasswordEncryptionService();
-
 	private static final String LOGIN_ATTRIBUTE = "login";
 	private static final String FIRSTNAME_ATTRIBUTE = "first_name";
 	private static final String MIDNAME_ATTRIBUTE = "mid_name";
@@ -38,7 +35,7 @@ public class RegistrationController implements IController {
 			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=4";
 		}
 
-		User user = userRepository.getUserByLogin(login);
+		User user = UserRepository.getUserByLogin(login);
 
 		if (user != null){
 			return Pages.HOME_GUEST.getPagePath() + "?error=registration&state=1";
@@ -90,7 +87,7 @@ public class RegistrationController implements IController {
 
 		user = new User(login, encryptedPassword, Role.Student);
 		user.setSalt(salt);
-		userRepository.create(user);
+		UserRepository.create(user);
 
 		Student student = new Student();
 		student.setFirstName(firstName);
@@ -99,7 +96,7 @@ public class RegistrationController implements IController {
 		student.setDateOfBirth(dateOfBirth);
 		student.setGroupNumber(group);
 		student.setUserId(user.getUserId());
-		studentRepository.create(student);
+		StudentRepository.create(student);
 
 		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
 		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());

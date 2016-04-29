@@ -15,8 +15,7 @@ public class GovernorSearchByLastNameController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
-        ArrayList<Student> students = repository.readAllByLastName(request.getParameter("lastNameInput"));
+        ArrayList<Student> students = StudentRepository.readAllByLastName(request.getParameter("lastNameInput"));
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
         request.getSession().setAttribute(SETTLED_ATTRIBUTE, "no");
         return Pages.HOME_GOVERNOR.getPagePath();

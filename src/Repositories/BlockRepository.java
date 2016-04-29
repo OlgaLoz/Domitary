@@ -1,6 +1,5 @@
 package Repositories;
 
-
 import Model.Block;
 import Utils.DatabaseUtils;
 
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 
 public class BlockRepository {
 
-    public int create(Block block) {
+    public static int create(Block block) {
 
         Connection connection = null;
         Statement statement = null;
@@ -38,7 +37,7 @@ public class BlockRepository {
         return block.getBlockId();
     }
 
-    public Block read(int id) {
+    public static Block read(int id) {
         Connection connection = null;
         Statement statement = null;
         Block block = new Block();
@@ -67,7 +66,7 @@ public class BlockRepository {
         return block;
     }
 
-    public void update(Block item) {
+    public static void update(Block item) {
         Connection connection = null;
         Statement statement = null;
 
@@ -89,7 +88,7 @@ public class BlockRepository {
         }
     }
 
-    public void delete(int id) {
+    public static void delete(int id) {
         Connection connection = null;
         Statement statement = null;
 
@@ -106,7 +105,7 @@ public class BlockRepository {
         }
     }
 
-    public void deleteAll(ArrayList<Integer> idlist) {
+    public static void deleteAll(ArrayList<Integer> idlist) {
         Connection connection = null;
         Statement statement = null;
 
@@ -126,7 +125,7 @@ public class BlockRepository {
         }
     }
 
-    public void deleteByDormitoryId(int dormitoryId){
+    public static void deleteByDormitoryId(int dormitoryId){
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet;
@@ -158,7 +157,7 @@ public class BlockRepository {
         deleteAll(idList);
     }
 
-    public void addAll(Block[] blocks) {
+    public static void addAll(Block[] blocks) {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet;
@@ -182,7 +181,7 @@ public class BlockRepository {
         }
     }
 
-    public ArrayList<Block> readAll() {
+    public static ArrayList<Block> readAll() {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Block> list = new ArrayList<Block>();
@@ -214,7 +213,7 @@ public class BlockRepository {
         return list;
     }
 
-    public ArrayList<Block> readAllByDormitoryId(int dormitoryId) {
+    public static ArrayList<Block> readAllByDormitoryId(int dormitoryId) {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Block> blocks = new ArrayList<Block>();

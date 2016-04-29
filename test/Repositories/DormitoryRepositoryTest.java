@@ -1,15 +1,11 @@
 package Repositories;
 
 import Model.Dormitory;
-import Model.Room;
 import Utils.DatabaseUtils;
 import Utils.TestDatabaseUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 public class DormitoryRepositoryTest {
 
@@ -25,11 +21,10 @@ public class DormitoryRepositoryTest {
         expectedDormitory.setMaxBlocksCount(expectedMaxBlocksCount);
         expectedDormitory.setFreeBlocksCount(expectedFreeBlocksCount);
 
-        DormitoryRepository dr = new DormitoryRepository();
-        int last_inserted_id = dr.create(expectedDormitory);
-        Dormitory actualDormitory = dr.read(last_inserted_id);
+        int last_inserted_id = DormitoryRepository.create(expectedDormitory);
+        Dormitory actualDormitory = DormitoryRepository.read(last_inserted_id);
 
-        dr.delete(last_inserted_id);
+        DormitoryRepository.delete(last_inserted_id);
 
         Assert.assertEquals(expectedDormitoryNumber, actualDormitory.getDormitoryNumber());
         Assert.assertEquals(expectedDormitoryAddress, actualDormitory.getAddress());
@@ -48,14 +43,13 @@ public class DormitoryRepositoryTest {
         expectedDormitory.setMaxBlocksCount(expectedMaxBlocksCount);
         expectedDormitory.setFreeBlocksCount(expectedFreeBlocksCount);
 
-        DormitoryRepository dr = new DormitoryRepository();
-        int last_inserted_id = dr.create(expectedDormitory);
+        int last_inserted_id = DormitoryRepository.create(expectedDormitory);
         expectedDormitory.setAddress(updateAddress);
         expectedDormitory.setFreeBlocksCount(updateFreeBlocksCount);
-        dr.update(expectedDormitory);
+        DormitoryRepository.update(expectedDormitory);
 
-        Dormitory actualDormitory = dr.read(last_inserted_id);
-        dr.delete(last_inserted_id);
+        Dormitory actualDormitory = DormitoryRepository.read(last_inserted_id);
+        DormitoryRepository.delete(last_inserted_id);
 
         Assert.assertEquals(expectedDormitoryNumber, actualDormitory.getDormitoryNumber());
         Assert.assertEquals(expectedMaxBlocksCount, actualDormitory.getMaxBlocksCount());

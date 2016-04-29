@@ -1,11 +1,8 @@
 package Controllers;
 
-
 import Interfaces.IController;
-import Model.Room;
 import Model.Student;
 import Model.StudentStatus;
-import Repositories.RoomRepository;
 import Repositories.StudentRepository;
 import Utils.Pages;
 
@@ -17,7 +14,6 @@ public class DoctorCheckStudentsController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
 
         ArrayList<Student> students = (ArrayList<Student>)request.getSession().getAttribute(STUDENTS_ATTRIBUTE);
         String[] positiveResults = request.getParameterValues("checkers");
@@ -28,7 +24,7 @@ public class DoctorCheckStudentsController implements IController {
             for (int i = 0; i < positiveResults.length; i++ ) {
                 for( int j = 0; j < studentsCount; j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(positiveResults[i])){
-                        repository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.BodyCheckPassed);
+                        StudentRepository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.BodyCheckPassed);
                         students.remove(j);
                         studentsCount--;
                         break;
@@ -41,7 +37,7 @@ public class DoctorCheckStudentsController implements IController {
             for (int i = 0; i < negativeResults.length; i++ ) {
                 for( int j = 0; j < studentsCount; j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(negativeResults[i])){
-                        repository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.BodyCheckNotPassed);
+                        StudentRepository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.BodyCheckNotPassed);
                         students.remove(j);
                         studentsCount--;
                         break;

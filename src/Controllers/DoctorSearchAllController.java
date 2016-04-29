@@ -1,10 +1,8 @@
 package Controllers;
 
 import Interfaces.IController;
-import Model.Dormitory;
 import Model.Student;
 import Model.StudentStatus;
-import Repositories.DormitoryRepository;
 import Repositories.StudentRepository;
 import Utils.Pages;
 
@@ -17,8 +15,7 @@ public class DoctorSearchAllController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
-        ArrayList<Student> students = repository.readAllByStatus(StudentStatus.DeaneryPassed);
+        ArrayList<Student> students = StudentRepository.readAllByStatus(StudentStatus.DeaneryPassed);
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
         return Pages.HOME_DOCTOR.getPagePath();
     }

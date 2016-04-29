@@ -1,6 +1,5 @@
 package Controllers;
 
-
 import Interfaces.IController;
 import Model.Student;
 import Repositories.StudentRepository;
@@ -15,10 +14,8 @@ public class DeaneryFindByLastNameController implements IController{
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
-        ArrayList<Student> students = repository.readAllByLastName(request.getParameter("lastNameInput"));
+        ArrayList<Student> students = StudentRepository.readAllByLastName(request.getParameter("lastNameInput"));
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
-
         return Pages.HOME_DEANERY.getPagePath();
     }
 }

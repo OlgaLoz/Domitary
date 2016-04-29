@@ -17,9 +17,8 @@ public class GovernorGetAllSettledStudentsController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
         String studentStatus = request.getParameter(STUDENTS_STATUS);
-        ArrayList<Student> students = repository.readAllByStatus(StudentStatus.valueOf(studentStatus));
+        ArrayList<Student> students = StudentRepository.readAllByStatus(StudentStatus.valueOf(studentStatus));
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
         request.getSession().setAttribute(SETTLED_ATTRIBUTE, "yes");
         return Pages.HOME_DOCTOR.getPagePath();

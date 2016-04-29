@@ -35,10 +35,9 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        int last_inserted_id = sr.create(expectedStudent);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(last_inserted_id);
+        int last_inserted_id = StudentRepository.create(expectedStudent);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(last_inserted_id);
 
         Assert.assertEquals(last_inserted_id, actualStudent.getStudentId());
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
@@ -77,10 +76,9 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        Student actualStudent = sr.getStudentByUserId(expectedStudent.getUserId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        Student actualStudent = StudentRepository.getStudentByUserId(expectedStudent.getUserId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -125,13 +123,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setGroupNumber(expectedGroupNumber);
         expectedStudent2.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAll();
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAll();
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         Assert.assertTrue(actualStudents.size() >= 2);
     }
@@ -167,13 +164,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setUserId(expectedUserId);
         expectedStudents.add(expectedStudent2);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAll();
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAll();
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         for(Student actStudent:actualStudents){
             for(Student expStudent:expectedStudents){
@@ -221,13 +217,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setStudentStatus(expectedStatus);
         expectedStudent2.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAllByStatus(expectedStatus);
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAllByStatus(expectedStatus);
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         Assert.assertTrue(actualStudents.size() >= 2);
     }
@@ -266,13 +261,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setUserId(expectedUserId);
         expectedStudents.add(expectedStudent2);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAllByStatus(expectedStatus);
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAllByStatus(expectedStatus);
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         for(Student actStudent:actualStudents){
             for(Student expStudent:expectedStudents){
@@ -320,13 +314,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setStudentStatus(expectedStatus);
         expectedStudent2.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAllByStatus(expectedStatus);
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAllByStatus(expectedStatus);
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         for(Student actStudent:actualStudents){
             Assert.assertEquals(expectedStatus, actStudent.getStudentStatus());
@@ -361,13 +354,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setGroupNumber(expectedGroupNumber);
         expectedStudent2.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAllByLastName(expectedLastName);
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAllByLastName(expectedLastName);
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         Assert.assertTrue(actualStudents.size() >= 2);
     }
@@ -403,13 +395,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setUserId(expectedUserId);
         expectedStudents.add(expectedStudent2);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAllByLastName(expectedLastName);
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAllByLastName(expectedLastName);
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         for(Student actStudent:actualStudents){
             for(Student expStudent:expectedStudents){
@@ -454,13 +445,12 @@ public class StudentRepositoryTest {
         expectedStudent2.setGroupNumber(expectedGroupNumber);
         expectedStudent2.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent1);
-        sr.create(expectedStudent2);
-        ArrayList<Student> actualStudents = sr.readAllByLastName(expectedLastName);
+        StudentRepository.create(expectedStudent1);
+        StudentRepository.create(expectedStudent2);
+        ArrayList<Student> actualStudents = StudentRepository.readAllByLastName(expectedLastName);
 
-        sr.delete(expectedStudent1.getStudentId());
-        sr.delete(expectedStudent2.getStudentId());
+        StudentRepository.delete(expectedStudent1.getStudentId());
+        StudentRepository.delete(expectedStudent2.getStudentId());
 
         for(Student actStudent:actualStudents){
             Assert.assertEquals(expectedLastName, actStudent.getLastName());
@@ -489,11 +479,10 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        sr.updateStatus(expectedStudent.getStudentId(), newExpectedStatus);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        StudentRepository.updateStatus(expectedStudent.getStudentId(), newExpectedStatus);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -532,11 +521,10 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        sr.updateStatement(expectedStudent.getStudentId(), newExpectedStatement);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        StudentRepository.updateStatement(expectedStudent.getStudentId(), newExpectedStatement);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -577,11 +565,10 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        sr.updateDateOfSettlement(expectedStudent.getStudentId(), dateOfSettlement);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        StudentRepository.updateDateOfSettlement(expectedStudent.getStudentId(), dateOfSettlement);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -620,11 +607,10 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        sr.updateOrder(expectedStudent.getStudentId(), newExpectedOrder);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        StudentRepository.updateOrder(expectedStudent.getStudentId(), newExpectedOrder);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -663,11 +649,10 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        sr.updateContract(expectedStudent.getStudentId(), newExpectedContract);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        StudentRepository.updateContract(expectedStudent.getStudentId(), newExpectedContract);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -706,11 +691,10 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        sr.create(expectedStudent);
-        sr.updateRoomId(expectedStudent.getStudentId(), newExpectedRoomId);
-        Student actualStudent = sr.read(expectedStudent.getStudentId());
-        sr.delete(expectedStudent.getStudentId());
+        StudentRepository.create(expectedStudent);
+        StudentRepository.updateRoomId(expectedStudent.getStudentId(), newExpectedRoomId);
+        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
+        StudentRepository.delete(expectedStudent.getStudentId());
 
         Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
         Assert.assertEquals(expectedMidName, actualStudent.getMidName());
@@ -747,10 +731,9 @@ public class StudentRepositoryTest {
         expectedStudent.setGroupNumber(expectedGroupNumber);
         expectedStudent.setUserId(expectedUserId);
 
-        StudentRepository sr = new StudentRepository();
-        int last_inserted_id = sr.create(expectedStudent);
-        sr.delete(last_inserted_id);
-        Student actualStudent = sr.read(last_inserted_id);
+        int last_inserted_id = StudentRepository.create(expectedStudent);
+        StudentRepository.delete(last_inserted_id);
+        Student actualStudent = StudentRepository.read(last_inserted_id);
 
         Assert.assertEquals(null, actualStudent);
     }

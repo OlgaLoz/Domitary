@@ -1,6 +1,5 @@
 package Controllers;
 
-
 import Interfaces.IController;
 import Model.Room;
 import Model.Student;
@@ -24,12 +23,10 @@ public class DeaneryCheckStudentsController implements IController {
         String student =request.getParameter(STUDENT);
         String room = request.getParameter(ROOM);
 
-        StudentRepository repository = new StudentRepository();
-        ArrayList<Student> students = repository.readAllByStatus(StudentStatus.Candidate);
+        ArrayList<Student> students = StudentRepository.readAllByStatus(StudentStatus.Candidate);
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
 
-        RoomRepository roomRepository = new RoomRepository();
-        ArrayList<Room> rooms = roomRepository.readAll();
+        ArrayList<Room> rooms = RoomRepository.readAll();
         request.getSession().setAttribute(ROOMS_ATTRIBUTE, rooms);
 
         if(student == null || room == null)
@@ -38,8 +35,8 @@ public class DeaneryCheckStudentsController implements IController {
         for( int j = 0; j < students.size(); j++) {
             Integer studentId  = students.get(j).getStudentId();
             if ( studentId == Integer.parseInt(student)){
-                repository.updateStatus(studentId,StudentStatus.DeaneryPassed);
-                repository.updateRoomId(studentId, Integer.parseInt(room));
+                StudentRepository.updateStatus(studentId,StudentStatus.DeaneryPassed);
+                StudentRepository.updateRoomId(studentId, Integer.parseInt(room));
                 students.remove(j);
                 break;
             }
@@ -50,7 +47,7 @@ public class DeaneryCheckStudentsController implements IController {
             Integer roomId  = rooms.get(i).getRoomId();
             if (roomId == Integer.parseInt(room)){
                 rooms.get(i).setFreePlacesCount(rooms.get(i).getFreePlacesCount() - 1);
-                roomRepository.updateFreePlacesCount(roomId, rooms.get(i).getFreePlacesCount());
+                RoomRepository.updateFreePlacesCount(roomId, rooms.get(i).getFreePlacesCount());
                 if (rooms.get(i).getFreePlacesCount() == 0){
                     rooms.remove(i);
                 }

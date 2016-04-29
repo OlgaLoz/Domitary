@@ -14,8 +14,7 @@ public class DeaneryFindAllController implements IController{
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
-        ArrayList<Student> students = repository.readAll();
+        ArrayList<Student> students = StudentRepository.readAll();
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
         return Pages.HOME_DEANERY.getPagePath();
     }

@@ -17,8 +17,7 @@ public class AddDormitoryController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        DormitoryRepository repository = new DormitoryRepository();
-        ArrayList<Dormitory> dormitories = repository.readAll();
+        ArrayList<Dormitory> dormitories = DormitoryRepository.readAll();
         Dormitory dormitory = new Dormitory();
         dormitory.setAddress(request.getParameter(ADDRESS));
         dormitory.setDormitoryNumber(Integer.parseInt(request.getParameter(DORMITORY_NUMBER)));
@@ -26,7 +25,7 @@ public class AddDormitoryController implements IController {
         dormitory.setFreeBlocksCount(Integer.parseInt(request.getParameter(MAX_BLOCK_COUNT)));
 
         dormitories.add(dormitory);
-        repository.create(dormitory);
+        DormitoryRepository.create(dormitory);
 
         request.getSession().setAttribute(DORMITORIES, dormitories);
 

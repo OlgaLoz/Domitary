@@ -7,14 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 public class RoomRepositoryTest {
 
     @Test
     public void testCreateReadDelete() throws Exception {
-
         int expectedBlockId = 1, expectedRoomNumber = 1, expectedMaxPlacesCount = 4, expectedFreePlacesCount = 2;
 
         Room expectedRoom = new Room();
@@ -23,11 +19,9 @@ public class RoomRepositoryTest {
         expectedRoom.setMaxPlacesCount(expectedMaxPlacesCount);
         expectedRoom.setFreePlacesCount(expectedFreePlacesCount);
 
-        RoomRepository rr = new RoomRepository();
-        int last_inserted_id = rr.create(expectedRoom);
-        Room actualRoom = rr.read(last_inserted_id);
-
-        rr.delete(last_inserted_id);
+        int last_inserted_id = RoomRepository.create(expectedRoom);
+        Room actualRoom = RoomRepository.read(last_inserted_id);
+        RoomRepository.delete(last_inserted_id);
 
         Assert.assertEquals(expectedBlockId, actualRoom.getBlockId());
         Assert.assertEquals(expectedRoomNumber, actualRoom.getRoomNumber());
@@ -45,14 +39,13 @@ public class RoomRepositoryTest {
         expectedRoom.setMaxPlacesCount(expectedMaxPlacesCount);
         expectedRoom.setFreePlacesCount(freePlacesCount);
 
-        RoomRepository rr = new RoomRepository();
-        int last_inserted_id = rr.create(expectedRoom);
+        int last_inserted_id = RoomRepository.create(expectedRoom);
         expectedRoom.setRoomId(last_inserted_id);
         expectedRoom.setFreePlacesCount(expectedFreePlacesCount);
-        rr.update(expectedRoom);
+        RoomRepository.update(expectedRoom);
 
-        Room actualRoom = rr.read(last_inserted_id);
-        rr.delete(last_inserted_id);
+        Room actualRoom = RoomRepository.read(last_inserted_id);
+        RoomRepository.delete(last_inserted_id);
 
         Assert.assertEquals(expectedBlockId, actualRoom.getBlockId());
         Assert.assertEquals(expectedRoomNumber, actualRoom.getRoomNumber());

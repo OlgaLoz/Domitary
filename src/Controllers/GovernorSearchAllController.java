@@ -1,6 +1,5 @@
 package Controllers;
 
-
 import Interfaces.IController;
 import Model.Student;
 import Model.StudentStatus;
@@ -17,8 +16,7 @@ public class GovernorSearchAllController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
-        ArrayList<Student> students = repository.readAllByStatus(StudentStatus.BodyCheckPassed);
+        ArrayList<Student> students = StudentRepository.readAllByStatus(StudentStatus.BodyCheckPassed);
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
         request.getSession().setAttribute(SETTLED_ATTRIBUTE, "no");
         return Pages.HOME_GOVERNOR.getPagePath();

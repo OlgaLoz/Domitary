@@ -2,9 +2,7 @@ package Controllers;
 
 import Interfaces.IController;
 import Model.Block;
-import Model.Dormitory;
 import Repositories.BlockRepository;
-import Repositories.DormitoryRepository;
 import Repositories.RoomRepository;
 import Repositories.StudentRepository;
 import Utils.Pages;
@@ -19,18 +17,14 @@ public class DeleteBlockController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        BlockRepository blockRepository = new BlockRepository();
-        RoomRepository roomRepository = new RoomRepository();
-        StudentRepository studentRepository = new StudentRepository();
-
         ArrayList<Block> blocks = (ArrayList<Block>)request.getSession().getAttribute(BLOCKS);
 
         String blockToDel = request.getParameter(BLOCK_TO_DELETE);
         if (blockToDel != null) {
             Integer blockToDelId = Integer.parseInt(blockToDel);
-            studentRepository.removeAllFromBlock(blockToDelId);
-            roomRepository.deleteByBlockId(blockToDelId);
-            blockRepository.delete(blockToDelId);
+            StudentRepository.removeAllFromBlock(blockToDelId);
+            RoomRepository.deleteByBlockId(blockToDelId);
+            BlockRepository.delete(blockToDelId);
             for( int j = 0; j < blocks.size(); j++) {
                 if (blocks.get(j).getBlockId() == blockToDelId){
                     blocks.remove(j);
@@ -38,9 +32,7 @@ public class DeleteBlockController implements IController {
                 }
             }
         }
-
         request.getSession().setAttribute(BLOCKS, blocks);
-
         return Pages.EDIT_BLOCK.getPagePath();
     }
 }

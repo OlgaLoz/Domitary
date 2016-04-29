@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class UserRepository {
 
-    public int create(User item) {
+    public static int create(User item) {
         Connection connection = null;
         PreparedStatement statement = null;
         int resultId = -1;
@@ -44,7 +44,7 @@ public class UserRepository {
         return resultId;
     }
 
-    public User getUserByLogin(String login) {
+    public static User getUserByLogin(String login) {
         Connection connection = null;
         Statement statement = null;
         User result = null;
@@ -73,7 +73,7 @@ public class UserRepository {
         return result;
     }
 
-    public User read(int id) {
+    public static User read(int id) {
         Connection connection = null;
         Statement statement = null;
         User result = new User();
@@ -101,7 +101,7 @@ public class UserRepository {
         return result;
     }
 
-    public void update(User item) {
+    public static void update(User item) {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -130,7 +130,7 @@ public class UserRepository {
         }
     }
 
-    public void delete(int id) {
+    public static void delete(int id) {
         Connection connection = null;
         Statement statement = null;
 

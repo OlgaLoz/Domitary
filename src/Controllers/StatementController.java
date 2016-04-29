@@ -12,8 +12,6 @@ import flexjson.JSONSerializer;
 
 public class StatementController implements IController {
 
-    StudentRepository studentRepository = new StudentRepository();
-
     private static final String STATUS_ATTRIBUTE = "student_status";
 
     @Override
@@ -28,9 +26,9 @@ public class StatementController implements IController {
         String serializedStatement = jsonSerializer.serialize(statement);
 
         int userId = (Integer)request.getSession().getAttribute(CURRENT_USER_ATTRIBUTE);
-        Student student = studentRepository.getStudentByUserId(userId);
-        studentRepository.updateStatus(student.getStudentId(), StudentStatus.Candidate);
-        studentRepository.updateStatement(student.getStudentId(), serializedStatement);
+        Student student = StudentRepository.getStudentByUserId(userId);
+        StudentRepository.updateStatus(student.getStudentId(), StudentStatus.Candidate);
+        StudentRepository.updateStatement(student.getStudentId(), serializedStatement);
         request.getSession().setAttribute(STATUS_ATTRIBUTE, StudentStatus.Candidate);
 
         return Pages.HOME_STUDENT.getPagePath();

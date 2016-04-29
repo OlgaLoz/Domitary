@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class StudentRepository {
 
-    public int create(Student item) {
+    public static int create(Student item) {
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -51,7 +51,7 @@ public class StudentRepository {
         return resultId;
     }
 
-    public Student read(int id) {
+    public static Student read(int id) {
         Connection connection = null;
         Statement statement = null;
         Student student = null;
@@ -87,7 +87,7 @@ public class StudentRepository {
         return student;
     }
 
-    public Student getStudentByUserId(int userId) {
+    public static Student getStudentByUserId(int userId) {
         Connection connection = null;
         Statement statement = null;
         Student student = null;
@@ -122,7 +122,7 @@ public class StudentRepository {
         return student;
     }
 
-    public int getRoomNumberByStudentId(int studentId) {
+    public static int getRoomNumberByStudentId(int studentId) {
         Connection connection = null;
         Statement statement = null;
         int roomNumber = 0;
@@ -143,7 +143,7 @@ public class StudentRepository {
         return roomNumber;
     }
 
-    public int getBlockNumberByStudentId(int studentId) {
+    public static int getBlockNumberByStudentId(int studentId) {
         Connection connection = null;
         Statement statement = null;
         int blockNumber = 0;
@@ -165,7 +165,7 @@ public class StudentRepository {
         return blockNumber;
     }
 
-    public int getDormitoryNumberByStudentId(int studentId) {
+    public static int getDormitoryNumberByStudentId(int studentId) {
         Connection connection = null;
         Statement statement = null;
         int dormitoryNumber = 0;
@@ -189,7 +189,7 @@ public class StudentRepository {
         return dormitoryNumber;
     }
 
-    public ArrayList<Student> readAll() {
+    public static ArrayList<Student> readAll() {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Student> students = new ArrayList<Student>();
@@ -226,7 +226,7 @@ public class StudentRepository {
         return students;
     }
 
-    public ArrayList<Student> readAllByStatus(StudentStatus status) {
+    public static ArrayList<Student> readAllByStatus(StudentStatus status) {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Student> students = new ArrayList<Student>();
@@ -263,7 +263,7 @@ public class StudentRepository {
         return students;
     }
 
-    public ArrayList<Student> readAllByLastName(String lastName) {
+    public static ArrayList<Student> readAllByLastName(String lastName) {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Student> students = new ArrayList<Student>();
@@ -300,9 +300,7 @@ public class StudentRepository {
         return students;
     }
 
-
-
-    public void updateStatus(int studentId, StudentStatus status) {
+    public static void updateStatus(int studentId, StudentStatus status) {
         Connection connection = null;
         Statement statement = null;
         try {
@@ -322,7 +320,7 @@ public class StudentRepository {
         }
     }
 
-    public void updateStatement(int studentId, String statement) {
+    public static void updateStatement(int studentId, String statement) {
         if (statement == null){
             return;
         }
@@ -342,7 +340,7 @@ public class StudentRepository {
         }
     }
 
-    public void updateDateOfSettlement(int studentId, Date dateOfSettlement) {
+    public static void updateDateOfSettlement(int studentId, Date dateOfSettlement) {
         if (dateOfSettlement == null){
             return;
         }
@@ -364,7 +362,7 @@ public class StudentRepository {
         }
     }
 
-    public void updateOrder(int studentId, String order) {
+    public static void updateOrder(int studentId, String order) {
         if (order == null){
             return;
         }
@@ -384,7 +382,7 @@ public class StudentRepository {
         }
     }
 
-    public void updateContract(int studentId, String contract) {
+    public static void updateContract(int studentId, String contract) {
         if (contract == null){
             return;
         }
@@ -404,7 +402,7 @@ public class StudentRepository {
         }
     }
 
-    public void updateRoomId(int studentId, int roomId) {
+    public static void updateRoomId(int studentId, int roomId) {
         if (roomId <= 0){
             return;
         }
@@ -424,7 +422,7 @@ public class StudentRepository {
         }
     }
 
-    public void removeAllFromBlock(int blockId) {
+    public static void removeAllFromBlock(int blockId) {
 
         Connection connection = null;
         Statement statement = null;
@@ -457,7 +455,7 @@ public class StudentRepository {
         updateAllStudentsStatus(idList, statusId);
     }
 
-    public void removeAllFromDormitory(int dormitoryId) {
+    public static void removeAllFromDormitory(int dormitoryId) {
 
         Connection connection = null;
         Statement statement = null;
@@ -496,7 +494,7 @@ public class StudentRepository {
         updateAllStudentsStatus(idList, statusId);
     }
 
-    public void updateAllStudentsStatus(ArrayList<Integer> idList, int statusId){
+    public static void updateAllStudentsStatus(ArrayList<Integer> idList, int statusId){
         Connection connection = null;
         Statement statement = null;
         try {
@@ -516,7 +514,7 @@ public class StudentRepository {
         }
     }
 
-    public void delete(int id) {
+    public static void delete(int id) {
 
         Connection connection = null;
         Statement statement = null;

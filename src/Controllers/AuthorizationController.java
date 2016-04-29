@@ -17,8 +17,6 @@ import javax.servlet.http.HttpSession;
 public class AuthorizationController implements IController {
 
 	private RoleControl roleControl = new RoleControl();
-	private UserRepository userRepository = new UserRepository();
-	private StudentRepository studentRepository = new StudentRepository();
 	private PasswordEncryptionService encryptionService = new PasswordEncryptionService();
 
 	private static final String LOGIN_ATTRIBUTE = "login";
@@ -33,7 +31,7 @@ public class AuthorizationController implements IController {
 	public String run(HttpServletRequest request) {
 
 		String login = request.getParameter("login");
-		User user = userRepository.getUserByLogin(login);
+		User user = UserRepository.getUserByLogin(login);
 
 		if (user == null){
 			return Pages.HOME_GUEST.getPagePath() + "?error=authorization";
@@ -73,7 +71,7 @@ public class AuthorizationController implements IController {
 			return roleControl.getPagePathByRole(user.getRole());
 		}
 
-		Student student = studentRepository.getStudentByUserId(user.getUserId());
+		Student student = StudentRepository.getStudentByUserId(user.getUserId());
 
 		if (student == null){
 			session.invalidate();

@@ -5,7 +5,6 @@ import Model.Block;
 import Model.Dormitory;
 import Repositories.BlockRepository;
 import Repositories.DormitoryRepository;
-import Repositories.RoomRepository;
 import Utils.Pages;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,14 +17,11 @@ public class GetDormitoryBlocksController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        DormitoryRepository repository = new DormitoryRepository();
-        BlockRepository blockRepository = new BlockRepository();
-
-        ArrayList<Dormitory> dormitories = repository.readAll();
+        ArrayList<Dormitory> dormitories = DormitoryRepository.readAll();
         ArrayList<Block> blocks = null;
         String dormitoryId = request.getParameter(DORMITORY_ID);
         if (dormitoryId != null) {
-            blocks = blockRepository.readAllByDormitoryId(Integer.parseInt(dormitoryId));
+            blocks = BlockRepository.readAllByDormitoryId(Integer.parseInt(dormitoryId));
         }
 
         request.getSession().setAttribute("dormError", "");//to fix

@@ -1,6 +1,5 @@
 package Repositories;
 
-import Model.StudentStatus;
 import Utils.DatabaseUtils;
 import Model.Room;
 
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 
 public class RoomRepository {
 
-    public int create(Room room) {
+    public static int create(Room room) {
 
         Connection connection = null;
         Statement statement = null;
@@ -39,7 +38,7 @@ public class RoomRepository {
         return room.getRoomId();
     }
 
-    public Room read(int id) {
+    public static Room read(int id) {
         Connection connection = null;
         Statement statement = null;
         Room room = new Room();
@@ -72,7 +71,7 @@ public class RoomRepository {
         return room;
     }
 
-    public void update(Room item) {
+    public static void update(Room item) {
         Connection connection = null;
         Statement statement = null;
 
@@ -92,7 +91,7 @@ public class RoomRepository {
         }
     }
 
-    public void updateFreePlacesCount(int roomId, int newFreePlacesCount) {
+    public static void updateFreePlacesCount(int roomId, int newFreePlacesCount) {
         Connection connection = null;
         Statement statement = null;
 
@@ -110,7 +109,7 @@ public class RoomRepository {
         }
     }
 
-    public void delete(int id) {
+    public static void delete(int id) {
         Connection connection = null;
         Statement statement = null;
 
@@ -128,7 +127,7 @@ public class RoomRepository {
         }
     }
 
-    public void deleteAll(ArrayList<Integer> idlist) {
+    public static void deleteAll(ArrayList<Integer> idlist) {
         Connection connection = null;
         Statement statement = null;
 
@@ -148,7 +147,7 @@ public class RoomRepository {
         }
     }
 
-    public void deleteByBlockId(int blockId) {
+    public static void deleteByBlockId(int blockId) {
         Connection connection = null;
         Statement statement = null;
 
@@ -166,7 +165,7 @@ public class RoomRepository {
         }
     }
 
-    public void deleteByDormitoryId(int dormitoryId){
+    public static void deleteByDormitoryId(int dormitoryId){
         Connection connection = null;
         Statement statement = null;
         ArrayList<Integer> idList = new ArrayList<Integer>();
@@ -193,7 +192,7 @@ public class RoomRepository {
         deleteAll(idList);
     }
 
-    public void addAll(Room[] rooms){
+    public static void addAll(Room[] rooms){
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet;
@@ -218,7 +217,7 @@ public class RoomRepository {
         }
     }
 
-    public ArrayList<Room> readAll(){
+    public static ArrayList<Room> readAll(){
         Connection connection = null;
         Statement statement = null;
         ArrayList<Room> list = new ArrayList<Room>();
@@ -260,7 +259,7 @@ public class RoomRepository {
         return list;
     }
 
-    public ArrayList<Room> readAllByBlockId(int blockId){
+    public static ArrayList<Room> readAllByBlockId(int blockId){
         Connection connection = null;
         Statement statement = null;
         ArrayList<Room> list = new ArrayList<Room>();

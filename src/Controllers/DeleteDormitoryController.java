@@ -18,21 +18,16 @@ public class DeleteDormitoryController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        DormitoryRepository dormitoryRepository = new DormitoryRepository();
-        BlockRepository blockRepository = new BlockRepository();
-        RoomRepository roomRepository = new RoomRepository();
-        StudentRepository studentRepository = new StudentRepository();
-
-        ArrayList<Dormitory> dormitories = dormitoryRepository.readAll();
+        ArrayList<Dormitory> dormitories = DormitoryRepository.readAll();
 
         String dormitoryToDel = request.getParameter(DORMITORY_TO_DELETE);
         if (dormitoryToDel != null) {
             Integer dormitoryToDelId = Integer.parseInt(dormitoryToDel);
 
-            studentRepository.removeAllFromDormitory(dormitoryToDelId);
-            roomRepository.deleteByDormitoryId(dormitoryToDelId);
-            blockRepository.deleteByDormitoryId(dormitoryToDelId);
-            dormitoryRepository.delete(dormitoryToDelId);
+            StudentRepository.removeAllFromDormitory(dormitoryToDelId);
+            RoomRepository.deleteByDormitoryId(dormitoryToDelId);
+            BlockRepository.deleteByDormitoryId(dormitoryToDelId);
+            DormitoryRepository.delete(dormitoryToDelId);
 
             for( int j = 0; j < dormitories.size(); j++) {
                 if (dormitories.get(j).getDormitoryId() == dormitoryToDelId){
@@ -41,9 +36,7 @@ public class DeleteDormitoryController implements IController {
                 }
             }
         }
-
         request.getSession().setAttribute(DORMITORIES, dormitories);
-
         return Pages.EDIT_DORMITORY.getPagePath();
     }
 }

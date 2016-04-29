@@ -16,11 +16,9 @@ public class DeaneryGetAllByStatusController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
         String studentStatus = request.getParameter(STUDENTS_STATUS);
-        ArrayList<Student> students = repository.readAllByStatus(StudentStatus.valueOf(studentStatus));
+        ArrayList<Student> students = StudentRepository.readAllByStatus(StudentStatus.valueOf(studentStatus));
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
-
         return Pages.HOME_DEANERY.getPagePath();
     }
 }

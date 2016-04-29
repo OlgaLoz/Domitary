@@ -21,12 +21,7 @@ public class AddBlockController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        DormitoryRepository dormitoryRepository = new DormitoryRepository();
-        BlockRepository repository = new BlockRepository();
-        RoomRepository roomRepository = new RoomRepository();
-
-
-        ArrayList<Dormitory> dormitories = dormitoryRepository.readAll();
+        ArrayList<Dormitory> dormitories = DormitoryRepository.readAll();
 
         String newBlockNumber = request.getParameter(BLOCK_NUMBER);
         String newBlockDormitoryNumber = request.getParameter(DORMITORY_NUMBER);
@@ -45,7 +40,7 @@ public class AddBlockController implements IController {
             }
         }
 
-        ArrayList<Block> blocks = repository.readAllByDormitoryId(dormitoryID);
+        ArrayList<Block> blocks = BlockRepository.readAllByDormitoryId(dormitoryID);
 
         if (!isDormitoryExist){
             request.getSession().setAttribute(DORMITORY_ERROR, "Такого общежития нет.");
@@ -63,7 +58,7 @@ public class AddBlockController implements IController {
         Block block = new Block();
         block.setBlockNumber(Integer.parseInt(request.getParameter(BLOCK_NUMBER)));
         block.setDormitoryId(dormitoryID);
-        repository.create(block);
+        BlockRepository.create(block);
 
         Room roomA = new Room();
         roomA.setBlockNumber(Integer.parseInt(request.getParameter(BLOCK_NUMBER)));
@@ -71,7 +66,7 @@ public class AddBlockController implements IController {
         roomA.setMaxPlacesCount(2);
         roomA.setRoomNumber(1);
         roomA.setBlockId(block.getBlockId());
-        roomRepository.create(roomA);
+        RoomRepository.create(roomA);
         block.getRooms().add(roomA);
 
         Room roomB = new Room();
@@ -80,7 +75,7 @@ public class AddBlockController implements IController {
         roomB.setMaxPlacesCount(3);
         roomB.setRoomNumber(2);
         roomB.setBlockId(block.getBlockId());
-        roomRepository.create(roomB);
+        RoomRepository.create(roomB);
         block.getRooms().add(roomB);
 
         blocks.add(block);

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class DormitoryRepository {
 
-    public int create(Dormitory dormitory) {
+    public static int create(Dormitory dormitory) {
 
         Connection connection = null;
         Statement statement = null;
@@ -38,7 +38,7 @@ public class DormitoryRepository {
         return dormitory.getDormitoryId();
     }
 
-    public Dormitory read(int id) {
+    public static Dormitory read(int id) {
         Connection connection = null;
         Statement statement = null;
         Dormitory dormitory = new Dormitory();
@@ -69,7 +69,7 @@ public class DormitoryRepository {
         return dormitory;
     }
 
-    public void update(Dormitory item) {
+    public static void update(Dormitory item) {
         Connection connection = null;
         Statement statement = null;
 
@@ -89,7 +89,7 @@ public class DormitoryRepository {
         }
     }
 
-    public void delete(int id) {
+    public static void delete(int id) {
         Connection connection = null;
         Statement statement = null;
 
@@ -106,7 +106,7 @@ public class DormitoryRepository {
         }
     }
 
-    public void addAll(Dormitory[] dormitories) {
+    public static void addAll(Dormitory[] dormitories) {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet;
@@ -131,7 +131,7 @@ public class DormitoryRepository {
         }
     }
 
-    public ArrayList<Dormitory> readAll() {
+    public static ArrayList<Dormitory> readAll() {
         Connection connection = null;
         Statement statement = null;
         ArrayList<Dormitory> list = new ArrayList<Dormitory>();

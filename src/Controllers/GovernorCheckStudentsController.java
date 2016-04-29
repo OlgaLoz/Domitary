@@ -16,8 +16,6 @@ public class GovernorCheckStudentsController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        StudentRepository repository = new StudentRepository();
-
         ArrayList<Student> students = (ArrayList<Student>)request.getSession().getAttribute(STUDENTS_ATTRIBUTE);
         String[] positiveResults = request.getParameterValues("checkers");
         String[] negativeResults = request.getParameterValues("uncheckers");
@@ -27,7 +25,7 @@ public class GovernorCheckStudentsController implements IController {
             for (int i = 0; i < positiveResults.length; i++ ) {
                 for( int j = 0; j < studentsCount; j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(positiveResults[i])){
-                        repository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.Settled);
+                        StudentRepository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.Settled);
                         students.remove(j);
                         studentsCount--;
                         break;
@@ -40,7 +38,7 @@ public class GovernorCheckStudentsController implements IController {
             for (int i = 0; i < negativeResults.length; i++ ) {
                 for( int j = 0; j < studentsCount; j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(negativeResults[i])){
-                        repository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.NotSettled);
+                        StudentRepository.updateStatus(Integer.parseInt(negativeResults[i]), StudentStatus.NotSettled);
                         students.remove(j);
                         studentsCount--;
                         break;

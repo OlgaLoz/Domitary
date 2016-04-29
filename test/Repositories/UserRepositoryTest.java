@@ -26,10 +26,9 @@ public class UserRepositoryTest {
         expectedUser.setSalt(expectedSalt);
         expectedUser.setRole(expectedRole);
 
-        UserRepository userRepository = new UserRepository();
-        int last_inserted_id = userRepository.create(expectedUser);
-        User actualUser = userRepository.read(last_inserted_id);
-        userRepository.delete(last_inserted_id);
+        int last_inserted_id = UserRepository.create(expectedUser);
+        User actualUser = UserRepository.read(last_inserted_id);
+        UserRepository.delete(last_inserted_id);
 
         Assert.assertEquals(last_inserted_id, actualUser.getUserId());
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
@@ -53,13 +52,12 @@ public class UserRepositoryTest {
         expectedUser.setSalt(expectedSalt);
         expectedUser.setRole(expectedRole);
 
-        UserRepository userRepository = new UserRepository();
-        int last_inserted_id = userRepository.create(expectedUser);
+        int last_inserted_id = UserRepository.create(expectedUser);
         expectedUser.setPassword(newExpectedPassword);
-        userRepository.update(expectedUser);
+        UserRepository.update(expectedUser);
 
-        User actualUser = userRepository.read(expectedUser.getUserId());
-        userRepository.delete(expectedUser.getUserId());
+        User actualUser = UserRepository.read(expectedUser.getUserId());
+        UserRepository.delete(expectedUser.getUserId());
 
         Assert.assertEquals(last_inserted_id, actualUser.getUserId());
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
@@ -79,10 +77,9 @@ public class UserRepositoryTest {
         User expectedUser = new User(expectedLogin, expectedPassword, expectedRole);
         expectedUser.setSalt(expectedSalt);
 
-        UserRepository userRepository = new UserRepository();
-        int last_inserted_id = userRepository.create(expectedUser);
-        User actualUser = userRepository.getUserByLogin(expectedUser.getLogin());
-        userRepository.delete(expectedUser.getUserId());
+        int last_inserted_id = UserRepository.create(expectedUser);
+        User actualUser = UserRepository.getUserByLogin(expectedUser.getLogin());
+        UserRepository.delete(expectedUser.getUserId());
 
         Assert.assertEquals(last_inserted_id, actualUser.getUserId());
         Assert.assertEquals(expectedLogin, actualUser.getLogin());
