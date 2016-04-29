@@ -9,6 +9,8 @@ import com.itextpdf.text.pdf.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class PdfGenerationService {
 
@@ -17,6 +19,7 @@ public class PdfGenerationService {
     private static String TPL_STATEMENT = "/templateStatement.pdf";
     private static String IMG_BACKGROUND = "/backgroundPDF-2.jpg";
     private static String TPL_CONTRACT = "/templateContract.pdf";
+    private static String TPL_ORDER = "/templateOrder.pdf";
     private static int FONT_SIZE_SMALL = 10;
     private static int FONT_SIZE_NORMAL = 14;
     private static int FONT_SIZE_BIG = 16;
@@ -27,8 +30,9 @@ public class PdfGenerationService {
     private static int VERTICAL_SPACE_SMALL = 20;
     private static int VERTICAL_SPACE_MEDIUM = 40;
     private static int VERTICAL_SPACE_BIG = 80;
-    private static int HEIGHT_NORMAL_LINE = FONT_SIZE_NORMAL + VERTICAL_SPACE_TINY + 2;
     private static int HEIGHT_SMALL_LINE = FONT_SIZE_SMALL + 1;
+    private static int HEIGHT_NORMAL_LINE = FONT_SIZE_NORMAL + VERTICAL_SPACE_TINY + 2;
+    private static int HEIGHT_BIG_LINE = FONT_SIZE_NORMAL + VERTICAL_SPACE_TINY;
 
     synchronized public static void createStatementTemplate(String initialFolder) throws Exception {
         Document document = new Document();
@@ -349,6 +353,72 @@ public class PdfGenerationService {
 
         stream.setTextMatrix(horizontalPos + localOffset, verticalPos - 11);
         stream.showText(contract.getPassport() + ",  " + contract.getPassportDateOfIssue());
+
+        stream.endText();
+        stamper.setFullCompression();
+        stamper.close();
+    }
+
+    public static void createStudentOrder(String initialFolder, String outputFileName, Student student, int dormitoryNumber, int blockNumber, int roomNumber) throws Exception {
+        PdfReader reader = new PdfReader(new FileInputStream(initialFolder + TEMPLATES_PATH + TPL_ORDER));
+
+        File dir = new File(initialFolder + OUTPUT_DOCUMENTS_PATH);
+        if (!dir.exists()){
+            dir.mkdir();
+        }
+
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(initialFolder + OUTPUT_DOCUMENTS_PATH + outputFileName));
+        PdfContentByte stream = stamper.getOverContent(1);
+        stream.beginText();
+        stream.setColorFill(BaseColor.BLUE);
+
+        BaseFont font = BaseFont.createFont(initialFolder + TEMPLATES_PATH + "fonts/timesi.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
+        float pageHeight = reader.getPageSize(1).getHeight();
+        stream.setFontAndSize(font, FONT_SIZE_BIG);
+
+        float verticalPos = pageHeight - 71;
+        float horizontalPos = 240;
+
+        stream.setTextMatrix(horizontalPos + 135, verticalPos);
+        stream.showText(Integer.toString(dormitoryNumber));
+
+        stream.setFontAndSize(font, FONT_SIZE_NORMAL);
+
+        verticalPos -= HEIGHT_BIG_LINE;
+        stream.setTextMatrix(horizontalPos + 65, verticalPos);
+        stream.showText(Integer.toString(blockNumber));
+
+        verticalPos -= HEIGHT_BIG_LINE - 1;
+        stream.setTextMatrix(horizontalPos + 100, verticalPos);
+        stream.showText(Integer.toString(roomNumber));
+
+        verticalPos -= HEIGHT_BIG_LINE;
+        stream.setTextMatrix(horizontalPos + 30, verticalPos);
+        stream.showText(student.getLastName());
+
+        verticalPos -= HEIGHT_BIG_LINE - 1;
+        stream.setTextMatrix(horizontalPos + 30, verticalPos);
+        stream.showText(student.getFirstName());
+
+        verticalPos -= HEIGHT_BIG_LINE - 1;
+        stream.setTextMatrix(horizontalPos + 30, verticalPos);
+        stream.showText(student.getMidName());
+
+        verticalPos -= HEIGHT_BIG_LINE - 1;
+        stream.setTextMatrix(horizontalPos + 70, verticalPos);
+        stream.showText(student.getGroupNumber());
+
+        verticalPos -= HEIGHT_BIG_LINE + 1;
+        stream.setTextMatrix(horizontalPos + 155, verticalPos);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(student.getDateOfSettlement());
+        calendar.add(Calendar.MONTH, 6);
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        String dateDuration = format.format(calendar.getTime());
+
+        stream.showText(dateDuration);
 
         stream.endText();
         stamper.setFullCompression();
