@@ -71,7 +71,6 @@ public class StudentRepository {
                 student.setGroupNumber(resultSet.getString("GroupNumber"));
                 student.setStatement(resultSet.getString("Statement"));
                 student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
                 student.setUserId(resultSet.getInt("ID_User"));
@@ -106,7 +105,6 @@ public class StudentRepository {
                 student.setGroupNumber(resultSet.getString("GroupNumber"));
                 student.setStatement(resultSet.getString("Statement"));
                 student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
                 student.setUserId(resultSet.getInt("ID_User"));
@@ -209,7 +207,6 @@ public class StudentRepository {
                 student.setGroupNumber(resultSet.getString("GroupNumber"));
                 student.setStatement(resultSet.getString("Statement"));
                 student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
                 student.setUserId(resultSet.getInt("ID_User"));
@@ -246,7 +243,6 @@ public class StudentRepository {
                 student.setGroupNumber(resultSet.getString("GroupNumber"));
                 student.setStatement(resultSet.getString("Statement"));
                 student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
                 student.setUserId(resultSet.getInt("ID_User"));
@@ -283,7 +279,42 @@ public class StudentRepository {
                 student.setGroupNumber(resultSet.getString("GroupNumber"));
                 student.setStatement(resultSet.getString("Statement"));
                 student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
-                student.setOrder(resultSet.getString("Order"));
+                student.setContract(resultSet.getString("Contract"));
+                student.setUserId(resultSet.getInt("ID_User"));
+                student.setRoomId(resultSet.getInt("ID_Room"));
+                student.setStudentStatus(StudentStatus.valueOf(resultSet.getString("StatusName")));
+                students.add(student);
+            }
+        }
+        catch (NamingException ex) { }
+        catch (SQLException ex) { }
+        finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+        return students;
+    }
+
+    public static ArrayList<Student> readAllByLastName(String lastName, StudentStatus status) {
+        Connection connection = null;
+        Statement statement = null;
+        ArrayList<Student> students = new ArrayList<Student>();
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Student JOIN StudentStatus " +
+                    "ON Student.ID_Status = StudentStatus.ID_Status Where LastName = '%s' && StatusName = '%s'", lastName, status));
+            while (resultSet.next()) {
+                Student student = new Student();
+                student.setStudentId(resultSet.getInt("ID_Student"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setMidName(resultSet.getString("MidName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setDateOfBirth(resultSet.getDate("DateOfBirth"));
+                student.setGroupNumber(resultSet.getString("GroupNumber"));
+                student.setStatement(resultSet.getString("Statement"));
+                student.setDateOfSettlement(resultSet.getDate("DateOfSettlement"));
                 student.setContract(resultSet.getString("Contract"));
                 student.setUserId(resultSet.getInt("ID_User"));
                 student.setRoomId(resultSet.getInt("ID_Room"));
@@ -353,26 +384,6 @@ public class StudentRepository {
             statement.setDate(1, dateOfSettlement);
             statement.setInt(2, studentId);
             statement.executeUpdate();
-        }
-        catch (NamingException ex) { }
-        catch (SQLException ex) { }
-        finally {
-            DatabaseUtils.closeStatement(statement);
-            DatabaseUtils.closeConnection(connection);
-        }
-    }
-
-    public static void updateOrder(int studentId, String order) {
-        if (order == null){
-            return;
-        }
-
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            connection = DatabaseUtils.getInstance().getConnection();
-            statement = connection.createStatement();
-            statement.executeUpdate(String.format("UPDATE Student SET Student.Order='%s' WHERE ID_Student=%d", order, studentId));
         }
         catch (NamingException ex) { }
         catch (SQLException ex) { }

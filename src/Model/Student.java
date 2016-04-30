@@ -12,7 +12,6 @@ public class Student {
 	private String groupNumber;
 	private String statement;
 	private Date dateOfSettlement;
-	private String order;
 	private String contract;
 	private int roomId;
 	private StudentStatus studentStatus;
@@ -22,11 +21,17 @@ public class Student {
 		this.studentStatus = StudentStatus.Default;
 	}
 
-	public int getStudentId() { return studentId; }
+	public int getStudentId() {
+		return studentId;
+	}
 
-	public int getUserId() { return userID; }
+	public int getUserId() {
+		return userID;
+	}
 
-	public String getFirstName() { return firstName; }
+	public String getFirstName() {
+		return firstName;
+	}
 
 	public String getMidName(){
 		return midName;
@@ -44,21 +49,25 @@ public class Student {
 		return groupNumber;
 	}
 
-	public String getStatement() { return statement; }
-
-	public Date getDateOfSettlement() { return dateOfSettlement; }
-
-	public String getOrder(){
-		return order;
+	public String getStatement() {
+		return statement;
 	}
 
-	public String getContract() { return contract; }
+	public Date getDateOfSettlement() {
+		return dateOfSettlement;
+	}
+
+	public String getContract() {
+		return contract;
+	}
 
 	public int getRoomId(){
 		return roomId;
 	}
 
-	public StudentStatus getStudentStatus() { return studentStatus; }
+	public StudentStatus getStudentStatus() {
+		return studentStatus;
+	}
 
 
 	public void setStudentId(int studentId){
@@ -95,10 +104,6 @@ public class Student {
 
 	public void setDateOfSettlement(Date dateOfSettlement){
 		this.dateOfSettlement = dateOfSettlement;
-	}
-
-	public void setOrder(String order){
-		this.order = order;
 	}
 
 	public void setContract(String contract){

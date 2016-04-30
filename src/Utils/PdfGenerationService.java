@@ -414,7 +414,7 @@ public class PdfGenerationService {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(student.getDateOfSettlement());
-        calendar.add(Calendar.MONTH, 6);
+        calendar.add(Calendar.MONTH, 5);
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String dateDuration = format.format(calendar.getTime());
 

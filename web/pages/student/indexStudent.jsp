@@ -40,16 +40,23 @@
                         <a href=documentsPage.jsp>Документы на заселение</a>
                     </li>
                     <li>
-                        <a href=orderPage.jsp>Ордер</a>
+                        <hr>
+                        <form action="/Action/Download" method="post">
+                            <a href="#">
+                                <input type="submit" value="Списки на заселение(csv)" class="btn btn-link gray-button ">
+                                <input type="hidden" value="DeaneryPassed" name="student_status">
+                                <input type="hidden" value="csv" name="doc_type">
+                            </a>
+                        </form>
                     </li>
                     <li>
-                        <a href="#">Списки на заселение</a>
-                    </li>
-                    <li>
-                        <a href="#">Списки заселенных</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-link" href="#">Options</a>
+                        <form action="/Action/Download" method="post">
+                            <a href="#">
+                                <input type="submit" value="Списки заселенных(csv)" class="btn btn-link gray-button ">
+                                <input type="hidden" value="Settled" name="student_status">
+                                <input type="hidden" value="csv" name="doc_type">
+                            </a>
+                        </form>
                     </li>
                 </ul>
             </div>

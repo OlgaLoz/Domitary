@@ -50,7 +50,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(null, actualStudent.getStatement());
         Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
     }
@@ -90,7 +89,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(null, actualStudent.getStatement());
         Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
     }
@@ -494,7 +492,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(null, actualStudent.getStatement());
         Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
     }
@@ -536,7 +533,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(newExpectedStatement, actualStudent.getStatement());
         Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
     }
@@ -580,49 +576,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(null, actualStudent.getStatement());
         Assert.assertEquals(newExpectedDateOfSettlement, actualStudent.getDateOfSettlement().toString());
-        Assert.assertEquals(null, actualStudent.getOrder());
-        Assert.assertEquals(null, actualStudent.getContract());
-        Assert.assertEquals(0, actualStudent.getRoomId());
-    }
-
-    @Test
-    public void testCreateUpdateOrderReadDelete() throws Exception {
-
-        String expectedFirstName = "Test1";
-        String expectedMidName = "Test2";
-        String expectedLastName = "Test3";
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date parsed = formatter.parse("1996-06-11");
-        Date expectedDateOfBirth = new java.sql.Date(parsed.getTime());
-        String expectedGroupNumber = "Test4";
-        int expectedUserId = 1;
-
-        String newExpectedOrder = "Test5";
-
-        Student expectedStudent = new Student();
-        expectedStudent.setFirstName(expectedFirstName);
-        expectedStudent.setMidName(expectedMidName);
-        expectedStudent.setLastName(expectedLastName);
-        expectedStudent.setDateOfBirth(expectedDateOfBirth);
-        expectedStudent.setGroupNumber(expectedGroupNumber);
-        expectedStudent.setUserId(expectedUserId);
-
-        StudentRepository.create(expectedStudent);
-        StudentRepository.updateOrder(expectedStudent.getStudentId(), newExpectedOrder);
-        Student actualStudent = StudentRepository.read(expectedStudent.getStudentId());
-        StudentRepository.delete(expectedStudent.getStudentId());
-
-        Assert.assertEquals(expectedFirstName, actualStudent.getFirstName());
-        Assert.assertEquals(expectedMidName, actualStudent.getMidName());
-        Assert.assertEquals(expectedLastName, actualStudent.getLastName());
-        Assert.assertEquals(expectedDateOfBirth.toString(), actualStudent.getDateOfBirth().toString());
-        Assert.assertEquals(expectedGroupNumber, actualStudent.getGroupNumber());
-        Assert.assertEquals(StudentStatus.Default, actualStudent.getStudentStatus());
-        Assert.assertEquals(expectedUserId, actualStudent.getUserId());
-
-        Assert.assertEquals(null, actualStudent.getStatement());
-        Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(newExpectedOrder, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
     }
@@ -664,7 +617,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(null, actualStudent.getStatement());
         Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(newExpectedContract, actualStudent.getContract());
         Assert.assertEquals(0, actualStudent.getRoomId());
     }
@@ -681,7 +633,7 @@ public class StudentRepositoryTest {
         String expectedGroupNumber = "Test4";
         int expectedUserId = 1;
 
-        int newExpectedRoomId = 1;
+        int newExpectedRoomId = 9;
 
         Student expectedStudent = new Student();
         expectedStudent.setFirstName(expectedFirstName);
@@ -706,7 +658,6 @@ public class StudentRepositoryTest {
 
         Assert.assertEquals(null, actualStudent.getStatement());
         Assert.assertEquals(null, actualStudent.getDateOfSettlement());
-        Assert.assertEquals(null, actualStudent.getOrder());
         Assert.assertEquals(null, actualStudent.getContract());
         Assert.assertEquals(newExpectedRoomId, actualStudent.getRoomId());
     }
