@@ -4,32 +4,23 @@ import Interfaces.IController;
 import Model.Contract;
 import Model.Statement;
 import Model.Student;
-import Model.StudentStatus;
 import Repositories.StudentRepository;
-import Utils.CsvGenerationService;
-import Utils.ExcelGenerationService;
 import Utils.Pages;
 import Utils.PdfGenerationService;
 import flexjson.JSONDeserializer;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 
 public class GovernorPdfDownloadController implements IController {
     private  String DOC_PATH = "http://localhost:8080/files/";
-    private final String STUDENT_STATUS = "student_status";
     private final String DOC_TYPE = "doc_type";
     private final String STUDENT_ID = "student_ID";
 
     @Override
     public String run(HttpServletRequest request) {
-       // StudentStatus studentStatus = StudentStatus.valueOf(request.getParameter(STUDENT_STATUS));
         String docType = request.getParameter(DOC_TYPE);
         Integer studentId = Integer.parseInt(request.getParameter(STUDENT_ID));
-
         Student student = StudentRepository.read(studentId);
-      //  ArrayList<StudentStatus> statuses = new ArrayList<StudentStatus>();
-        //statuses.add(studentStatus);
         String res = docType + studentId + ".pdf";
         try {
             if (docType.equals("statement")) {
@@ -52,7 +43,6 @@ public class GovernorPdfDownloadController implements IController {
         } catch (Exception ex) {
             return Pages.DOCUMENTS_PAGE.getPagePath();
         }
-
         return DOC_PATH + res;
     }
 }

@@ -3,6 +3,7 @@ package Controllers;
 
 import Interfaces.IController;
 import Model.StudentStatus;
+import Utils.CsvGenerationService;
 import Utils.ExcelGenerationService;
 import Utils.Pages;
 
@@ -13,18 +14,26 @@ import java.util.List;
 public class DownloadSingleListController implements IController{
     private  String DOC_PATH = "http://localhost:8080/files/";
     private final String STUDENT_STATUS = "student_status";
+    private final String DOC_TYPE = "doc_type";
 
     @Override
     public String run(HttpServletRequest request) {
         StudentStatus studentStatus = StudentStatus.valueOf(request.getParameter(STUDENT_STATUS));
+        String docType = request.getParameter(DOC_TYPE);
 
         String res = Pages.HOME_GOVERNOR.getPagePath();
         if(studentStatus != null){
             ArrayList<StudentStatus> statuses = new ArrayList<StudentStatus>();
             statuses.add(studentStatus);
-            res = DOC_PATH+studentStatus+"List.xlsx";
+            res = DOC_PATH+studentStatus+"List." + docType;
             try {
-                ExcelGenerationService.createStudentsSheetsByStatuses(request.getServletContext().getRealPath("/"), studentStatus + "List.xlsx", statuses);
+                if (docType.equals("xlsx")){
+                    ExcelGenerationService.createStudentsSheetsByStatuses(
+                            request.getServletContext().getRealPath("/"), studentStatus + "List.xlsx", statuses);
+                }else {
+                    CsvGenerationService.createCSVListByStudentStatus(
+                            request.getServletContext().getRealPath("/"), studentStatus + "List.csv", studentStatus);
+                }
             }
             catch(Exception ex) {}
         }
