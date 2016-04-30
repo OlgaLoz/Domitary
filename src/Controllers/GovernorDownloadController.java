@@ -9,11 +9,10 @@ import Utils.Pages;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
-public class GovernorGetAllSettledStudentsController implements IController {
-
+public class GovernorDownloadController implements IController {
     private static final String STUDENTS_ATTRIBUTE = "students";
-    private static final String STUDENTS_STATUS = "status";
     private static final String SETTLED_ATTRIBUTE = "isSettled";
+    private static final String STUDENTS_STATUS = "status";
 
     @Override
     public String run(HttpServletRequest request) {
@@ -26,6 +25,6 @@ public class GovernorGetAllSettledStudentsController implements IController {
             request.getSession().setAttribute(SETTLED_ATTRIBUTE, "settled");
         }
         request.getSession().setAttribute(STUDENTS_STATUS, studentStatus);
-        return Pages.HOME_DOCTOR.getPagePath();
+        return Pages.DOCUMENTS_PAGE.getPagePath();
     }
 }

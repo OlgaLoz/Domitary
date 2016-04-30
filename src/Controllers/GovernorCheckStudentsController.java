@@ -7,7 +7,9 @@ import Repositories.StudentRepository;
 import Utils.Pages;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class GovernorCheckStudentsController implements IController {
 
@@ -26,6 +28,7 @@ public class GovernorCheckStudentsController implements IController {
                 for( int j = 0; j < studentsCount; j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(positiveResults[i])){
                         StudentRepository.updateStatus(Integer.parseInt(positiveResults[i]), StudentStatus.Settled);
+                        StudentRepository.updateDateOfSettlement(Integer.parseInt(positiveResults[i]), new Date(Calendar.getInstance().getTimeInMillis()));
                         students.remove(j);
                         studentsCount--;
                         break;

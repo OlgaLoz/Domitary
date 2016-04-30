@@ -9,7 +9,8 @@ public enum Pages {
     HOME_ADMIN("/pages/admin/indexAdmin.jsp"),
     DISTR_CANDIDATES("/pages/deanery/addToSettlerListPage.jsp"),
     EDIT_DORMITORY("/pages/admin/editDormitory.jsp"),
-    EDIT_BLOCK("/pages/admin/editBlock.jsp");
+    EDIT_BLOCK("/pages/admin/editBlock.jsp"),
+    DOCUMENTS_PAGE("/pages/governor/documentsPage.jsp");
 
     private String pagePath;
 

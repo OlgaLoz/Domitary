@@ -44,13 +44,16 @@
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
                             </a>
                         </form>
+                        </li>
+                    <li>
                         <form action="/Action/Download" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора(xlsx)" class="btn btn-link gray-button ">
                                 <input type="hidden" value="BodyCheckPassed" name="student_status">
+                                <input type="hidden" value="xlsx" name="doc_type">
                             </a>
                         </form>
-                        <form action="/Action/GetAllByStatusGovernor" method="post">
+                        <form action="/Action/GetAllSettledStudents" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселены" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Settled"/>
@@ -60,21 +63,29 @@
                             <a href="#">
                                 <input type="submit" value="Заселенные(xlsx)" class="btn btn-link gray-button ">
                                 <input type="hidden" value="Settled" name="student_status">
-                            </a>
-                        </form>
-                        <form action="/Action/GetAllByStatusGovernor" method="post">
-                            <a href="#">
-                                <input type="submit" value="Не заселены" class="btn btn-link gray-button ">
-                                <input type="hidden" name="status" value="NotSettled"/>
-                            </a>
-                        </form>
-                        <form action="/Action/Download" method="post">
-                            <a href="#">
-                                <input type="submit" value="Не заселенные(xlsx)" class="btn btn-link gray-button ">
-                                <input type="hidden" value="NotSettled" name="student_status">
+                                <input type="hidden" value="xlsx" name="doc_type">
                             </a>
                         </form>
                     </li>
+                    <li>
+                        <hr>
+                        <form action="/Action/GovernorDownload" method="post">
+                            <a href="#">
+                                <input type="submit" value="Прошли доктора(документы)" class="btn btn-link gray-button ">
+                                <input type="hidden" name="status" value="BodyCheckPassed"/>
+                            </a>
+                        </form>
+                    </li>
+                    <li>
+                    <li>
+                        <form action="/Action/GovernorDownload" method="post">
+                            <a href="#">
+                                <input type="submit" value="Заселены(документы)" class="btn btn-link gray-button ">
+                                <input type="hidden" name="status" value="Settled"/>
+                            </a>
+                        </form>
+                    </li>
+                    <li>
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -92,7 +103,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-12 col-md-12">
                         <form action="/Action/SearchByLastNameToGovernor" method="post">
                             <div class="input-group">
                                  <span class="input-group-btn">
@@ -100,12 +111,6 @@
                                  </span>
                                 <input type="text" name="lastNameInput" class="form-control" placeholder="Введите фамилию...">
                             </div><!-- /input-group -->
-                        </form>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6">
-                        <form action="/Action/SearchUsersToGovernor" method="post">
-                            <input type="submit" value="Показать всех" class="btn btn-info">
                         </form>
                     </div>
                 </div>
@@ -120,8 +125,7 @@
                                     <td><b>Отчество</b></td>
                                     <td><b>Фамилия</b></td>
                                     <td><b>Номер группы</b></td>
-                                    <td> <span class="glyphicon glyphicon-duplicate"></span></td>
-                                    <c:if test = "${isSettled == 'no'}">
+                                    <c:if test = "${isSettled == 'bodyCheckPassed'}">
                                         <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
                                         <td> <span class="glyphicon glyphicon-remove" style="color: red"></span></td>
                                     </c:if>
@@ -132,24 +136,8 @@
                                         <td>${data.getMidName()}</td>
                                         <td>${data.getLastName()}</td>
                                         <td>${data.getGroupNumber()}</td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <form action="/Action/Download" method="post">
-                                                        <li>
-                                                            <input type="submit" value="ЧТОТО" class="btn btn-link btn-block btn-sm">
-                                                            <input type="hidden" value="${data.getStudentId()}" name="student_ID">
-                                                            <input type="hidden" value="" name="doc_type">
-                                                        </li>
-                                                    </form>
-                                                    <li><a href="#">Пропуск</a></li>
-                                                    <li><a href="#">Ордер</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <c:if test = "${isSettled == 'no'}">
+
+                                        <c:if test = "${isSettled == 'bodyCheckPassed'}">
                                             <td>
                                                 <div class="checkbox">
                                                     <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
