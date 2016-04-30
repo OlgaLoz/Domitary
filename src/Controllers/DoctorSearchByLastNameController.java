@@ -2,6 +2,7 @@ package Controllers;
 
 import Interfaces.IController;
 import Model.Student;
+import Model.StudentStatus;
 import Repositories.StudentRepository;
 import Utils.Pages;
 
@@ -14,7 +15,7 @@ public class DoctorSearchByLastNameController implements IController {
 
     @Override
     public String run(HttpServletRequest request) {
-        ArrayList<Student> students = StudentRepository.readAllByLastName(request.getParameter("lastNameInput"));
+        ArrayList<Student> students = StudentRepository.readAllByLastName(request.getParameter("lastNameInput"), StudentStatus.DeaneryPassed);
         request.getSession().setAttribute(STUDENTS_ATTRIBUTE, students);
         return Pages.HOME_DOCTOR.getPagePath();
     }

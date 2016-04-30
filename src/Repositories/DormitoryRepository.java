@@ -106,6 +106,24 @@ public class DormitoryRepository {
         }
     }
 
+    public static void update(Integer dormitoryID, Integer freeBlocksCount) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DatabaseUtils.getInstance().getConnection();
+            statement = connection.createStatement();
+
+            statement.executeUpdate(String.format("UPDATE `Dormitory` SET `FreeBlocksCount` = '%d' WHERE `ID_Dormitory` = '%d'",
+                    freeBlocksCount, dormitoryID));
+        } catch (NamingException ex) { int i = 2;
+        } catch (SQLException ex) { int i = 2;
+        } finally {
+            DatabaseUtils.closeStatement(statement);
+            DatabaseUtils.closeConnection(connection);
+        }
+    }
+
     public static void addAll(Dormitory[] dormitories) {
         Connection connection = null;
         Statement statement = null;

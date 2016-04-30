@@ -14,7 +14,7 @@ public class RoomRepositoryTest {
 
     @Test
     public void testCreateReadDelete() throws Exception {
-        int expectedBlockId = 16, expectedRoomNumber = 1, expectedMaxPlacesCount = 4, expectedFreePlacesCount = 2;
+        int expectedBlockId = 5, expectedRoomNumber = 1, expectedMaxPlacesCount = 4, expectedFreePlacesCount = 2;
 
         Room expectedRoom = new Room();
         expectedRoom.setBlockId(expectedBlockId);
@@ -34,7 +34,7 @@ public class RoomRepositoryTest {
 
     @Test
     public void testUpdateReadDelete() throws Exception {
-        int expectedBlockId = 16, expectedRoomNumber = 1, expectedMaxPlacesCount = 4, freePlacesCount = 2, expectedFreePlacesCount = 1;
+        int expectedBlockId = 5, expectedRoomNumber = 1, expectedMaxPlacesCount = 4, freePlacesCount = 2, expectedFreePlacesCount = 1;
 
         Room expectedRoom = new Room();
         expectedRoom.setBlockId(expectedBlockId);
@@ -62,7 +62,7 @@ public class RoomRepositoryTest {
         int expectedRoomNumber2 = 2, expectedMaxPlacesCount2 = 2, freePlacesCount2 = 2;
 
         Block block = new Block();
-        block.setDormitoryId(18);
+        block.setDormitoryId(13);
         block.setBlockNumber(10);
         BlockRepository.create(block);
 
@@ -99,7 +99,7 @@ public class RoomRepositoryTest {
     public void testCreateAllReadAllDeleteAll() throws Exception {
 
         Block block = new Block();
-        block.setDormitoryId(18);
+        block.setDormitoryId(13);
         block.setBlockNumber(10);
         BlockRepository.create(block);
 

@@ -15,7 +15,7 @@ public class BlockRepositoryTest {
     @Test
     public void testCreateReadDelete() throws Exception {
 
-        int expectedDormitoryId = 18, expectedBlockNumber = 4;
+        int expectedDormitoryId = 13, expectedBlockNumber = 4;
 
         Block expectedBlock = new Block();
         expectedBlock.setDormitoryId(expectedDormitoryId);
@@ -31,7 +31,7 @@ public class BlockRepositoryTest {
 
     @Test
     public void testUpdateReadDelete() throws Exception {
-        int expectedDormitoryId = 18, expectedBlockNumber = 4, updateValue = 5;
+        int expectedDormitoryId = 13, expectedBlockNumber = 4, updateValue = 5;
 
         Block expectedBlock = new Block();
         expectedBlock.setDormitoryId(expectedDormitoryId);

@@ -17,6 +17,7 @@ public class AddBlockController implements IController {
     private static final String BLOCK_ERROR = "blockError";
     private static final String BLOCK_NUMBER = "numberB";
     private static final String DORMITORY_NUMBER = "numberD";
+    private static final String DORMITORIES = "dormitories";
     private static final String BLOCKS = "blocks";
 
     @Override
@@ -29,13 +30,17 @@ public class AddBlockController implements IController {
         boolean isDormitoryExist = false;
         boolean isBlockCountCorrect = false;
         Integer dormitoryID = 0;
+        Integer freeBlocksCount = 0;
 
         for(int i = 0; i< dormitories.size(); i++){
             if (dormitories.get(i).getDormitoryNumber() == Integer.parseInt(newBlockDormitoryNumber)){
                 isDormitoryExist = true;
                 dormitoryID = dormitories.get(i).getDormitoryId();
-                if (dormitories.get(i).getFreeBlocksCount() != 0)
+                freeBlocksCount = dormitories.get(i).getFreeBlocksCount();
+                if (freeBlocksCount != 0) {
                     isBlockCountCorrect = true;
+                    dormitories.get(i).setFreeBlocksCount(--freeBlocksCount);
+                }
                 break;
             }
         }
@@ -80,7 +85,9 @@ public class AddBlockController implements IController {
 
         blocks.add(block);
 
+        DormitoryRepository.update(dormitoryID, freeBlocksCount);
         request.getSession().setAttribute(BLOCKS, blocks);
+        request.getSession().setAttribute(DORMITORIES, dormitories);
 
         return Pages.EDIT_BLOCK.getPagePath();
     }
