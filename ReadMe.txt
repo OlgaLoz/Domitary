@@ -1,6 +1,35 @@
-This is our group project.
+#Dormitory
+  
+###Sphere
 
-Сфера: заселение в общежитие.
-Актеры: гость, студент, врач, заведующий, сотрудник деканата.
-Сущности: студент, общежитие, блок, комната, статус, пользователь, роль.
-Документы: заявление на заселение, договор, ордер, список кандидатов на заселение, список поселенцев, пропуск.
+Settlement in dormitory.
+
+  
+###Actors
+
++ Guest
++ Student
++ Deanery worker
++ Doctor
++ Governor
++ Admin
+
+  
+###Entities
+
++ User
++ Role
++ Student
++ Student status
++ Room
++ Block
++ Dormitory
+
+  
+###Documents
+
++ Statement for settlement
++ Contract
++ Order
++ Lists of students according to statuses
+
