@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,7 +32,7 @@
                             <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
                             Доктор
                             <ul class="dropdown-menu ">
-                                <li><form action="/Action/Logout" method="post">
+                                <li><form action="Logout" method="post">
                                     <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
                                 </form></li>
                             </ul>
@@ -55,7 +56,7 @@
                 <br>
                 <div class="row">
                     <div class="col-xs-6">
-                        <form action="/Action/FindSingleUserToDoctor" method="post">
+                        <form action="FindSingleUserToDoctor" method="post">
                             <div class="input-group">
                                  <span class="input-group-btn">
                                       <input type="submit" value="Найти" class="btn btn-info" type="button">
@@ -65,14 +66,14 @@
                         </form>
                     </div><!-- /.col-lg-6 -->
                     <div class="col-xs-6">
-                        <form action="/Action/FindUsersToDoctor" method="post">
+                        <form action="FindUsersToDoctor" method="post">
                             <input type="submit" value="Показать всех" class="btn btn-info">
                         </form>
                     </div>
                 </div>    <!-- /.row -->
 
                 <br>
-                <form action="/Action/CheckStudentsByDoctor" method="post">
+                <form action="CheckStudentsByDoctor" method="post">
                     <c:if test = "${students != null && students.size() != 0}">
                         <div class="table-responsive">
                             <table class="table table-hover" >
@@ -92,7 +93,8 @@
                                     <td>${data.getGroupNumber()}</td>
                                     <td>
                                         <div class="checkbox">
-                                          <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
+
+                                         <label><input type="checkbox" name ="checkers" value="${data.getStudentId()}"></label>
                                         </div>
                                     </td>
                                     <td>
@@ -104,16 +106,19 @@
                                 </c:forEach>
                             </table>
                         </div>
+
                         <div class="col-lg-2 col-lg-offset-5">
                             <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg">
                         </div>
+
                     </c:if>
+                </form>
                     <c:if test = "${students == null || students.size() == 0}">
                         <div class="col-lg-2 col-lg-offset-5">
                            <label class="label-success label">Все здоровы :)</label>
                         </div>
                     </c:if>
-                </form>
+
 
                 <div class="col-xs-12 footer">
                     <hr class="colorgraph">
