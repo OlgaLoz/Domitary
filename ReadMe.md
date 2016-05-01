@@ -1,4 +1,4 @@
-#Dormitory
+#Dormitory (Struts2)
   
 ###Sphere
 
