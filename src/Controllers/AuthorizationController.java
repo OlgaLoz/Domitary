@@ -7,7 +7,6 @@ public class AuthorizationController extends ActionSupport{
 	private String name;
 
 	public String run() throws Exception {
-		ServletActionContext.getRequest();
 		return "success";
 	}
 

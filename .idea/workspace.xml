@@ -2,179 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51cc1dbc-7cf2-4385-ac89-b3e1d39a380d" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\.idea\artifacts\Dormitory_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\.idea\libraries\Java_EE_6_Java_EE_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\.idea\libraries\junit_junit_4_111.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\.idea\uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\DataBaseHostel.mwb" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\Dormitory.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\DormitoryDB_dump.sql" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\commons-codec-1.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\flexjson-2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\hamcrest-core-1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\itextpdf-5.5.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.annotation.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.ejb.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.jms.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.persistence.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.resource.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.servlet.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.servlet.jsp.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.servlet.jsp.jstl.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\javax.transaction.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\junit-4.11.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\poi-3.12.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\poi-ooxml-3.12.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\poi-ooxml-schemas-3.12.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\stax-api-1.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\lib\xmlbeans-2.6.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\META-INF\context.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\ApplicationController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\AuthorizationController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\DBController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\DocumentsController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\DormitoryInfoController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\IndexController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\IndexDeaneryController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\IndexDoctorController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\IndexGovernerController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\IndexSettlerController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\MainController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\RegistrationController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Controller\SettlerListController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Interfaces\IRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Model\Block.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Model\Dormitory.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Model\Role.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Model\Room.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Model\Student.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Model\User.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\Repositories\UserRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\authorizationServlet\Authorization.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\classes\main\DatabaseUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\lib\mysql-connector-java-5.1.38-bin.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\WEB-INF\web.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\addToSettlerListPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\authorization.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\contractPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\docsPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\indexDeaneryWorker.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\indexDoctor.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\indexGorverner.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\indexSettler.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\orderPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\settlerListPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\artifacts\Dormitory_war_exploded\statementPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\ApplicationController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\AuthorizationController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\DBController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\DocumentsController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\DormitoryInfoController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\IndexController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\IndexDeaneryController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\IndexDoctorController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\IndexGovernerController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\IndexSettlerController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\MainController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\RegistrationController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Controller\SettlerListController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Interfaces\IRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Model\Block.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Model\Dormitory.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Model\Role.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Model\Room.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Model\Student.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Model\User.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\Repositories\UserRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\authorizationServlet\Authorization.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\production\Dormitory\main\DatabaseUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\out\test\Dormitory\Repositories\UserRepositoryTest.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\AddBlockController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\AddDormitoryController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DeaneryCheckStudentsController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DeaneryFindAllController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DeaneryFindByLastNameController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DeaneryGetAllByStatusController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DeleteBlockController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DeleteDormitoryController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DoctorCheckStudentsController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DoctorSearchAllController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DoctorSearchByLastNameController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DownloadMultListController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DownloadSingleListController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\DownloadStudentsDocsController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GetDormitoryBlocksController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GovernorCheckStudentsController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GovernorDownloadController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GovernorGetAllSettledStudentsController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GovernorPdfDownloadController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GovernorSearchAllController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\GovernorSearchByLastNameController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\LogoutController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\RegistrationController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Controllers\StatementAndContractController.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Filters\AdminFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Filters\DeaneryFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Filters\DoctorFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Filters\FilesFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Filters\GovernorFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Filters\StudentFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Servlets\MainServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\test\Repositories\BlockRepositoryTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\test\Repositories\DormitoryRepositoryTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\test\Repositories\RoomRepositoryTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\test\Repositories\StudentRepositoryTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\test\Repositories\UserRepositoryTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\META-INF\context.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\admin\editBlock.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\admin\editDormitory.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\admin\indexAdmin.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\deanery\addToSettlerListPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\deanery\indexDeaneryWorker.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\doctor\indexDoctor.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\governor\documentsPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\governor\indexGovernor.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\student\documentsPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\pages\student\indexStudent.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Interfaces\IController.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Utils\DispatcherControl.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\src\Utils\RoleControl.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\WEB-INF\lib\jstl-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\0BSUIR\SPP\Dormitory_Struts2\web\WEB-INF\lib\mysql-connector-java-5.1.38-bin.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/AuthorizationController.java" afterPath="$PROJECT_DIR$/src/Controllers/AuthorizationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Block.java" afterPath="$PROJECT_DIR$/src/Model/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repositories/BlockRepository.java" afterPath="$PROJECT_DIR$/src/Repositories/BlockRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Contract.java" afterPath="$PROJECT_DIR$/src/Model/Contract.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/CsvGenerationService.java" afterPath="$PROJECT_DIR$/src/Utils/CsvGenerationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/DatabaseUtils.java" afterPath="$PROJECT_DIR$/src/Utils/DatabaseUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/DispatcherControl.java" afterPath="$PROJECT_DIR$/src/Utils/DispatcherControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Dormitory.java" afterPath="$PROJECT_DIR$/src/Model/Dormitory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repositories/DormitoryRepository.java" afterPath="$PROJECT_DIR$/src/Repositories/DormitoryRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/ExcelGenerationService.java" afterPath="$PROJECT_DIR$/src/Utils/ExcelGenerationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Interfaces/IController.java" afterPath="$PROJECT_DIR$/src/Interfaces/IController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/Pages.java" afterPath="$PROJECT_DIR$/src/Utils/Pages.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/PdfGenerationService.java" afterPath="$PROJECT_DIR$/src/Utils/PdfGenerationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/RoleControl.java" afterPath="$PROJECT_DIR$/src/Utils/RoleControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Room.java" afterPath="$PROJECT_DIR$/src/Model/Room.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repositories/RoomRepository.java" afterPath="$PROJECT_DIR$/src/Repositories/RoomRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement.java" afterPath="$PROJECT_DIR$/src/Model/Statement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Student.java" afterPath="$PROJECT_DIR$/src/Model/Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repositories/StudentRepository.java" afterPath="$PROJECT_DIR$/src/Repositories/StudentRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/StudentStatus.java" afterPath="$PROJECT_DIR$/src/Model/StudentStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/TestDatabaseUtils.java" afterPath="$PROJECT_DIR$/src/Utils/TestDatabaseUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Styles/bootstrap-theme.css" afterPath="$PROJECT_DIR$/web/Styles/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Styles/bootstrap.css" afterPath="$PROJECT_DIR$/web/Styles/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Styles/bootstrap.min.css" afterPath="$PROJECT_DIR$/web/Styles/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Scripts/html5shiv.js" afterPath="$PROJECT_DIR$/web/Scripts/html5shiv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Scripts/jquery.min.js" afterPath="$PROJECT_DIR$/web/Scripts/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Scripts/respond.min.js" afterPath="$PROJECT_DIR$/web/Scripts/respond.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Styles/template.css" afterPath="$PROJECT_DIR$/web/Styles/template.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Dormitory_Struts2.iws" />
@@ -211,21 +44,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthorizationController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controllers/AuthorizationController.java">
+      <file leaf-file-name="BlockRepositoryTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/Repositories/BlockRepositoryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11623932" vertical-offset="0" max-vertical-offset="585">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="2057">
+              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthorizationController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/AuthorizationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-88.88461" vertical-offset="970" max-vertical-offset="5491">
-              <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.44476745" vertical-offset="0" max-vertical-offset="5491">
+              <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -251,6 +104,7 @@
       <list>
         <option value="$PROJECT_DIR$/web/view.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/src/Controllers/AuthorizationController.java" />
       </list>
     </option>
   </component>
@@ -334,7 +188,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Styles" />
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -348,25 +202,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dormitory_Struts2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dormitory_Struts2" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
+              <option name="myItemId" value="Repositories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -385,8 +225,45 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.Repositories in Dormitory_Struts2">
+    <configuration default="false" name="Repositories in Dormitory_Struts2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Dormitory_Struts2" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Repositories" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -635,7 +512,90 @@
       <envs />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="false" name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.30" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <deployment>
+        <artifact name="Dormitory_Struts2:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Dormitory_Struts2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="2349" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Dormitory_Struts2:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.Repositories in Dormitory_Struts2" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.Repositories in Dormitory_Struts2" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
@@ -644,31 +604,33 @@
       <created>1462103269565</created>
       <option name="number" value="Default" />
       <updated>1462103269565</updated>
-      <workItem from="1462103275158" duration="547000" />
+      <workItem from="1462103275158" duration="2709000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="547000" />
+    <option name="totallyTimeSpent" value="2709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32952693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -676,13 +638,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23327896" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -705,6 +666,10 @@
     <breakpoint-manager />
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/view.jsp">
       <provider selected="true" editor-type-id="text-editor">
@@ -714,10 +679,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/Utils/ExcelGenerationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-88.88461" vertical-offset="970" max-vertical-offset="5491">
-          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2773893" vertical-offset="0" max-vertical-offset="2040">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/PdfGenerationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1981352" vertical-offset="0" max-vertical-offset="7514">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/AuthorizationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="383">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -730,13 +719,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/AuthorizationController.java">
+    <entry file="file://$PROJECT_DIR$/test/Repositories/BlockRepositoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11623932" vertical-offset="0" max-vertical-offset="585">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="2057">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44476745" vertical-offset="0" max-vertical-offset="5491">
+          <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Dormitory_Struts2:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Struts 2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Dormitory_Struts2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>mysql:mysql-connector-java:5.1.38</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
