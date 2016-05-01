@@ -7,17 +7,20 @@
 <struts>
         <constant name="struts.devMode" value="true" />
         <package name="controllers" extends="struts-default">
-                <action name="Authorization"
-                        class="Controllers.AuthorizationController"
-                        method="run">
-                        <result name="success">/view.jsp</result>
-                        <result name="failed">/view.jsp</result>
+                <action name="Authorization" class="Controllers.AuthenticationController" method="login">
+                        <result name="home_guest" type="redirect">/index.jsp?${params}</result>
+                        <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
+                        <result name="home_doctor" type="redirect">/pages/doctor/indexDoctor.jsp</result>
+                        <result name="home_governor" type="redirect">/pages/governor/indexGovernor.jsp</result>
+                        <result name="home_deanery" type="redirect">/pages/deanery/indexDeaneryWorker.jsp</result>
+                        <result name="home_admin" type="redirect">/pages/admin/indexAdmin.jsp</result>
                 </action>
-                <action name="Registration"
-                        class="Controllers.AuthorizationController"
-                        method="run">
-                        <result name="success">/view.jsp</result>
-                        <result name="failed">/view.jsp</result>
+                <action name="Logout" class="Controllers.AuthenticationController" method="logout">
+                        <result name="home_guest" type="redirect">/index.jsp</result>
+                </action>
+                <action name="Registration" class="Controllers.AuthenticationController" method="register">
+                        <result name="home_guest" type="redirect">/index.jsp?${params}</result>
+                        <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
                 </action>
         </package>
 </struts>
