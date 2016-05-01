@@ -22,5 +22,14 @@
                         <result name="home_guest" type="redirect">/index.jsp?${params}</result>
                         <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
                 </action>
+                <action name="FindSingleUserToDoctor" class="Controllers.DoctorController" method="searchByLastName">
+                        <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
+                </action>
+                <action name="FindUsersToDoctor" class="Controllers.DoctorController" method="searchAll">
+                        <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
+                </action>
+                <action name="CheckStudentsByDoctor" class="Controllers.DoctorController" method="checkStudents">
+                        <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
+                </action>
         </package>
 </struts>
