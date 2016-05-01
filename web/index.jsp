@@ -238,19 +238,19 @@
           <hr class="colorgraph">
 
           <div class="form-group">
-            <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Логин" tabindex="1">
+            <input type="text" name="login" class="form-control input-lg" placeholder="Логин" tabindex="1">
           </div>
 
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
+                <input type="password" name="password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
               </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Подтвердите пароль" tabindex="3">
+                <input type="password" name="passwordConfirmation" class="form-control input-lg" placeholder="Подтвердите пароль" tabindex="3">
               </div>
             </div>
           </div>
@@ -258,19 +258,19 @@
           <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="form-group">
-                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Имя" tabindex="4">
+                <input type="text" name="firstName" class="form-control input-lg" placeholder="Имя" tabindex="4">
               </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="form-group">
-                <input type="text" name="mid_name" id="mid_name" class="form-control input-lg" placeholder="Отчество" tabindex="5">
+                <input type="text" name="midName" class="form-control input-lg" placeholder="Отчество" tabindex="5">
               </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="form-group">
-                <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Фамилия" tabindex="6">
+                <input type="text" name="lastName" class="form-control input-lg" placeholder="Фамилия" tabindex="6">
               </div>
             </div>
           </div>
@@ -278,13 +278,13 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="Дата рождения: дд-мм-гггг" tabindex="7">
+                <input type="text" name="birthday" class="form-control input-lg" placeholder="Дата рождения: дд-мм-гггг" tabindex="7">
               </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="group" id="group" class="form-control input-lg" placeholder="Номер группы" tabindex="8">
+                <input type="text" name="group" class="form-control input-lg" placeholder="Номер группы" tabindex="8">
               </div>
             </div>
           </div>
