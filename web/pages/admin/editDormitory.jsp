@@ -48,7 +48,7 @@
                 <td>${data.getMaxBlocksCount()}</td>
                 <td>${data.getFreeBlocksCount()}</td>
                 <td>
-                  <form action="/Action/DeleteDormitory" method="post">
+                  <form action="DeleteDormitory" method="post">
                     <input type="submit" value="Удалить">
                     <input type="hidden" name="dormitoryToDel" value="${data.getDormitoryId()}"/>
                   </form>
@@ -69,7 +69,7 @@
       <hr class="colorgraph">
     </div>
 
-    <form action="/Action/AddDormitory" method="post">
+    <form action="AddDormitory" method="post">
       <div class="col-lg-12">
       <div class="row">
         <div class="col-lg-4 col-lg-offset-4">

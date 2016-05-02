@@ -31,17 +31,17 @@
           <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
           Администратор
           <ul class="dropdown-menu ">
-            <li><form action="/Action/Logout" method="post">
+            <li><form action="Logout" method="post">
               <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm ">
             </form></li>
           </ul>
         </span>
       </li>
       <li>
-        <a href="/Action/DeleteDormitory">Общежития</a>
+        <a href="DeleteDormitory">Общежития</a>
       </li>
       <li>
-        <a href="/Action/GetBlocks">Блоки</a>
+        <a href="GetBlocks">Блоки</a>
       </li>
 
     </ul>
