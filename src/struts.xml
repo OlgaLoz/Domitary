@@ -31,5 +31,14 @@
                 <action name="CheckStudentsByDoctor" class="Controllers.DoctorController" method="checkStudents">
                         <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
                 </action>
+                <action name="SearchByLastNameByGovernor" class="Controllers.GovernorController" method="searchStudentsByLastName">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
+                </action>
+                <action name="SearchByStatusByGovernor" class="Controllers.GovernorController" method="searchStudentsByStatus">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
+                </action>
+                <action name="CheckStudentsByGovernor" class="Controllers.GovernorController" method="checkStudents">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
+                </action>
         </package>
 </struts>
