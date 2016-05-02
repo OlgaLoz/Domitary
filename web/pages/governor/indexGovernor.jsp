@@ -31,14 +31,14 @@
                             <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
                             Заведующий
                             <ul class="dropdown-menu ">
-                                <li><form action="/Action/Logout" method="post">
+                                <li><form action="Logout" method="post">
                                     <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm">
                                 </form></li>
                             </ul>
                         </span>
                     </li>
                     <li>
-                        <form action="/Action/GetAllSettledStudents" method="post">
+                        <form action="SearchByStatusByGovernor" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
@@ -46,20 +46,20 @@
                         </form>
                         </li>
                     <li>
-                        <form action="/Action/Download" method="post">
+                        <form action="Download" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора(xlsx)" class="btn btn-link gray-button ">
                                 <input type="hidden" value="BodyCheckPassed" name="student_status">
                                 <input type="hidden" value="xlsx" name="doc_type">
                             </a>
                         </form>
-                        <form action="/Action/GetAllSettledStudents" method="post">
+                        <form action="SearchByStatusByGovernor" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселены" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Settled"/>
                             </a>
                         </form>
-                        <form action="/Action/Download" method="post">
+                        <form action="Download" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселенные(xlsx)" class="btn btn-link gray-button ">
                                 <input type="hidden" value="Settled" name="student_status">
@@ -69,7 +69,7 @@
                     </li>
                     <li>
                         <hr>
-                        <form action="/Action/GovernorDownload" method="post">
+                        <form action="GovernorDownload" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора(документы)" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
@@ -78,7 +78,7 @@
                     </li>
                     <li>
                     <li>
-                        <form action="/Action/GovernorDownload" method="post">
+                        <form action="GovernorDownload" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселены(документы)" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Settled"/>
@@ -104,18 +104,18 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <form action="/Action/SearchByLastNameToGovernor" method="post">
+                        <form action="SearchByLastNameByGovernor" method="post">
                             <div class="input-group">
                                  <span class="input-group-btn">
                                       <input type="submit" value="Найти" class="btn btn-info" type="button">
                                  </span>
-                                <input type="text" name="lastNameInput" class="form-control" placeholder="Введите фамилию...">
+                                <input type="text" name="lastName" class="form-control" placeholder="Введите фамилию...">
                             </div><!-- /input-group -->
                         </form>
                     </div>
                 </div>
                 <br>
-                <form action="/Action/CheckStudentsByGovernor" method="post">
+                <form action="CheckStudentsByGovernor" method="post">
                     <c:if test = "${students != null && students.size() != 0}">
 
                         <div class="table-responsive">

@@ -35,15 +35,32 @@
                 <action name="CheckStudentsByDoctor" class="Controllers.DoctorController" method="checkStudents">
                         <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
                 </action>
-            <!--    <action name="Download" class="Controllers.DownloadController" method="downloadSingleList">
-                        <result name="home_guest" type="redirect">/index.jsp</result>
-                        <result name="success" type="stream"></result>
-                </action>-->
                 <action name="AddDormitory" class="Controllers.EditDormitoryController" method="addDormitory">
                         <result name="edit_dormitory">/pages/admin/editDormitory.jsp</result>
                 </action>
                 <action name="DeleteDormitory" class="Controllers.EditDormitoryController" method="deleteDormitory">
                         <result name="edit_dormitory">/pages/admin/editDormitory.jsp</result>
+                </action>
+                <action name="SearchByLastNameByGovernor" class="Controllers.GovernorController" method="searchStudentsByLastName">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
+                </action>
+                <action name="SearchByStatusByGovernor" class="Controllers.GovernorController" method="searchStudentsByStatus">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
+                </action>
+                <action name="CheckStudentsByGovernor" class="Controllers.GovernorController" method="checkStudents">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
+                </action>
+                <action name="Download" class="Controllers.DownloadController" method="downloadSingleList">
+                        <result name="home_guest" type="redirect">/index.jsp</result>
+                        <result name="download" type="redirect">${fileName}</result>
+                </action>
+                <action name="DownloadM" class="Controllers.DownloadController" method="downloadMultiList">
+                        <result name="home_guest" type="redirect">/index.jsp</result>
+                        <result name="download" type="redirect">${fileName}</result>
+                </action>
+                <action name="DownloadPdf" class="Controllers.DownloadController" method="downloadPdfDocuments">
+                        <result name="documents_page" type="redirect">/pages/governor/documentsPage.jsp</result>
+                        <result name="download" type="redirect">${fileName}</result>
                 </action>
         </package>
 </struts>
