@@ -20,7 +20,8 @@ public enum Pages {
     DISTR_CANDIDATES("distr_candidates"),
     EDIT_DORMITORY("edit_dormitory"),
     EDIT_BLOCK("edit_block"),
-    DOCUMENTS_PAGE("documents_page");
+    DOCUMENTS_PAGE("documents_page"),
+    DOWNLOAD_FILE("download");
 
     private String pageName;
 

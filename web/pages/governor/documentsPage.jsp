@@ -24,7 +24,7 @@
                 </div>
                 <div class="navbar-collapse collapse" id = "menu">
                     <ul class="nav navbar-nav ">
-                        <li><a  href=/Action/SearchUsersToGovernor>
+                        <li><a  href=SearchUsersToGovernor>
                             <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
                         </a>
                         </li>
@@ -54,7 +54,7 @@
                                 <td>${data.getLastName()}</td>
                                 <td>${data.getGroupNumber()}</td>
                                 <td>
-                                    <form action="/Action/GovernorPdfDownload" method="post">
+                                    <form action="DownloadPdf" method="post">
                                         <a href="#">
                                             <input type="submit" value="скачать(pdf)" class="btn btn-info ">
                                             <input type="hidden" value="${data.getStudentId()}" name="student_ID">
@@ -63,7 +63,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="/Action/GovernorPdfDownload" method="post">
+                                    <form action="DownloadPdf" method="post">
                                         <a href="#">
                                             <input type="submit" value="скачать(pdf)" class="btn btn-info ">
                                             <input type="hidden" value="${data.getStudentId()}" name="student_ID"/>
@@ -73,7 +73,7 @@
                                 </td>
                                 <c:if test = "${isSettled == 'settled'}">
                                     <td>
-                                        <form action="/Action/GovernorPdfDownload" method="post">
+                                        <form action="DownloadPdf" method="post">
                                             <a href="#">
                                                 <input type="submit" value="скачать(pdf)" class="btn btn-info ">
                                                 <input type="hidden" value="${data.getStudentId()}" name="student_ID">

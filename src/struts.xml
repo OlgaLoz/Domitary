@@ -46,7 +46,15 @@
                 </action>
                 <action name="Download" class="Controllers.DownloadController" method="downloadSingleList">
                         <result name="home_guest" type="redirect">/index.jsp</result>
-                        <result name="success" type="stream"></result>
+                        <result name="download" type="redirect">${fileName}</result>
+                </action>
+                <action name="DownloadM" class="Controllers.DownloadController" method="downloadMultiList">
+                        <result name="home_guest" type="redirect">/index.jsp</result>
+                        <result name="download" type="redirect">${fileName}</result>
+                </action>
+                <action name="DownloadPdf" class="Controllers.DownloadController" method="downloadPdfDocuments">
+                        <result name="documents_page" type="redirect">/pages/governor/documentsPage.jsp</result>
+                        <result name="download" type="redirect">${fileName}</result>
                 </action>
         </package>
 </struts>

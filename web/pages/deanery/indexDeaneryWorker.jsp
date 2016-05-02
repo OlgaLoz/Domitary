@@ -31,7 +31,7 @@
                             <span class="glyphicon glyphicon-user" data-toggle="dropdown"></span>
                             Работник деканата
                             <ul class="dropdown-menu ">
-                                <li><form action="/Action/Logout" method="post">
+                                <li><form action="Logout" method="post">
                                     <input type="submit" value="Выход" class="btn btn-link btn-block btn-sm ">
                                 </form></li>
                             </ul>
@@ -41,18 +41,18 @@
 
                     <li>
                         <hr>
-                        <a href="/Action/CheckStudentsByDeanery">Распределить студентов</a>
+                        <a href="CheckStudentsByDeanery">Распределить студентов</a>
                         <hr>
                     </li>
                     <li>
-                        <form action="/Action/ReadAllToDeanery" method="post">
+                        <form action="ReadAllToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Все студенты" class="btn btn-link gray-button ">
                             </a>
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Кандидаты" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Candidate"/>
@@ -60,7 +60,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли деканат" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="DeaneryPassed"/>
@@ -68,7 +68,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Не прошли деканат" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="DeaneryNotPassed"/>
@@ -76,7 +76,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора" class="btn btn-link gray-button " >
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
@@ -84,7 +84,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Не прошли доктора" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="BodyCheckNotPassed"/>
@@ -92,7 +92,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселены" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Settled"/>
@@ -100,7 +100,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="/Action/GetAllByStatus" method="post">
+                        <form action="GetAllByStatus" method="post">
                             <a href="#">
                                 <input type="submit" value="Не заселены" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="NotSettled"/>
@@ -109,7 +109,7 @@
                         <hr>
                     </li>
 
-                    <form action="/Action/DownloadM" method="post">
+                    <form action="DownloadM" method="post">
                     <li class="blue">
                         <input type="checkbox" name="chStatus" value="Candidate"/>
                         Кандидаты
@@ -163,7 +163,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <form action="/Action/FindByLastNameToDeanery" method="post">
+                        <form action="FindByLastNameToDeanery" method="post">
                             <div class="input-group">
                              <span class="input-group-btn">
                                   <input type="submit" value="Найти" class="btn btn-info">
