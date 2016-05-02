@@ -39,7 +39,7 @@
                 <hr class="colorgraph">
             </div>
 
-            <form class="form-horizontal" action="/Action/StudentDocuments" method="post">
+            <form class="form-horizontal" action="StudentDocuments" method="post">
                 <div id="docStatement">
                     <div class="col-lg-7 col-lg-offset-5">
                         <div class="form-group">
