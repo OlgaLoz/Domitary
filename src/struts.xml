@@ -26,6 +26,18 @@
                         <result name="home_guest" type="redirect">/index.jsp</result>
                         <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
                 </action>
+                <action name="SearchByLastNameToDeanery" class="Controllers.DeaneryWorkerController" method="searchStudentByLastName">
+                        <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
+                </action>
+                <action name="SearchByStatusToDeanery" class="Controllers.DeaneryWorkerController" method="searchAllByStatus">
+                        <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
+                </action>
+                <action name="SearchAllToDeanery" class="Controllers.DeaneryWorkerController" method="searchAllStudents">
+                        <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
+                </action>
+                <action name="CheckStudentsByDeanery" class="Controllers.DeaneryWorkerController" method="checkStudents">
+                        <result name="distr_candidates">/pages/deanery/addToSettlerListPage.jsp</result>
+                </action>
                 <action name="FindSingleUserToDoctor" class="Controllers.DoctorController" method="searchByLastName">
                         <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
                 </action>

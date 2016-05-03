@@ -24,7 +24,7 @@
                     </div>
                     <div class="navbar-collapse collapse" id = "menu">
                         <ul class="nav navbar-nav ">
-                            <li><a  href=/Action/ReadAllToDeanery>
+                            <li><a  href=SearchAllToDeanery>
                                 <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
                             </a>
                             </li>
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <form action="/Action/CheckStudentsByDeanery" method="post">
+            <form action="CheckStudentsByDeanery" method="post">
 
                 <c:if test = "${students != null && students.size() != 0}">
                     <div class="table-responsive col-lg-6">

@@ -45,14 +45,14 @@
                         <hr>
                     </li>
                     <li>
-                        <form action="ReadAllToDeanery" method="post">
+                        <form action="SearchAllToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Все студенты" class="btn btn-link gray-button ">
                             </a>
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Кандидаты" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Candidate"/>
@@ -60,7 +60,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли деканат" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="DeaneryPassed"/>
@@ -68,7 +68,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Не прошли деканат" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="DeaneryNotPassed"/>
@@ -76,7 +76,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора" class="btn btn-link gray-button " >
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
@@ -84,7 +84,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Не прошли доктора" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="BodyCheckNotPassed"/>
@@ -92,7 +92,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселены" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Settled"/>
@@ -100,7 +100,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="GetAllByStatus" method="post">
+                        <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
                                 <input type="submit" value="Не заселены" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="NotSettled"/>
@@ -163,12 +163,12 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <form action="FindByLastNameToDeanery" method="post">
+                        <form action="SearchByLastNameToDeanery" method="post">
                             <div class="input-group">
                              <span class="input-group-btn">
                                   <input type="submit" value="Найти" class="btn btn-info">
                              </span>
-                                <input type="text" name="lastNameInput" class="form-control" placeholder="Введите фамилию...">
+                                <input type="text" name="lastName" class="form-control" placeholder="Введите фамилию...">
                             </div><!-- /input-group -->
                         </form>
                     </div><!-- /.col-lg-6 -->
