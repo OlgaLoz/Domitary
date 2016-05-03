@@ -62,6 +62,9 @@
                 <action name="CheckStudentsByGovernor" class="Controllers.GovernorController" method="checkStudents">
                         <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
                 </action>
+                <action name="DownloadDocsByGovernor" class="Controllers.GovernorController" method="governorDownload">
+                        <result name="documents_page">/pages/governor/documentsPage.jsp</result>
+                </action>
                 <action name="Download" class="Controllers.DownloadController" method="downloadSingleList">
                         <result name="home_guest" type="redirect">/index.jsp</result>
                         <result name="download" type="redirect">${fileName}</result>
