@@ -48,7 +48,7 @@
               <td>${data.getMaxBlocksCount()}</td>
               <td>${data.getFreeBlocksCount()}</td>
               <td>
-                <form action="/Action/GetBlocks" method="post">
+                <form action="GetBlocks" method="post">
                   <input type="submit" value="Блоки">
                   <input type="hidden" name="dormitoryId" value="${data.getDormitoryId()}"/>
                 </form>
@@ -82,7 +82,7 @@
                 <td>${roomData.getMaxPlacesCount()}/${roomData.getFreePlacesCount()}</td>
               </c:forEach>
               <td>
-                <form action="/Action/DeleteBlock" method="post">
+                <form action="DeleteBlock" method="post">
                   <input type="submit" value="Удалить">
                   <input type="hidden" name="blockToDel" value="${data.getBlockId()}"/>
                 </form>
@@ -103,7 +103,7 @@
       <hr class="colorgraph">
     </div>
 
-    <form action="/Action/AddBlock" method="post">
+    <form action="AddBlock" method="post">
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-4 col-lg-offset-4">
@@ -119,7 +119,7 @@
                    class="form-control" placeholder="Номер общежития" onkeyup="checkBlock()" tabindex="1">
           </div>
           <div class="col-lg-4">
-            <label id = "dormError" name="dormError" style="color: red"><%out.println(session.getAttribute("dormError")); session.setAttribute("dormError", "");%></label>
+            <label id = "dormError" name="dormError" style="color: red"></label>
           </div>
         </div>
         <div class="row ">
@@ -131,7 +131,7 @@
                    class="form-control" placeholder="Номер блока" onkeyup="checkBlock()" tabindex="2">
           </div>
           <div class="col-lg-4">
-            <label id = "blockError" name = "blockError" style="color: red"><%session.getAttribute("blockError"); session.setAttribute("blockError", "");%></label>
+            <label id = "blockError" name = "blockError" style="color: red"></label>
           </div>
         </div>
         <br>

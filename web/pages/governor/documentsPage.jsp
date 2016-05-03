@@ -24,7 +24,7 @@
                 </div>
                 <div class="navbar-collapse collapse" id = "menu">
                     <ul class="nav navbar-nav ">
-                        <li><a  href=SearchUsersToGovernor>
+                        <li><a  href=SearchByStatusByGovernor>
                             <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
                         </a>
                         </li>
@@ -43,7 +43,7 @@
                             <td><b>Номер группы</b></td>
                             <td><b>Заявление</b></td>
                             <td><b>Договор</b></td>
-                            <c:if test = "${isSettled == 'settled'}">
+                            <c:if test = "${status == 'Settled'}">
                                 <td><b>Пропуск</b></td>
                             </c:if>
                         </tr>
@@ -71,7 +71,7 @@
                                         </a>
                                     </form>
                                 </td>
-                                <c:if test = "${isSettled == 'settled'}">
+                                <c:if test = "${status == 'Settled'}">
                                     <td>
                                         <form action="DownloadPdf" method="post">
                                             <a href="#">

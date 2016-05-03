@@ -70,14 +70,6 @@
                     <li>
                         <form action="SearchByStatusToDeanery" method="post">
                             <a href="#">
-                                <input type="submit" value="Не прошли деканат" class="btn btn-link gray-button ">
-                                <input type="hidden" name="status" value="DeaneryNotPassed"/>
-                            </a>
-                        </form>
-                    </li>
-                    <li>
-                        <form action="SearchByStatusToDeanery" method="post">
-                            <a href="#">
                                 <input type="submit" value="Прошли доктора" class="btn btn-link gray-button " >
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
                             </a>

@@ -69,7 +69,7 @@
                     </li>
                     <li>
                         <hr>
-                        <form action="GovernorDownload" method="post">
+                        <form action="DownloadDocsByGovernor" method="post">
                             <a href="#">
                                 <input type="submit" value="Прошли доктора(документы)" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="BodyCheckPassed"/>
@@ -78,7 +78,7 @@
                     </li>
                     <li>
                     <li>
-                        <form action="GovernorDownload" method="post">
+                        <form action="DownloadDocsByGovernor" method="post">
                             <a href="#">
                                 <input type="submit" value="Заселены(документы)" class="btn btn-link gray-button ">
                                 <input type="hidden" name="status" value="Settled"/>
