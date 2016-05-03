@@ -77,5 +77,14 @@
                         <result name="documents_page" type="redirect">/pages/governor/documentsPage.jsp</result>
                         <result name="download" type="redirect">${fileName}</result>
                 </action>
+                <action name="GetBlocks" class="Controllers.EditBlockController" method="getDormotoryBlocks">
+                        <result name="edit_block">/pages/admin/editBlock.jsp</result>
+                </action>
+                <action name="DeleteBlock" class="Controllers.EditBlockController" method="deleteBlock">
+                        <result name="edit_block">/pages/admin/editBlock.jsp</result>
+                </action>
+                <action name="AddBlock" class="Controllers.EditBlockController" method="addBlock">
+                        <result name="edit_block">/pages/admin/editBlock.jsp</result>
+                </action>
         </package>
 </struts>

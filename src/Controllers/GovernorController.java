@@ -5,11 +5,19 @@ import Model.Student;
 import Model.StudentStatus;
 import Repositories.StudentRepository;
 import Utils.Pages;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
+import org.apache.struts2.components.ActionComponent;
+//import org.apache.struts2.components.Date;
+import org.apache.struts2.dispatcher.SessionMap;
+import java.util.Calendar;
 import java.util.ArrayList;
+import java.util.Map;
+import java.sql.Date;
 
-public class GovernorController extends ActionSupport implements IController{
+public class GovernorController extends ActionSupport implements IController {
+    private String STUDENTS = "students";
+    private String STATUS = "status";
     private ArrayList<Student> students;
     private String lastName;
     private static String isSettled;
@@ -60,6 +68,7 @@ public class GovernorController extends ActionSupport implements IController{
                 for( int j = 0; j < studentsCount; j++) {
                     if (students.get(j).getStudentId() == Integer.parseInt(checkers[i])){
                         StudentRepository.updateStatus(Integer.parseInt(checkers[i]), StudentStatus.Settled);
+                        StudentRepository.updateDateOfSettlement(Integer.parseInt(checkers[i]), new Date(Calendar.getInstance().getTimeInMillis()));
                         students.remove(j);
                         studentsCount--;
                         break;
@@ -82,6 +91,14 @@ public class GovernorController extends ActionSupport implements IController{
         }
 
         return Pages.HOME_GOVERNOR.getPageName();
+    }
+
+    public String governorDownload() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        students = StudentRepository.readAllByStatus(StudentStatus.valueOf(status));
+        session.put(STUDENTS, students);
+        session.put(STATUS, status);
+        return Pages.DOCUMENTS_PAGE.getPageName();
     }
 }
 
