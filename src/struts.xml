@@ -10,9 +10,9 @@
                 <action name="Authorization" class="Controllers.AuthenticationController" method="login">
                         <result name="home_guest" type="redirect">/index.jsp?${params}</result>
                         <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
-                        <result name="home_doctor" type="redirect">/pages/doctor/indexDoctor.jsp</result>
-                        <result name="home_governor" type="redirect">/pages/governor/indexGovernor.jsp</result>
-                        <result name="home_deanery" type="redirect">/pages/deanery/indexDeaneryWorker.jsp</result>
+                        <result name="home_doctor" type="redirectAction">FindUsersToDoctor</result>
+                        <result name="home_governor" type="redirectAction">SearchAllToGovernor</result>
+                        <result name="home_deanery" type="redirectAction">SearchAllToDeanery</result>
                         <result name="home_admin" type="redirect">/pages/admin/indexAdmin.jsp</result>
                 </action>
                 <action name="Logout" class="Controllers.AuthenticationController" method="logout">
@@ -52,6 +52,9 @@
                 </action>
                 <action name="DeleteDormitory" class="Controllers.EditDormitoryController" method="deleteDormitory">
                         <result name="edit_dormitory">/pages/admin/editDormitory.jsp</result>
+                </action>
+                <action name="SearchAllToGovernor" class="Controllers.GovernorController" method="searchAllStudents">
+                        <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
                 </action>
                 <action name="SearchByLastNameByGovernor" class="Controllers.GovernorController" method="searchStudentsByLastName">
                         <result name="home_governor">/pages/governor/indexGovernor.jsp</result>

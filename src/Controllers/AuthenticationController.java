@@ -13,7 +13,6 @@ import Utils.RoleControl;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,7 +41,6 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 	private String birthday;
 	private String group;
 	private String params;
-	//Map session;
 
 	@Override
 	public void setSession(Map<String, Object> map) {
@@ -56,15 +54,8 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 		this.login = login;
 	}
 
-	public String getPassword() {
-		return password;
-	}
 	public void setPassword(String password){
 		this.password = password;
-	}
-
-	public String getPasswordConfirmation(){
-		return passwordConfirmation;
 	}
 	public void setPasswordConfirmation(String passwordConfirmation){
 		this.passwordConfirmation = passwordConfirmation;
@@ -144,18 +135,6 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 		session.put(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
 		if (!Role.Student.equals(user.getRole())){
-			if (Role.Doctor.equals(user.getRole())){
-			//	DispatcherControl dispatcherControl = new DispatcherControl();
-			//	return dispatcherControl.getController("FindUsersToDoctor").run(request);
-			}
-			/*if (Role.Governor.equals(user.getRole())){
-				DispatcherControl dispatcherControl = new DispatcherControl();
-				return dispatcherControl.getController("SearchUsersToGovernor").run(request);
-			}
-			if (Role.DeaneryWorker.equals(user.getRole())){
-				DispatcherControl dispatcherControl = new DispatcherControl();
-				return dispatcherControl.getController("ReadAllToDeanery").run(request);
-			}*/
 			return roleControl.getPageNameByRole(user.getRole());
 		}
 
