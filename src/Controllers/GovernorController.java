@@ -5,11 +5,9 @@ import Model.Student;
 import Model.StudentStatus;
 import Repositories.StudentRepository;
 import Utils.Pages;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.components.ActionComponent;
-//import org.apache.struts2.components.Date;
-import org.apache.struts2.dispatcher.SessionMap;
 import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.Map;
@@ -41,12 +39,12 @@ public class GovernorController extends ActionSupport implements IController {
 
     public void setUncheckers(String[] uncheckers) { this.uncheckers = uncheckers; }
 
-    /*public String searchAllStudents() {
+    public String searchAllStudents() {
         students = StudentRepository.readAllByStatus(StudentStatus.BodyCheckPassed);
         status = StudentStatus.BodyCheckPassed.toString();
         isSettled = "bodyCheckPassed";
         return Pages.HOME_GOVERNOR.getPageName();
-    }*/
+    }
 
     public String searchStudentsByLastName() {
         students = StudentRepository.readAllByLastName(lastName, StudentStatus.valueOf(status));
