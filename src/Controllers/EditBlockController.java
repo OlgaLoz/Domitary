@@ -58,7 +58,7 @@ public class EditBlockController  extends ActionSupport implements IController {
         this.numberD = numberD;
     }
 
-    public String getDormotoryBlocks(){
+    public String getDormitoryBlocks(){
         dormitories = DormitoryRepository.readAll();
         blocks = null;
         dormError = "";

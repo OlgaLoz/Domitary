@@ -6,7 +6,7 @@
 
 <struts>
         <constant name="struts.devMode" value="true" />
-        <package name="controllers" extends="struts-default">
+        <package name="controllers" extends="json-default">
                 <action name="Authorization" class="Controllers.AuthenticationController" method="login">
                         <result name="home_guest" type="redirect">/index.jsp?${params}</result>
                         <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
@@ -80,7 +80,7 @@
                         <result name="documents_page" type="redirect">/pages/governor/documentsPage.jsp</result>
                         <result name="download" type="redirect">${fileName}</result>
                 </action>
-                <action name="GetBlocks" class="Controllers.EditBlockController" method="getDormotoryBlocks">
+                <action name="GetBlocks" class="Controllers.EditBlockController" method="getDormitoryBlocks">
                         <result name="edit_block">/pages/admin/editBlock.jsp</result>
                 </action>
                 <action name="DeleteBlock" class="Controllers.EditBlockController" method="deleteBlock">
