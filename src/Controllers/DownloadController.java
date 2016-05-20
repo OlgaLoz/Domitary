@@ -30,11 +30,18 @@ public class DownloadController implements IController {
     private final String DOC_TYPE = "doc_type";
     private final String STUDENT_ID = "student_ID";
 
+    private String status;
+    private String docType;
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+    public void setDocType(String docType){
+        this.docType = docType;
+    }
+
     public String downloadSingleList() {
-        Map<String, Object> request = ActionContext.getContext().getParameters();
-        String status = ((String[]) request.get(STUDENT_STATUS))[0];
         StudentStatus studentStatus = StudentStatus.valueOf(status);
-        String docType = ((String[]) request.get(DOC_TYPE))[0];
 
         if (studentStatus == null) {
             return Pages.HOME_GUEST.getPageName();

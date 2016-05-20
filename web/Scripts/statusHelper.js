@@ -1,32 +1,22 @@
-$(document).ready(function(){
-    var hidenStatus = $('#hideStatus').val();
-    switch (hidenStatus) {
+function getStatusText(hiddenStatus){
+    switch (hiddenStatus) {
         case 'Default':
-            $('#status').text('Документы на заселение не поданы');
-            break;
+            return 'Документы на заселение не поданы';
         case 'Candidate':
-            $('#status').text('Кандидат');
-            break;
+            return 'Кандидат';
         case 'DeaneryPassed':
-            $('#status').text('Деканат пройден');
-            break;
+            return 'Деканат пройден';
         case 'DeaneryNotPassed':
-            $('#status').text('Деканат не пройден');
-            break;
+            return 'Деканат не пройден';
         case 'BodyCheckPassed':
-            $('#status').text('Врач пройден');
-            break;
+            return 'Врач пройден';
         case 'BodyCheckNotPassed':
-            $('#status').text('Врач не пройден');
-            break;
+            return 'Врач не пройден';
         case 'Settled':
-            $('#status').text('Заселен');
-            break;
+            return 'Заселен';
         case 'NotSettled':
-            $('#status').text('Не заселен');
-            break;
+            return 'Не заселен';
     }
-
-});
+}
 
 

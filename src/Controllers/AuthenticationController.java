@@ -1,6 +1,7 @@
 package Controllers;
 
 import Interfaces.IController;
+import Model.Person;
 import Model.Role;
 import Model.Student;
 import Model.User;
@@ -11,27 +12,19 @@ import Utils.PasswordEncryptionService;
 import Utils.RoleControl;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Map;
 
-public class AuthenticationController extends ActionSupport implements SessionAware, IController {
+public class AuthenticationController extends ActionSupport implements IController {
 
 	private RoleControl roleControl = new RoleControl();
 	private PasswordEncryptionService encryptionService = new PasswordEncryptionService();
 
-	private static final String LOGIN_ATTRIBUTE = "login";
-	private static final String FIRSTNAME_ATTRIBUTE = "first_name";
-	private static final String MIDNAME_ATTRIBUTE = "mid_name";
-	private static final String LASTNAME_ATTRIBUTE = "last_name";
-	private static final String BIRTHDAY_ATTRIBUTE = "birthday";
-	private static final String GROUP_ATTRIBUTE = "group";
-	private static final String STATUS_ATTRIBUTE = "student_status";
-
-	SessionMap<String, Object> session;
 	private String login;
 	private String password;
 	private String passwordConfirmation;
@@ -41,11 +34,9 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 	private String birthday;
 	private String group;
 	private String params;
-
-	@Override
-	public void setSession(Map<String, Object> map) {
-		session = (SessionMap)map;
-	}
+	private String errorMessage;
+	private Person person = new Person();
+	private int userId;
 
 	public String getLogin(){
 		return login;
@@ -103,12 +94,26 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 		this.params = paramName;
 	}
 
+	public String getErrorMessage(){
+		return errorMessage;
+	}
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public Person getPerson() {
+		return person;
+	}
+
 	public String login() throws Exception {
 
 		User user = UserRepository.getUserByLogin(login);
 
 		if (user == null){
-			params = "error=authorization";
+			errorMessage = "?error=authorization";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
@@ -117,22 +122,29 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 			isValidCredentials = encryptionService.authenticate(password, user.getPassword(), user.getSalt());
 		}
 		catch (Exception ex){
-			params = "error=authorization&state=1";
+			errorMessage = "?error=authorization&state=1";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
 		if (!isValidCredentials){
-			params = "error=authorization";
+			errorMessage = "?error=authorization";
 			return Pages.HOME_GUEST.getPageName();
 		}
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
 
 		if (session == null){
-			params = "error=authorization&state=1";
+			errorMessage = "?error=authorization&state=1";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
-		session.put(CURRENT_USER_ATTRIBUTE, user.getUserId());
-		session.put(CURRENT_ROLE_ATTRIBUTE, user.getRole());
+		person.setUserId(user.getUserId());
+		person.setLogin(user.getLogin());
+		person.setRole(user.getRole());
+
+		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
+		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
 		if (!Role.Student.equals(user.getRole())){
 			return roleControl.getPageNameByRole(user.getRole());
@@ -142,42 +154,36 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 
 		if (student == null){
 			session.invalidate();
-			params = "error=authorization&state=1";
+			errorMessage = "?error=authorization&state=1";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
-		session.put(LOGIN_ATTRIBUTE, user.getLogin());
-		session.put(FIRSTNAME_ATTRIBUTE, student.getFirstName());
-		session.put(MIDNAME_ATTRIBUTE, student.getMidName());
-		session.put(LASTNAME_ATTRIBUTE, student.getLastName());
-		session.put(BIRTHDAY_ATTRIBUTE, student.getDateOfBirth().toString());
-		session.put(GROUP_ATTRIBUTE, student.getGroupNumber());
-		session.put(STATUS_ATTRIBUTE, student.getStudentStatus());
+		person.setStudent(student);
 
 		return Pages.HOME_STUDENT.getPageName();
 	}
 
 	public String register() {
 
-		if (login.trim().equals("")){
-			params = "error=registration&state=4";
+		if (login == null || "".trim().equals(login)){
+			errorMessage = "?error=registration&state=4";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
 		User user = UserRepository.getUserByLogin(login);
 
 		if (user != null){
-			params = "error=registration&state=1";
+			errorMessage = "?error=registration&state=1";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
-		if (password.trim().equals("") || passwordConfirmation.trim().equals("")){
-			params = "error=registration&state=4";
+		if (password == null || passwordConfirmation == null || "".trim().equals(password) || "".trim().equals(passwordConfirmation)){
+			errorMessage = "?error=registration&state=4";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
 		if (!password.equals(passwordConfirmation)){
-			params = "error=registration&state=2";
+			errorMessage = "?error=registration&state=2";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
@@ -188,13 +194,14 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 			encryptedPassword = encryptionService.getEncryptedPassword(password, salt);
 		}
 		catch (Exception ex){
-			params = "error=registration&state=3";
+			errorMessage = "?error=registration&state=3";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
-		if (firstName.trim().equals("") || midName.trim().equals("") || lastName.trim().equals("")
-				|| group.trim().equals("")){
-			params = "error=registration&state=4";
+		if (firstName == null || midName == null || lastName == null || group == null ||
+				"".trim().equals(firstName) || "".trim().equals(midName) || "".trim().equals(lastName)
+				|| "".trim().equals(group)){
+			errorMessage = "?error=registration&state=4";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
@@ -205,12 +212,15 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 			dateOfBirth = new java.sql.Date(parsed.getTime());
 		}
 		catch (ParseException ex){
-			params = "error=registration&state=5";
+			errorMessage = "?error=registration&state=5";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+
 		if (session == null){
-			params = "error=authorization&state=3";
+			errorMessage = "?error=authorization&state=3";
 			return Pages.HOME_GUEST.getPageName();
 		}
 
@@ -227,25 +237,40 @@ public class AuthenticationController extends ActionSupport implements SessionAw
 		student.setUserId(user.getUserId());
 		StudentRepository.create(student);
 
-		session.put(CURRENT_USER_ATTRIBUTE, user.getUserId());
-		session.put(CURRENT_ROLE_ATTRIBUTE, user.getRole());
+		session.setAttribute(CURRENT_USER_ATTRIBUTE, user.getUserId());
+		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
-		session.put(LOGIN_ATTRIBUTE, login);
-		session.put(FIRSTNAME_ATTRIBUTE, firstName);
-		session.put(MIDNAME_ATTRIBUTE, midName);
-		session.put(LASTNAME_ATTRIBUTE, lastName);
-		session.put(BIRTHDAY_ATTRIBUTE, birthday);
-		session.put(GROUP_ATTRIBUTE, group);
-		session.put(STATUS_ATTRIBUTE, student.getStudentStatus());
+		person.setUserId(user.getUserId());
+		person.setLogin(user.getLogin());
+		person.setRole(user.getRole());
+		person.setStudent(student);
 
 		return Pages.HOME_STUDENT.getPageName();
 	}
 
 	public String logout() {
+		HttpSession session = ServletActionContext.getRequest().getSession(false);
 		if (session != null){
 			session.invalidate();
 		}
 		return Pages.HOME_GUEST.getPageName();
+	}
+
+	public String getUser() {
+		User user = UserRepository.read(userId);
+
+		if (user == null) {
+			return Pages.HOME_GUEST.getPageName();
+		}
+
+		Student student = StudentRepository.getStudentByUserId(userId);
+
+		person.setUserId(user.getUserId());
+		person.setRole(user.getRole());
+		person.setLogin(user.getLogin());
+		person.setStudent(student);
+
+		return Pages.HOME_STUDENT.getPageName();
 	}
 
 }

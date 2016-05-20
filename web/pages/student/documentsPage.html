@@ -1,0 +1,206 @@
+<div class="container">
+    <div class = "row">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id = "menu">
+                <ul class="nav navbar-nav">
+                    <li ng-hide="filledStatement"><a href="#/student">
+                        <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
+                    </a>
+                    </li>
+                    <li ng-show="filledStatement"><a href="" ng-click="filledStatement=false">
+                        <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="lead">
+        <div class="text-center">
+            <h1>
+                <strong ng-hide="filledStatement">Заявление на заселение</strong>
+                <strong ng-show="filledStatement">Данные для договора</strong>
+            </h1>
+            <hr class="colorgraph">
+        </div>
+
+        <form class="form-horizontal" method="post">
+            <div ng-hide="filledStatement">
+                <div class="col-lg-7 col-lg-offset-5">
+                    <div class="form-group">
+                        <div class="col-xs-2">Декану </div>
+                        <div class="col-xs-10">
+                            <input type="text" name="dean" ng-model="docsData.dean" required class="form-control input-lg" placeholder="Фамилия И.О. декана" tabindex="1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-4">Студента(тки) гр. </div>
+                        <div class="col-xs-8">
+                            <input type="text" name="group" ng-model="docsData.group" required class="form-control input-lg" placeholder="Группа" tabindex="2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-2">Ф.И.О. </div>
+                        <div class="col-xs-10">
+                            <input type="text" name="lastname" ng-model="docsData.lastname" required class="form-control input-lg" placeholder="Фамилия" tabindex="3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <input type="text" name="firstname" ng-model="docsData.firstname" required class="form-control input-lg" placeholder="Имя" tabindex="4">
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="text" name="midname" ng-model="docsData.midname" class="form-control input-lg" placeholder="Отчество" tabindex="5">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+
+                <div class ="text-center">
+                    <h2>Заявление</h2>
+                    <br/>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="col-xs-offset-1 col-xs-11">
+                            Прошу предоставить койко-место в студенческом общежитии БГУиР.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-2">Проживаю в </div>
+                        <div class="col-xs-8">
+                            <input type="text" name="region" ng-model="docsData.region" required class="form-control input-lg" placeholder="Область" tabindex="6">
+                        </div>
+                        <div class="col-xs-2"> области</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-1">город </div>
+                        <div class="col-xs-2">
+                            <input type="text" name="city" ng-model="docsData.city" required class="form-control input-lg" placeholder="Город" tabindex="7">
+                        </div>
+                        <div class="col-xs-1">улица </div>
+                        <div class="col-xs-2">
+                            <input type="text" name="street" ng-model="docsData.street" required class="form-control input-lg" placeholder="Улица" tabindex="8">
+                        </div>
+                        <div class="col-xs-1">дом </div>
+                        <div class="col-xs-2">
+                            <input type="text" name="house" ng-model="docsData.house" required class="form-control input-lg" placeholder="Дом" tabindex="9">
+                        </div>
+                        <div class="col-xs-1">квартира </div>
+                        <div class="col-xs-2">
+                            <input type="text" name="flat" ng-model="docsData.flat" required class="form-control input-lg" placeholder="Квартира" tabindex="10">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-3">Форма обучения: </div>
+                        <div class="col-xs-6">
+                            <input type="text" name="training" ng-model="docsData.training" required class="form-control input-lg" placeholder="Бюджетная/Платная" tabindex="11">
+                        </div>
+                        <div class="col-xs-3"> (документы прилагаются)</div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <div class ="col-xs-6">
+                            <div class="form-group">
+                                <div class="col-xs-5">Мобильный телефон </div>
+                                <div class="col-xs-7">
+                                    <input type="text" name="mobile_phone" ng-model="docsData.mobile_phone" required class="form-control input-lg" placeholder="(+XXX XX) XXX-XX-XX" tabindex="12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-5">Домашний телефон </div>
+                                <div class="col-xs-7">
+                                    <input type="text" name="home_phone" ng-model="docsData.home_phone" required class="form-control input-lg" placeholder="XXX-XX-XX" tabindex="13">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">Ф.И.О.(родителей) </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <input type="text" name="mother" ng-model="docsData.mother" required class="form-control input-lg" placeholder="Ф.И.О. матери" tabindex="14">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <input type="text" name="father" ng-model="docsData.father" required class="form-control input-lg" placeholder="Ф.И.О. отца" tabindex="15">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class ="col-lg-4 col-lg-offset-8">
+                            <div class="form-group">
+                                <div class="col-xs-3">Дата </div>
+                                <div class="col-xs-9">
+                                    <input type="text" name="filling_date" ng-model="docsData.filling_date" required class="form-control input-lg" placeholder="дд.мм.гггг" tabindex="16">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" ng-show="person.student_status == 'Default'">
+                    <button class="btn btn-primary btn-lg" ng-click="filledStatement=true">Далее</button>
+                </div>
+            </div>
+            <div ng-show="filledStatement">
+                <div class ="col-lg-8 col-lg-offset-2">
+                    <div class="form-group">
+                        <div class="col-xs-3">Факультет </div>
+                        <div class="col-xs-9">
+                            <input type="text" name="faculty" ng-model="docsData.faculty" required class="form-control input-lg" placeholder="Полная расшифровка" tabindex="17">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-3">Кафедра </div>
+                        <div class="col-xs-9">
+                            <input type="text" name="chair" ng-model="docsData.chair" required class="form-control input-lg" placeholder="Полная расшифровка" tabindex="18">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-3">Серия паспорта </div>
+                        <div class="col-xs-9">
+                            <input type="text" name="passportSeries" ng-model="docsData.passportSeries" required class="form-control input-lg" placeholder="XX" tabindex="19">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-3">Номер паспорта </div>
+                        <div class="col-xs-9">
+                            <input type="text" name="passportNumber" ng-model="docsData.passportNumber" required class="form-control input-lg" placeholder="XXXXXXX" tabindex="20">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-3">Дата выдачи паспорта </div>
+                        <div class="col-xs-9">
+                            <input type="text" name="passportDateOfIssue" ng-model="docsData.passportDateOfIssue" required class="form-control input-lg" placeholder="дд.мм.гггг" tabindex="21">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" id="apply" value="Подать документы" class="btn btn-primary btn-lg" data-ng-click="apply()">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 footer">
+            <hr class="colorgraph">
+            <div class="col-xs-4 col-xs-offset-5 ">
+                <p class="lead">&copy; By MON </p>
+            </div>
+        </div>
+    </div>
+</div>
+

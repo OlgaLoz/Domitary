@@ -1,20 +1,3 @@
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
-
-  <link href="Styles/bootstrap.css" rel="stylesheet">
-  <link href="Styles/indexStyle.css" rel="stylesheet">
-
-  <title>Общежитие</title>
-</head>
-<body>
 <div class="container">
   <div class = "row">
     <div class="navbar navbar-inverse">
@@ -27,9 +10,9 @@
           </button>
         </div>
         <div class="navbar-collapse collapse" id = "menu">
-          <ul class="nav navbar-nav ">
-            <li><a  href="#" data-toggle="modal"  data-target="#registerModal"><h5>Регистрация</h5></a></li>
-            <li><a  href="#" data-toggle="modal"  data-target="#autorizModal"><h5>Авторизация</h5></a></li>
+          <ul class="nav navbar-nav">
+            <li><a  href="" data-toggle="modal" data-target="#registerModal"><h5>Регистрация</h5></a></li>
+            <li><a  href="" data-toggle="modal" data-target="#autorizModal"><h5>Авторизация</h5></a></li>
           </ul>
         </div>
       </div>
@@ -181,12 +164,12 @@
   </div>
 </div>
 
-<form action="Authorization" method="post">
+<form method="post" data-ng-controller="authorizeCtrl">
   <div class="modal fade" id="autorizModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button id="authorizeClose" class="close" type="button" data-dismiss="modal">x</button>
+          <button class="close" type="button" data-dismiss="modal" data-ng-click="clearErrorField()">x</button>
           <h4 class="modal-title" >Войти</h4>
         </div>
         <div class="modal-body">
@@ -195,7 +178,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                <input type="text" name="login" class="form-control input-lg" placeholder="Логин" tabindex="1">
+                <input type="text" name="login" ng-model="credentials.login" class="form-control input-lg" placeholder="Логин" tabindex="1">
               </div>
             </div>
           </div>
@@ -203,14 +186,16 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                <input type="password" name="password"  class="form-control input-lg" placeholder="Пароль" tabindex="2">
+                <input type="password" name="password" ng-model="credentials.password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class = "has-error col-xs-12 col-sm-12 col-md-12">
-              <label class = "control-label"  id="authorizeError"></label>
+          <div ng-if="errorMessage!=null">
+            <div class="row">
+              <div class = "has-error col-xs-12 col-sm-12 col-md-12">
+                <label class = "control-label">{{errorMessage}}</label>
+              </div>
             </div>
           </div>
 
@@ -218,19 +203,20 @@
         </div>
 
         <div class="modal-footer">
-          <input type="submit" value="Готово" class="btn btn-primary btn-block btn-lg">
+          <input type="submit" value="Готово" class="btn btn-primary btn-block btn-lg" data-ng-click="authorize()" >
         </div>
       </div>
     </div>
   </div>
 </form>
 
-<form action="Registration" method="post">
+
+<form method="post" data-ng-controller="registerCtrl">
   <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" class="col-xs-12 col-sm-12 col-md-8">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button id="registerClose" class="close" type="button" data-dismiss="modal">x</button>
+          <button class="close" type="button" data-dismiss="modal" data-ng-click="clearErrorField()">x</button>
           <h4 class="modal-title" id="myModalLabel">Регистрация</h4>
         </div>
 
@@ -238,19 +224,19 @@
           <hr class="colorgraph">
 
           <div class="form-group">
-            <input type="text" name="login" class="form-control input-lg" placeholder="Логин" tabindex="1">
+            <input type="text" name="login" ng-model="credentials.login" class="form-control input-lg" placeholder="Логин" tabindex="1">
           </div>
 
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="password" name="password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
+                <input type="password" name="password" ng-model="credentials.password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
               </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="password" name="passwordConfirmation" class="form-control input-lg" placeholder="Подтвердите пароль" tabindex="3">
+                <input type="password" name="passwordConfirmation" ng-model="credentials.passwordConfirmation" class="form-control input-lg" placeholder="Подтвердите пароль" tabindex="3">
               </div>
             </div>
           </div>
@@ -258,19 +244,19 @@
           <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="form-group">
-                <input type="text" name="firstName" class="form-control input-lg" placeholder="Имя" tabindex="4">
+                <input type="text" name="firstName" ng-model="credentials.firstName" class="form-control input-lg" placeholder="Имя" tabindex="4">
               </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="form-group">
-                <input type="text" name="midName" class="form-control input-lg" placeholder="Отчество" tabindex="5">
+                <input type="text" name="midName" ng-model="credentials.midName" class="form-control input-lg" placeholder="Отчество" tabindex="5">
               </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="form-group">
-                <input type="text" name="lastName" class="form-control input-lg" placeholder="Фамилия" tabindex="6">
+                <input type="text" name="lastName" ng-model="credentials.lastName" class="form-control input-lg" placeholder="Фамилия" tabindex="6">
               </div>
             </div>
           </div>
@@ -278,20 +264,22 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="birthday" class="form-control input-lg" placeholder="Дата рождения: дд-мм-гггг" tabindex="7">
+                <input type="text" name="birthday" ng-model="credentials.birthday" class="form-control input-lg" placeholder="Дата рождения: дд-мм-гггг" tabindex="7">
               </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="group" class="form-control input-lg" placeholder="Номер группы" tabindex="8">
+                <input type="text" name="group" ng-model="credentials.group" class="form-control input-lg" placeholder="Номер группы" tabindex="8">
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class = "has-error col-xs-12 col-sm-12 col-md-12">
-              <label class = "control-label"  id="registerError"></label>
+          <div ng-if="errorMessage!=null">
+            <div class="row">
+              <div class = "has-error col-xs-12 col-sm-12 col-md-12">
+                <label class = "control-label">{{errorMessage}}</label>
+              </div>
             </div>
           </div>
 
@@ -299,19 +287,10 @@
         </div>
 
         <div class="modal-footer">
-          <input type="submit" value="Готово" class="btn btn-primary btn-block btn-lg">
+          <input type="submit" value="Готово" class="btn btn-primary btn-block btn-lg" data-ng-click="register()" >
         </div>
 
       </div>
     </div>
   </div>
 </form>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script type="text/javascript" src="Scripts/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script type="text/javascript" src="Scripts/bootstrap.js"></script>
-
-<script type="text/javascript" src="Scripts/indexUtils.js"></script>
-
-</body>
-</html>

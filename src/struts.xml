@@ -5,26 +5,77 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-        <constant name="struts.devMode" value="true" />
-        <package name="controllers" extends="json-default">
+        <constant name="struts.devMode" value="true"/>
+        <package name="dormitory" extends="json-default">
+                <interceptors>
+                        <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+                </interceptors>
                 <action name="Authorization" class="Controllers.AuthenticationController" method="login">
-                        <result name="home_guest" type="redirect">/index.jsp?${params}</result>
-                        <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_guest" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="statusCode">500</param>
+                                <param name="root">errorMessage</param>
+                        </result>
+                        <result name="home_student" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">person</param>
+                        </result>
                         <result name="home_doctor" type="redirectAction">FindUsersToDoctor</result>
                         <result name="home_governor" type="redirectAction">SearchAllToGovernor</result>
                         <result name="home_deanery" type="redirectAction">SearchAllToDeanery</result>
-                        <result name="home_admin" type="redirect">/pages/admin/indexAdmin.jsp</result>
+                        <result name="home_admin" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">person</param>
+                        </result>
                 </action>
                 <action name="Logout" class="Controllers.AuthenticationController" method="logout">
-                        <result name="home_guest" type="redirect">/index.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_guest" type="json">
+                        </result>
                 </action>
                 <action name="Registration" class="Controllers.AuthenticationController" method="register">
-                        <result name="home_guest" type="redirect">/index.jsp?${params}</result>
-                        <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_guest" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="statusCode">500</param>
+                                <param name="root">errorMessage</param>
+                        </result>
+                        <result name="home_student" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">person</param>
+                        </result>
+                </action>
+                <action name="GetUser" class="Controllers.AuthenticationController" method="getUser">
+                        <interceptor-ref name="json"/>
+                        <result name="home_guest" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="statusCode">500</param>
+                        </result>
+                        <result name="home_student" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">person</param>
+                        </result>
                 </action>
                 <action name="StudentDocuments" class="Controllers.StudentController" method="apply">
-                        <result name="home_guest" type="redirect">/index.jsp</result>
-                        <result name="home_student" type="redirect">/pages/student/indexStudent.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_guest" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="statusCode">500</param>
+                        </result>
+                        <result name="home_student" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">studentStatus</param>
+                        </result>
                 </action>
                 <action name="SearchByLastNameToDeanery" class="Controllers.DeaneryWorkerController" method="searchStudentByLastName">
                         <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
@@ -48,10 +99,20 @@
                         <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
                 </action>
                 <action name="AddDormitory" class="Controllers.EditDormitoryController" method="addDormitory">
-                        <result name="edit_dormitory">/pages/admin/editDormitory.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="edit_dormitory" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dormitories</param>
+                        </result>
                 </action>
                 <action name="DeleteDormitory" class="Controllers.EditDormitoryController" method="deleteDormitory">
-                        <result name="edit_dormitory">/pages/admin/editDormitory.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="edit_dormitory" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dormitories</param>
+                        </result>
                 </action>
                 <action name="SearchAllToGovernor" class="Controllers.GovernorController" method="searchAllStudents">
                         <result name="home_governor">/pages/governor/indexGovernor.jsp</result>
@@ -69,11 +130,20 @@
                         <result name="documents_page">/pages/governor/documentsPage.jsp</result>
                 </action>
                 <action name="Download" class="Controllers.DownloadController" method="downloadSingleList">
-                        <result name="home_guest" type="redirect">/index.jsp</result>
-                        <result name="download" type="redirect">${fileName}</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_guest" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="statusCode">500</param>
+                        </result>
+                        <result name="download" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">fileName</param>
+                        </result>
                 </action>
                 <action name="DownloadM" class="Controllers.DownloadController" method="downloadMultiList">
-                        <result name="home_guest" type="redirect">/index.jsp</result>
+                        <result name="home_guest" type="redirect">/index.html</result>
                         <result name="download" type="redirect">${fileName}</result>
                 </action>
                 <action name="DownloadPdf" class="Controllers.DownloadController" method="downloadPdfDocuments">
@@ -81,13 +151,36 @@
                         <result name="download" type="redirect">${fileName}</result>
                 </action>
                 <action name="GetBlocks" class="Controllers.EditBlockController" method="getDormitoryBlocks">
-                        <result name="edit_block">/pages/admin/editBlock.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="edit_block" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">blocks</param>
+                        </result>
+                </action>
+                <action name="GetAllDormitories" class="Controllers.EditBlockController" method="getAllDormitories">
+                        <interceptor-ref name="json"/>
+                        <result name="edit_block" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dormitories</param>
+                        </result>
                 </action>
                 <action name="DeleteBlock" class="Controllers.EditBlockController" method="deleteBlock">
-                        <result name="edit_block">/pages/admin/editBlock.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="edit_block" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">blocks</param>
+                        </result>
                 </action>
                 <action name="AddBlock" class="Controllers.EditBlockController" method="addBlock">
-                        <result name="edit_block">/pages/admin/editBlock.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="edit_block" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">blocks</param>
+                        </result>
                 </action>
         </package>
 </struts>
