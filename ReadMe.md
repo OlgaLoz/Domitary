@@ -1,4 +1,4 @@
-#Dormitory (Struts2)
+#Dormitory (Struts2 + AngularJS)
   
 ###Sphere
 

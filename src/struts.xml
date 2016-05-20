@@ -90,13 +90,28 @@
                         <result name="distr_candidates">/pages/deanery/addToSettlerListPage.jsp</result>
                 </action>
                 <action name="FindSingleUserToDoctor" class="Controllers.DoctorController" method="searchByLastName">
-                        <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_doctor" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">students</param>
+                        </result>
                 </action>
                 <action name="FindUsersToDoctor" class="Controllers.DoctorController" method="searchAll">
-                        <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_doctor" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">students</param>
+                        </result>
                 </action>
                 <action name="CheckStudentsByDoctor" class="Controllers.DoctorController" method="checkStudents">
-                        <result name="home_doctor">/pages/doctor/indexDoctor.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_doctor" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">students</param>
+                        </result>
                 </action>
                 <action name="AddDormitory" class="Controllers.EditDormitoryController" method="addDormitory">
                         <interceptor-ref name="json"/>

@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'checklist-model']);
 
 app.config(['$routeProvider', function($routeProvide){
     $routeProvide
@@ -10,7 +10,8 @@ app.config(['$routeProvider', function($routeProvide){
             controller:  'studentCtrl'
         })
         .when('/doctor', {
-            templateUrl: 'pages/doctor/indexDoctor.html'
+            templateUrl: 'pages/doctor/indexDoctor.html',
+            controller:  'doctorCtrl'
         })
         .when('/governor', {
             templateUrl: 'pages/governor/indexGovernor.html'

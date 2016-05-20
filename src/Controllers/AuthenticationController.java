@@ -147,7 +147,8 @@ public class AuthenticationController extends ActionSupport implements IControll
 		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
 		if (!Role.Student.equals(user.getRole())){
-			return roleControl.getPageNameByRole(user.getRole());
+			//return roleControl.getPageNameByRole(user.getRole());
+			return Pages.HOME_STUDENT.getPageName();
 		}
 
 		Student student = StudentRepository.getStudentByUserId(user.getUserId());
