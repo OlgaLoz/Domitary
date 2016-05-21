@@ -10,34 +10,33 @@ import Utils.CsvGenerationService;
 import Utils.ExcelGenerationService;
 import Utils.Pages;
 import Utils.PdfGenerationService;
-import com.opensymphony.xwork2.ActionContext;
 import flexjson.JSONDeserializer;
 import org.apache.struts2.ServletActionContext;
-
 import java.util.ArrayList;
-import java.util.Map;
 
 public class DownloadController implements IController {
+    private  String DOC_PATH = "http://localhost:8080/files/";
     private String fileName;
-
     public String getFileName() {
         return fileName;
     }
 
-    private  String DOC_PATH = "http://localhost:8080/files/";
-    private final String STUDENT_STATUS = "student_status";
-    private final String CHECKED_STATUSES = "chStatus";
-    private final String DOC_TYPE = "doc_type";
-    private final String STUDENT_ID = "student_ID";
-
     private String status;
     private String docType;
+    private int studentId;
+    private String[] checkedStatuses;
 
     public void setStatus(String status){
         this.status = status;
     }
     public void setDocType(String docType){
         this.docType = docType;
+    }
+    public void setStudentId(int studentId){
+        this.studentId = studentId;
+    }
+    public void setCheckedStatuses(String[] checkedStatuses){
+        this.checkedStatuses = checkedStatuses;
     }
 
     public String downloadSingleList() {
@@ -65,16 +64,13 @@ public class DownloadController implements IController {
 
     public String downloadMultiList() {
 
-        Map<String, Object> request = ActionContext.getContext().getParameters();
-        String[] positiveResults = (String[]) request.get(CHECKED_STATUSES);
-
-        if (positiveResults == null) {
+        if (checkedStatuses == null) {
             return Pages.HOME_GUEST.getPageName();
         }
 
         String res = "";
         ArrayList<StudentStatus> statuses = new ArrayList<StudentStatus>();
-        for (String status : positiveResults) {
+        for (String status : checkedStatuses) {
             statuses.add(StudentStatus.valueOf(status));
             res += status.toCharArray()[0];
         }
@@ -91,9 +87,6 @@ public class DownloadController implements IController {
     }
 
     public String downloadPdfDocuments() {
-        Map<String, Object> request = ActionContext.getContext().getParameters();
-        String docType = ((String[]) request.get(DOC_TYPE))[0];
-        Integer studentId = Integer.parseInt(((String[]) request.get(STUDENT_ID))[0]);
         Student student = StudentRepository.read(studentId);
         String res = docType + studentId + ".pdf";
         try {

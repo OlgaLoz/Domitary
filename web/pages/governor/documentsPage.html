@@ -1,0 +1,72 @@
+<div class="main">
+    <div class="container">
+        <div class = "row">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id = "menu">
+                    <ul class="nav navbar-nav" data-ng-controller="governorCtrl">
+                        <li><a  href="" data-ng-click="searchByStatus(status)">
+                            <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div ng-if="students != null && students.length != 0">
+            <div class="table-responsive col-lg-12">
+                <table class="table table-hover" >
+                    <tr>
+                        <td><b>Имя</b></td>
+                        <td><b>Отчество</b></td>
+                        <td><b>Фамилия</b></td>
+                        <td><b>Номер группы</b></td>
+                        <td><b>Заявление</b></td>
+                        <td><b>Договор</b></td>
+                        <td ng-if="status=='Settled'"><b>Пропуск</b></td>
+                    </tr>
+                    <tr ng-repeat="data in students">
+                        <td>{{data.firstName}}</td>
+                        <td>{{data.midName}}</td>
+                        <td>{{data.lastName}}</td>
+                        <td>{{data.groupNumber}}</td>
+                        <td>
+                            <form method="post" data-ng-controller="downloadCtrl">
+                                <a href="">
+                                    <input type="submit" value="скачать(pdf)" class="btn btn-info" data-ng-click="downloadPdf(data.studentId,'statement')">
+                                </a>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" data-ng-controller="downloadCtrl">
+                                <a href="">
+                                    <input type="submit" value="скачать(pdf)" class="btn btn-info" data-ng-click="downloadPdf(data.studentId,'contract')">
+                                </a>
+                            </form>
+                        </td>
+                        <td ng-if="status == 'Settled'">
+                            <form method="post" data-ng-controller="downloadCtrl">
+                                <a href="">
+                                    <input type="submit" value="скачать(pdf)" class="btn btn-info" data-ng-click="downloadPdf(data.studentId,'order')">
+                                </a>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div ng-if="students == null || students.length == 0">
+            <div class="col-lg-4 col-lg-offset-2">
+                <label class="label-info label">Студентов нет :)</label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,7 +14,8 @@ app.config(['$routeProvider', function($routeProvide){
             controller:  'doctorCtrl'
         })
         .when('/governor', {
-            templateUrl: 'pages/governor/indexGovernor.html'
+            templateUrl: 'pages/governor/indexGovernor.html',
+            controller: 'governorCtrl'
         })
         .when('/deanery', {
             templateUrl: 'pages/deanery/indexDeaneryWorker.html'
@@ -34,6 +35,10 @@ app.config(['$routeProvider', function($routeProvide){
         .when('/editBlock', {
             templateUrl: 'pages/admin/editBlock.html',
             controller:  'editBlockCtrl'
+        })
+        .when('/studentsDocumentsPage', {
+            templateUrl: 'pages/governor/documentsPage.html',
+            controller:  'documentsCtrl'
         })
         .otherwise({
             redirectTo :'/'
