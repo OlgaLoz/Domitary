@@ -1,0 +1,102 @@
+<div class="main">
+    <div class="container with-img">
+        <div class = "row">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id = "menu">
+                    <ul class="nav navbar-nav ">
+                        <li><a  href="#/deanery">
+                            <h4> <span class="glyphicon glyphicon-arrow-left"> Назад </span></h4>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div ng-if="students != null && students.length != 0">
+                <div class="table-responsive col-lg-6">
+                    <table class="table table-hover" >
+                        <tr>
+                            <td><b>Имя</b></td>
+                            <td><b>Отчество</b></td>
+                            <td><b>Фамилия</b></td>
+                            <td><b>Номер группы</b></td>
+                            <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
+                        </tr>
+                        <tr ng-repeat="data in students">
+                            <td>{{data.firstName}}</td>
+                            <td>{{data.midName}}</td>
+                            <td>{{data.lastName}}</td>
+                            <td>{{data.groupNumber}}</td>
+                            <td>
+                                <div class="radio">
+                                    <label><input type="radio" name="student" ng-model="distributionInfo.student" value="{{data.studentId}}"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div ng-if="students == null || students.length == 0">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <label class="label-info label">Кандидатов нет :)</label>
+                </div>
+            </div>
+
+            <div ng-if="rooms != null && rooms.length != 0">
+                <div class="table-responsive col-lg-6">
+                    <table class="table table-hover" >
+                        <tr>
+                            <td><b>Общежитие</b></td>
+                            <td><b>Блок</b></td>
+                            <td><b>Комната</b></td>
+                            <td><b>Всего мест</b></td>
+                            <td><b>Свободно мест</b></td>
+                            <td> <span class="glyphicon glyphicon-ok" style="color: green"></span></td>
+                        </tr>
+                        <tr ng-repeat="data in rooms">
+                            <td>{{data.dormitoryNumber}}</td>
+                            <td>{{data.blockNumber}}</td>
+                            <td>{{data.roomNumber}}</td>
+                            <td>{{data.maxPlacesCount}}</td>
+                            <td>{{data.freePlacesCount}}</td>
+                            <td>
+                                <div class="radio">
+                                    <label><input type="radio" name="room" ng-model="distributionInfo.room" value="{{data.roomId}}"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div ng-if="rooms == null || rooms.length == 0">
+                <div class="col-lg-4 col-lg-offset-8">
+                    <label class="label-info label">Комнат нет :(</label>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-lg-offset-5">
+                <input type="submit" value="Сохранить" class="btn btn-success btn-block btn-lg" data-ng-click="checkStudents()">
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-xs-12 footer">
+                <hr class="colorgraph">
+                <div class="col-xs-4 col-xs-offset-5 ">
+                    <p class="lead">&copy; By MON </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

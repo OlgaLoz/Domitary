@@ -1,6 +1,7 @@
 package Controllers;
 
 import Interfaces.IController;
+import Model.DataForDeanery;
 import Model.Room;
 import Model.Student;
 import Model.StudentStatus;
@@ -18,6 +19,7 @@ public class DeaneryWorkerController extends ActionSupport implements IControlle
     private String lastName;
     private ArrayList<Student> students;
     private ArrayList<Room> rooms;
+    private DataForDeanery dataForDeanery = new DataForDeanery();
 
     public void setStudent(String student) { this.student = student; }
 
@@ -43,12 +45,19 @@ public class DeaneryWorkerController extends ActionSupport implements IControlle
 
     public ArrayList<Room> getRooms() { return rooms; }
 
+    public DataForDeanery getDataForDeanery() {
+        return dataForDeanery;
+    }
+
     public String checkStudents() {
         students = StudentRepository.readAllByStatus(StudentStatus.Candidate);
         rooms = RoomRepository.readAll();
 
-        if(student == null || room == null)
+        if(student == null || room == null) {
+            dataForDeanery.setStudents(students);
+            dataForDeanery.setRooms(rooms);
             return Pages.DISTR_CANDIDATES.getPageName();
+        }
 
         for( int j = 0; j < students.size(); j++) {
             Integer studentId  = students.get(j).getStudentId();
@@ -72,21 +81,27 @@ public class DeaneryWorkerController extends ActionSupport implements IControlle
             }
         }
 
+        dataForDeanery.setStudents(students);
+        dataForDeanery.setRooms(rooms);
+
         return Pages.DISTR_CANDIDATES.getPageName();
     }
 
     public String searchAllStudents() {
         students = StudentRepository.readAll();
+        dataForDeanery.setStudents(students);
         return Pages.HOME_DEANERY.getPageName();
     }
 
     public String searchStudentByLastName() {
         students = StudentRepository.readAllByLastName(lastName);
+        dataForDeanery.setStudents(students);
         return Pages.HOME_DEANERY.getPageName();
     }
 
     public String searchAllByStatus() {
         students = StudentRepository.readAllByStatus(StudentStatus.valueOf(status));
+        dataForDeanery.setStudents(students);
         return Pages.HOME_DEANERY.getPageName();
     }
 }

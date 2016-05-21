@@ -25,6 +25,10 @@
 	position: absolute;
 }
 
+.with-img{
+    background-image: url("../img/bg.jpg");
+}
+
 .label{
     font-size: large;
 }

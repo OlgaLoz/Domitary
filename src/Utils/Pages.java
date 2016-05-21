@@ -2,6 +2,7 @@ package Utils;
 
 public enum Pages {
     HOME_GUEST("home_guest"),
+    HOME_OTHERS("home_others"),
     HOME_STUDENT("home_student"),
     HOME_DOCTOR("home_doctor"),
     HOME_GOVERNOR("home_governor"),

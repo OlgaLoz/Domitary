@@ -61,6 +61,7 @@ app.controller('authorizeCtrl', ['$rootScope', '$scope', '$http', '$location', f
     $scope.logout = function (){
         $http.get('Logout').then(function() {
             sessionStorage.removeItem('person');
+            sessionStorage.removeItem('status');
             $rootScope.person = null;
             $scope.person = null;
             $location.path('/');

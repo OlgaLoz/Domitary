@@ -9,7 +9,6 @@ import Repositories.StudentRepository;
 import Repositories.UserRepository;
 import Utils.Pages;
 import Utils.PasswordEncryptionService;
-import Utils.RoleControl;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
@@ -22,9 +21,7 @@ import java.text.SimpleDateFormat;
 
 public class AuthenticationController extends ActionSupport implements IController {
 
-	private RoleControl roleControl = new RoleControl();
 	private PasswordEncryptionService encryptionService = new PasswordEncryptionService();
-
 	private String login;
 	private String password;
 	private String passwordConfirmation;
@@ -147,8 +144,7 @@ public class AuthenticationController extends ActionSupport implements IControll
 		session.setAttribute(CURRENT_ROLE_ATTRIBUTE, user.getRole());
 
 		if (!Role.Student.equals(user.getRole())){
-			//return roleControl.getPageNameByRole(user.getRole());
-			return Pages.HOME_STUDENT.getPageName();
+			return Pages.HOME_OTHERS.getPageName();
 		}
 
 		Student student = StudentRepository.getStudentByUserId(user.getUserId());
@@ -161,7 +157,7 @@ public class AuthenticationController extends ActionSupport implements IControll
 
 		person.setStudent(student);
 
-		return Pages.HOME_STUDENT.getPageName();
+		return Pages.HOME_OTHERS.getPageName();
 	}
 
 	public String register() {
@@ -271,7 +267,7 @@ public class AuthenticationController extends ActionSupport implements IControll
 		person.setLogin(user.getLogin());
 		person.setStudent(student);
 
-		return Pages.HOME_STUDENT.getPageName();
+		return Pages.HOME_OTHERS.getPageName();
 	}
 
 }

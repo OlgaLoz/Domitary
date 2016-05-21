@@ -18,7 +18,8 @@ app.config(['$routeProvider', function($routeProvide){
             controller: 'governorCtrl'
         })
         .when('/deanery', {
-            templateUrl: 'pages/deanery/indexDeaneryWorker.html'
+            templateUrl: 'pages/deanery/indexDeaneryWorker.html',
+            controller: 'deaneryCtrl'
         })
         .when('/admin', {
             templateUrl: 'pages/admin/indexAdmin.html',
@@ -39,6 +40,10 @@ app.config(['$routeProvider', function($routeProvide){
         .when('/studentsDocumentsPage', {
             templateUrl: 'pages/governor/documentsPage.html',
             controller:  'documentsCtrl'
+        })
+        .when('/distributeCandidates', {
+            templateUrl: 'pages/deanery/addToSettlerListPage.html',
+            controller: 'distributeCandidatesCtrl'
         })
         .otherwise({
             redirectTo :'/'

@@ -18,15 +18,7 @@
                                 <param name="statusCode">500</param>
                                 <param name="root">errorMessage</param>
                         </result>
-                        <result name="home_student" type="json">
-                                <param name="noCache">true</param>
-                                <param name="excludeNullProperties">true</param>
-                                <param name="root">person</param>
-                        </result>
-                        <result name="home_doctor" type="redirectAction">FindUsersToDoctor</result>
-                        <result name="home_governor" type="redirectAction">SearchAllToGovernor</result>
-                        <result name="home_deanery" type="redirectAction">SearchAllToDeanery</result>
-                        <result name="home_admin" type="json">
+                        <result name="home_others" type="json">
                                 <param name="noCache">true</param>
                                 <param name="excludeNullProperties">true</param>
                                 <param name="root">person</param>
@@ -58,7 +50,7 @@
                                 <param name="excludeNullProperties">true</param>
                                 <param name="statusCode">500</param>
                         </result>
-                        <result name="home_student" type="json">
+                        <result name="home_others" type="json">
                                 <param name="noCache">true</param>
                                 <param name="excludeNullProperties">true</param>
                                 <param name="root">person</param>
@@ -78,16 +70,36 @@
                         </result>
                 </action>
                 <action name="SearchByLastNameToDeanery" class="Controllers.DeaneryWorkerController" method="searchStudentByLastName">
-                        <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_deanery" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dataForDeanery</param>
+                        </result>
                 </action>
                 <action name="SearchByStatusToDeanery" class="Controllers.DeaneryWorkerController" method="searchAllByStatus">
-                        <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_deanery" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dataForDeanery</param>
+                        </result>
                 </action>
                 <action name="SearchAllToDeanery" class="Controllers.DeaneryWorkerController" method="searchAllStudents">
-                        <result name="home_deanery">/pages/deanery/indexDeaneryWorker.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="home_deanery" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dataForDeanery</param>
+                        </result>
                 </action>
                 <action name="CheckStudentsByDeanery" class="Controllers.DeaneryWorkerController" method="checkStudents">
-                        <result name="distr_candidates">/pages/deanery/addToSettlerListPage.jsp</result>
+                        <interceptor-ref name="json"/>
+                        <result name="distr_candidates" type="json">
+                                <param name="noCache">true</param>
+                                <param name="excludeNullProperties">true</param>
+                                <param name="root">dataForDeanery</param>
+                        </result>
                 </action>
                 <action name="FindSingleUserToDoctor" class="Controllers.DoctorController" method="searchByLastName">
                         <interceptor-ref name="json"/>
