@@ -1,3 +1,15 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+.heightFix{
+    height: 100%;
+}
+
 .colorgraph {
     height: 5px;
     border-top: 0;

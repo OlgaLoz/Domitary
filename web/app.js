@@ -3,7 +3,15 @@ var app = angular.module('myApp', ['ngRoute', 'checklist-model']);
 app.config(['$routeProvider', function($routeProvide){
     $routeProvide
         .when('/', {
-            templateUrl: 'index.html'
+            templateUrl: 'pages/index.html'
+        })
+        .when('/authorization', {
+            templateUrl: 'pages/authorization.html',
+            controller:  'authorizeCtrl'
+        })
+        .when('/registration', {
+            templateUrl: 'pages/registration.html',
+            controller:  'registerCtrl'
         })
         .when('/student', {
             templateUrl: 'pages/student/indexStudent.html',

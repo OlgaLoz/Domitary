@@ -1,0 +1,59 @@
+<div class="main">
+    <div class="container with-img">
+        <div class = "row">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id = "menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/">
+                            <h4> <span class="glyphicon glyphicon-arrow-left"> На главную </span></h4>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="modal-header">
+                    <h2 class="modal-title" >Войти</h2>
+                </div>
+                <div class="modal-body">
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <input type="text" name="login" ng-model="credentials.login" class="form-control input-lg" placeholder="Логин" tabindex="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <input type="password" name="password" ng-model="credentials.password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="errorMessage!=null">
+                        <div class="row">
+                            <div class = "has-error col-xs-12 col-sm-12 col-md-12">
+                                <label class = "control-label">{{errorMessage}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="colorgraph">
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Готово" class="btn btn-primary btn-block btn-lg" data-ng-click="authorize()" >
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

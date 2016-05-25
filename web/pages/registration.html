@@ -1,0 +1,89 @@
+<div class="main">
+    <div class="container with-img">
+        <div class = "row">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id = "menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/">
+                            <h4> <span class="glyphicon glyphicon-arrow-left"> На главную </span></h4>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="myModalLabel">Регистрация</h2>
+                </div>
+                <div class="modal-body">
+                    <hr class="colorgraph">
+                    <div class="form-group">
+                        <input type="text" name="login" ng-model="credentials.login" class="form-control input-lg" placeholder="Логин" tabindex="1">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="password" name="password" ng-model="credentials.password" class="form-control input-lg" placeholder="Пароль" tabindex="2">
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="password" name="passwordConfirmation" ng-model="credentials.passwordConfirmation" class="form-control input-lg" placeholder="Подтвердите пароль" tabindex="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <input type="text" name="firstName" ng-model="credentials.firstName" class="form-control input-lg" placeholder="Имя" tabindex="4">
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <input type="text" name="midName" ng-model="credentials.midName" class="form-control input-lg" placeholder="Отчество" tabindex="5">
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <input type="text" name="lastName" ng-model="credentials.lastName" class="form-control input-lg" placeholder="Фамилия" tabindex="6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="birthday" ng-model="credentials.birthday" class="form-control input-lg" placeholder="Дата рождения: дд-мм-гггг" tabindex="7">
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="group" ng-model="credentials.group" class="form-control input-lg" placeholder="Номер группы" tabindex="8">
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="errorMessage!=null">
+                        <div class="row">
+                            <div class = "has-error col-xs-12 col-sm-12 col-md-12">
+                                <label class = "control-label">{{errorMessage}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="colorgraph">
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Готово" class="btn btn-primary btn-block btn-lg" data-ng-click="register()" >
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
