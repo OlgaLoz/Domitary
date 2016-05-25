@@ -96,17 +96,6 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <br>
 
         <div class="row">
             <div class="col-xs-12">
@@ -138,7 +127,7 @@
                         <td>{{data.midName}}</td>
                         <td>{{data.lastName}}</td>
                         <td>{{data.groupNumber}}</td>
-                        <td>{{data.dateOfBirth}}</td>
+                        <td>{{getDateFromString(data.dateOfBirth)}}</td>
                         <td>{{data.studentStatus}}</td>
                     </tr>
                 </table>
