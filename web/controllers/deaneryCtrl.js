@@ -1,5 +1,7 @@
 app.controller('deaneryCtrl', ['$rootScope', '$scope', '$http', '$location', function($rootScope, $scope, $http, $location){
 
+    $scope.getDateFromString = getDateFromString;
+
     if ($scope.person == null){
         $scope.user = {
             userId: sessionStorage.getItem('person')

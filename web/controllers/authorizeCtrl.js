@@ -29,7 +29,7 @@ app.controller('authorizeCtrl', ['$rootScope', '$scope', '$http', '$location', f
                     $rootScope.person.first_name = response.data.student.firstName;
                     $rootScope.person.mid_name = response.data.student.midName;
                     $rootScope.person.last_name = response.data.student.lastName;
-                    $rootScope.person.birthday = response.data.student.dateOfBirth;
+                    $rootScope.person.birthday = getDateFromString(response.data.student.dateOfBirth);
                     $rootScope.person.group = response.data.student.groupNumber;
                     $location.path('/student');
                     break;
@@ -67,10 +67,6 @@ app.controller('authorizeCtrl', ['$rootScope', '$scope', '$http', '$location', f
             $location.path('/');
         });
     };
-
-    $scope.clearErrorField = function() {
-        $scope.errorMessage = null;
-    }
 
 }]);
 

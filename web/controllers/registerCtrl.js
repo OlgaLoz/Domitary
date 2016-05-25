@@ -21,7 +21,7 @@ app.controller('registerCtrl', ['$rootScope', '$scope', '$http', '$location', fu
                 first_name: response.data.student.firstName,
                 mid_name: response.data.student.midName,
                 last_name: response.data.student.lastName,
-                birthday: response.data.student.dateOfBirth,
+                birthday: getDateFromString(response.data.student.dateOfBirth),
                 group: response.data.student.groupNumber
             };
 
@@ -32,10 +32,6 @@ app.controller('registerCtrl', ['$rootScope', '$scope', '$http', '$location', fu
             errorMessage(response.data, $scope);
         });
     };
-
-    $scope.clearErrorField = function() {
-        $scope.errorMessage = null;
-    }
 
 }]);
 
